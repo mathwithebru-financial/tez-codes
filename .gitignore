@@ -18,6 +18,9 @@ venv/
 
 # Data and fitted preprocessing objects
 data/**
+!data/README.md
+!data/raw/
+!data/raw/raw_prices.csv
 *.pkl
 *.pickle
 *.joblib
