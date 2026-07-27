@@ -57,6 +57,7 @@ SHAP was used only as a post-hoc description of the locked ensemble. It was not 
 ```text
 .
 ├── config/       # schema and checksum inventories
+├── data/          # exact frozen raw dataset and data notes
 ├── docs/         # result and reproducibility notes
 ├── notebooks/    # output-cleared research notebook
 ├── protocols/    # locked Stage 8C, 9, and 10 protocol records
@@ -77,11 +78,11 @@ They have not been refactored after validation because that would change the aud
 1. Use Python 3.12 in Google Colab.
 2. Place the project at the Drive path above.
 3. Install the dependencies in `requirements.txt`.
-4. Supply the frozen raw file at `data/raw/raw_prices.csv`.
-5. Verify its SHA-256 before executing the pipeline.
+4. Use the included frozen raw file at [`data/raw/raw_prices.csv`](data/raw/raw_prices.csv).
+5. Verify its SHA-256 before executing the pipeline; see [`data/README.md`](data/README.md).
 6. Run the scripts in the order documented in [`scripts/README.md`](scripts/README.md).
 
-The frozen raw data, derived datasets, scalers, model checkpoints, and large prediction arrays are intentionally excluded. Their expected identities are recorded through checksums and protocol locks.
+The exact frozen raw dataset is included for reproducibility. Derived datasets, scalers, model checkpoints, and large prediction arrays remain intentionally excluded; their expected identities are recorded through checksums and protocol locks.
 
 ## Verified environment records
 
