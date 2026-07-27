@@ -1,0 +1,269 @@
+{
+  "acceptance_policy": {
+    "failed_optimizer_terminal_values_are_not_accepted": true,
+    "normal_distribution_fallback_allowed": false,
+    "parameter_imputation_allowed": false,
+    "parent_08C_criteria_are_not_relaxed": true,
+    "persistence_fallback_allowed": false,
+    "prediction_imputation_allowed": false,
+    "required_conditions": [
+      "No fit exception.",
+      "convergence_flag equals 0.",
+      "optimization_result.success is True.",
+      "No StartingValueWarning was emitted.",
+      "All fitted parameters are finite.",
+      "Student-t nu is finite and greater than 2.",
+      "Forecast variance is finite and positive.",
+      "Forecast sigma in decimal scale is finite and positive.",
+      "Persistence is finite.",
+      "All parent forecast-root and prediction validity checks pass."
+    ]
+  },
+  "created_at_utc": "2026-07-18T13:38:12.519188+00:00",
+  "decision_date": "2026-07-18",
+  "environment_policy": {
+    "environment_mismatch_blocks_execution": true,
+    "observed_at_protocol_creation": {
+      "arch": "8.0.0",
+      "numpy": "2.0.2",
+      "pandas": "2.2.2",
+      "platform": "Linux-6.6.122+-x86_64-with-glibc2.35",
+      "python": "3.12.13",
+      "scipy": "1.16.3"
+    },
+    "parent_environment_lock": {
+      "arch": "8.0.0",
+      "numpy": "2.0.2",
+      "pandas": "2.2.2",
+      "python": "3.12.13",
+      "required_package_versions": {
+        "arch": "8.0.0",
+        "numpy": "2.0.2",
+        "pandas": "2.2.2",
+        "scipy": "1.16.3"
+      },
+      "scipy": "1.16.3"
+    },
+    "validate_only_required_before_any_rescue_fit": true
+  },
+  "fit_policy": {
+    "fit_call": {
+      "backcast": null,
+      "cov_type": "robust",
+      "disp": "off",
+      "options": {
+        "maxiter": 5000
+      },
+      "show_warning": false,
+      "starting_values": "Locked projected warm-start vector",
+      "tol": 1e-08,
+      "update_freq": 0
+    },
+    "isolated_numerical_change": "Relative to the parent 5000-iteration retry, the intended numerical change is the deterministic feasible starting vector.",
+    "maximum_rescue_attempts_per_target": 1,
+    "optimizer": "SLSQP through arch 8.0.0",
+    "reason": "numerical convergence only",
+    "same_expanding_window": true,
+    "same_forecast_definition": true,
+    "same_input_scale": true,
+    "same_model_specification": true,
+    "same_parent_data": true,
+    "same_parent_validity_checks": true,
+    "same_student_t_distribution": true,
+    "same_target_definition": true,
+    "same_zero_mean_specification": true
+  },
+  "historical_protocol_record": {
+    "must_not_be_used_for_fitting": true,
+    "superseded_note": {
+      "relative_path": "config/archive/08C_R_superseded_pre_feasibility_b1cd6b6b/SUPERSEDED_NOTE.json",
+      "sha256": "a914432b79fcdfc44cec17bd6ba978f7ceb65410786692b897b0142051b83b40",
+      "size_bytes": 953
+    },
+    "superseded_protocol": {
+      "relative_path": "config/archive/08C_R_superseded_pre_feasibility_b1cd6b6b/08C_R_garch_rescue_protocol_lock_v4_SUPERSEDED_PRE_FEASIBILITY.json",
+      "sha256": "b1cd6b6b635e18e5969ea54a075024e2a1743c1c6a77e61fd20b54d23a24b004",
+      "size_bytes": 9220
+    },
+    "superseded_protocol_sha256": "b1cd6b6b635e18e5969ea54a075024e2a1743c1c6a77e61fd20b54d23a24b004"
+  },
+  "merge_and_metric_policy": {
+    "dm_test_requires_complete_loss_series": true,
+    "duplicate_anchor_prediction_allowed": false,
+    "full_pair_expected_observations": 584,
+    "metric_condition": "Metrics and loss series may be produced for a model-asset pair only if the merged parent-plus-rescue series contains exactly 584 unique valid anchors.",
+    "parent_invalid_terminal_values_are_never_used": true,
+    "parent_valid_rows_are_reused_without_refitting": true,
+    "partial_pair_metrics_allowed": false,
+    "rescued_results_must_be_explicitly_labeled": true,
+    "rescued_valid_rows_are_appended_only_to_their_exact_targets": true
+  },
+  "output_policy": {
+    "parent_overwrite_allowed": false,
+    "primary_and_rescued_rows_must_remain_distinguishable": true,
+    "relative_output_directory": "results/baselines/garch/08C_R",
+    "required_outputs": [
+      "08C_R_rescue_attempts_v4.csv",
+      "08C_R_rescue_diagnostics_v4.csv",
+      "08C_R_rescue_warning_inventory_v4.csv",
+      "08C_R_rescue_summary_v4.json",
+      "08C_R_rescue_manifest_v4.json"
+    ],
+    "separate_checkpoint_directory_required": true,
+    "successful_prediction_label": "Obtained under the locked 08C-R numerical-convergence rescue protocol."
+  },
+  "parent_08C": {
+    "all_parent_files_are_read_only": true,
+    "attempts": {
+      "relative_path": "results/baselines/garch/garch_fit_attempts_v4.csv",
+      "sha256": "0209467632c1628fce4b0dc1ad89cd4593567f615a9d5776ae011a147d29d5ed",
+      "size_bytes": 3441056
+    },
+    "clean_closure": false,
+    "diagnostics": {
+      "relative_path": "results/baselines/garch/garch_baseline_diagnostics_long_v4.csv",
+      "sha256": "33f06de63909fc486708b36292d49f47a19e58c92bb6e2c951744a503ee1e60b",
+      "size_bytes": 3288302
+    },
+    "parent_checkpoints_must_be_preserved": true,
+    "protocol": {
+      "relative_path": "config/08C_garch_protocol_lock_v4.json",
+      "sha256": "4238b4280021e8a265dcb6ba0aa6da379d1388db7d4396e29463d476283a6614",
+      "size_bytes": 15059
+    },
+    "protocol_sha_file": {
+      "relative_path": "config/08C_garch_protocol_lock_v4.sha256",
+      "sha256": "5a8be4d6c35dfe2cc648f24f4b50b82ec928da798c9152b32c15fc7ab2e6568c",
+      "size_bytes": 65
+    },
+    "script": {
+      "relative_path": "scripts/08C_garch_baselines_test_v4.py",
+      "sha256": "c60c1a5174803275fa9f88d7bfeea1ea5116bf0160793b5534aa803f531b50da",
+      "size_bytes": 76851
+    },
+    "summary": {
+      "relative_path": "results/baselines/garch/garch_baseline_summary_v4.json",
+      "sha256": "faf132425b00ca59550899736fd6807ae1529b79914eba4708611964d4491c59",
+      "size_bytes": 5784
+    },
+    "unresolved_asset": "USDTRY",
+    "unresolved_by_model": {
+      "GARCH_1_1_StudentsT_ZeroMean": 329,
+      "GJR_GARCH_1_1_StudentsT_ZeroMean": 245
+    },
+    "unresolved_observations": 574
+  },
+  "prelock_feasibility_evidence": {
+    "audit_csv": {
+      "relative_path": "results/baselines/garch/08C_R/08C_R_warm_start_feasibility_audit_v4.csv",
+      "sha256": "122ee95198ab7daf0008b66ba259e26b6e5156db339bd6a6665b99d23e9bfb39",
+      "size_bytes": 246791
+    },
+    "audit_csv_sha_file": {
+      "relative_path": "results/baselines/garch/08C_R/08C_R_warm_start_feasibility_audit_v4.csv.sha256",
+      "sha256": "15280bdacd6352c929621bbef1f184ac22576448cff2ca97fac5a45c16f060b7",
+      "size_bytes": 108
+    },
+    "audit_summary_json": {
+      "relative_path": "results/baselines/garch/08C_R/08C_R_warm_start_feasibility_summary_v4.json",
+      "sha256": "f1c10453098b4dd1349613944e77388dfdda125d43ebfe45c5933e22bf94d7af",
+      "size_bytes": 3338
+    },
+    "audit_summary_sha_file": {
+      "relative_path": "results/baselines/garch/08C_R/08C_R_warm_start_feasibility_summary_v4.json.sha256",
+      "sha256": "6d7aee2b07c7735fb6f5e952da815f0ce17159a98fa6e66abc6fb96ffa3ae5cd",
+      "size_bytes": 111
+    },
+    "candidate_count": 574,
+    "fully_feasible_count": 574,
+    "interpretation": "All candidate starting vectors satisfied the exact anchor-specific arch constraints and data-dependent parameter bounds before protocol locking. This establishes candidate feasibility only and does not establish future optimizer convergence.",
+    "invalid_candidate_count": 0,
+    "minimum_constraint_margin": 9.99999999806711e-07,
+    "persistence_target": 0.999999,
+    "projection_applied_count": 574
+  },
+  "project_version": "v4_repro",
+  "projection_rule": {
+    "anchor_specific_bounds_recheck_required": true,
+    "anchor_specific_constraints_recheck_required": true,
+    "apply_when": "source persistence exceeds persistence_target",
+    "candidate_must_match_locked_audit_row": true,
+    "garch_persistence": "alpha[1] + beta[1]",
+    "garch_scaled_parameters": [
+      "alpha[1]",
+      "beta[1]"
+    ],
+    "gjr_garch_persistence": "alpha[1] + 0.5*gamma[1] + beta[1]",
+    "gjr_garch_scaled_parameters": [
+      "alpha[1]",
+      "gamma[1]",
+      "beta[1]"
+    ],
+    "if_source_persistence_is_not_above_target": "Use source parameters unchanged.",
+    "invalid_candidate_rule": "Do not fit and preserve unresolved status.",
+    "observed_prelock_projection_count": 574,
+    "persistence_target": 0.999999,
+    "projection_factor": "persistence_target / source_persistence",
+    "unchanged_parameters": [
+      "omega",
+      "nu"
+    ]
+  },
+  "protocol_status": "LOCKED_BEFORE_ANY_08C_R_RESCUE_FIT",
+  "purpose": "Perform one deterministic numerical-convergence rescue attempt for each of the 574 unresolved USDTRY GARCH-family observations from the locked primary 08C run.",
+  "scientific_role": {
+    "analysis_type": "secondary numerical-convergence rescue",
+    "igarch_is_outside_08C_R": true,
+    "primary_08C_remains_canonical": true,
+    "primary_failure_is_preserved": true,
+    "rescue_does_not_replace_parent_fit_records": true,
+    "rescue_is_not_hyperparameter_search": true,
+    "rescue_is_not_model_selection": true,
+    "rescue_is_not_selected_using_forecast_performance": true
+  },
+  "scope": {
+    "asset": "USDTRY",
+    "completed_parent_rows_are_not_refit": true,
+    "expected_by_model": {
+      "GARCH_1_1_StudentsT_ZeroMean": 329,
+      "GJR_GARCH_1_1_StudentsT_ZeroMean": 245
+    },
+    "expected_target_count": 574,
+    "model_ids": [
+      "GARCH_1_1_StudentsT_ZeroMean",
+      "GJR_GARCH_1_1_StudentsT_ZeroMean"
+    ],
+    "other_assets_are_not_refit": true,
+    "target_definition": "Exactly the parent 08C rows whose status is UNRESOLVED_FIT.",
+    "target_set_must_match_feasibility_audit": true
+  },
+  "stage": "08C-R",
+  "stopping_rule": {
+    "additional_maxiter_search_allowed": false,
+    "additional_starting_value_search_allowed": false,
+    "additional_tolerance_search_allowed": false,
+    "if_still_unresolved": "Stop the rescue cycle. Preserve all remaining unresolved observations and report the affected USDTRY GARCH-family comparison as a scope limitation.",
+    "model_switching_allowed": false,
+    "one_rescue_attempt_only": true,
+    "optimizer_switching_allowed": false
+  },
+  "warm_start_rule": {
+    "future_information_allowed": false,
+    "if_no_prior_valid_primary_source": "Do not call fit; preserve unresolved status.",
+    "rescued_fit_may_be_a_source": false,
+    "source_anchor_selection": "Select the maximum successful parent primary anchor_index strictly smaller than the unresolved target anchor_index.",
+    "source_asset_equals_target_asset": true,
+    "source_attempt_must_be_valid": true,
+    "source_attempt_number": 1,
+    "source_dataset": "results/baselines/garch/garch_fit_attempts_v4.csv",
+    "source_model_equals_target_model": true,
+    "warm_start_is_allowed_only_in_08C_R": true
+  },
+  "warning_policy": {
+    "capture_all_emitted_warnings": true,
+    "convergence_warning_role": "Log if emitted, but do not use warning absence as proof of convergence because show_warning is False.",
+    "log_warning_category": true,
+    "log_warning_message": true,
+    "starting_value_warning_rule": "Any emitted StartingValueWarning makes the rescue attempt invalid."
+  }
+}

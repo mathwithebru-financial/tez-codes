@@ -1,0 +1,159 @@
+{
+  "amended_execution_rule": {
+    "bitwise_exact_in_graph_raw_wrapper_required": false,
+    "explainer_model": "Differentiable arithmetic mean of the three locked scaled-output PyTorch models.",
+    "explainer_model_output_scale": "standardized_target_scale",
+    "numeric_tolerance_introduced": false,
+    "official_prediction_replication_requirement": "Each seed must reproduce its saved raw prediction with maximum difference 0.0 through the fitted sklearn inverse_transform path.",
+    "raw_attribution_conversion": "For output j: phi_raw[..., j] = phi_scaled[..., j] * y_scaler.scale_[j].",
+    "raw_expected_output_conversion": "For output j: E_raw[j] = E_scaled[j] * y_scaler.scale_[j] + y_scaler.mean_[j].",
+    "raw_prediction_reference": "The locked saved raw prediction arrays.",
+    "reason_no_tolerance_is_needed": "The official saved prediction path remains exactly replicated. The attribution scale conversion is performed analytically after Expected Gradients computation.",
+    "saved_ensemble_identity_requirement": "The saved ensemble must equal the exact arithmetic mean of the three saved raw seed predictions with maximum difference 0.0.",
+    "scaled_attribution_definition": "Expected Gradients attribution computed for each of the eight standardized model outputs."
+  },
+  "created_at_utc": "2026-07-22T18:40:33.394803+00:00",
+  "document_type": "PRE_COMPUTATION_METHOD_ADDENDUM",
+  "execution_boundaries": {
+    "feature_rankings_computed": false,
+    "models_refitted": false,
+    "models_trained": false,
+    "original_protocol_modified": false,
+    "prediction_files_modified": false,
+    "result_figures_created": false,
+    "shap_values_computed": false
+  },
+  "interpretation_boundaries": {
+    "attribution_is_not_causality": true,
+    "features_not_reselected": true,
+    "hyperparameters_not_changed": true,
+    "model_not_refitted": true,
+    "model_not_retrained": true,
+    "negative_transfer_not_inferred_from_shap_alone": true,
+    "shap_is_post_hoc": true,
+    "winner_not_reselected": true
+  },
+  "method_references": [
+    {
+      "authors": "Lundberg and Lee",
+      "title": "A Unified Approach to Interpreting Model Predictions",
+      "year": 2017
+    },
+    {
+      "authors": "Erion, Janizek, Sturmfels, Lundberg and Lee",
+      "doi": "10.1038/s42256-021-00343-w",
+      "title": "Improving performance of deep learning models with axiomatic attribution priors and expected gradients",
+      "year": 2021
+    }
+  ],
+  "project_version": "v4a",
+  "quality_diagnostics": {
+    "finite_value_check_required": true,
+    "raw_additivity_residual_is_descriptive": true,
+    "raw_additivity_residual_reported": true,
+    "raw_expected_output_saved": true,
+    "raw_shap_shape": [
+      584,
+      10,
+      8,
+      8
+    ],
+    "saved_raw_predictions_used": true,
+    "scaled_expected_output_saved": true,
+    "scaled_shap_shape": [
+      584,
+      10,
+      8,
+      8
+    ],
+    "variance_conversion": "For output j: variance_raw[..., j] = variance_scaled[..., j] * y_scaler.scale_[j]^2."
+  },
+  "reason_for_addendum": {
+    "differentiable_in_graph_affine_diagnostic": {
+      "interpretation": "Float32 operation-order difference; not model, checkpoint, data or scaler identity failure.",
+      "maximum_difference": 5.960464477539063e-08,
+      "seed_max_differences": {
+        "123": 5.960464477539063e-08,
+        "2026": 2.9802322387695312e-08,
+        "777": 5.960464477539063e-08
+      }
+    },
+    "official_path_exact_replication": {
+      "saved_seed_mean_vs_saved_ensemble": 0.0,
+      "seed_max_differences": {
+        "123": 0.0,
+        "2026": 0.0,
+        "777": 0.0
+      }
+    },
+    "official_prediction_path": "PyTorch scaled prediction followed by the fitted sklearn StandardScaler inverse_transform.",
+    "result_dependent_change": false,
+    "shap_values_computed_before_addendum": false
+  },
+  "relationship_to_original_protocol": {
+    "addendum_scope": "Clarifies the numerically stable implementation of the already locked raw-target-scale attribution objective.",
+    "original_protocol_modified": false,
+    "original_protocol_overwritten": false,
+    "original_protocol_path": "config/10_shap_protocol_lock_v4.json",
+    "original_protocol_sha256": "0a8c673faefc042dfee733f39ba6f18cd4b7ad4aee510dad9e8f5f39a77f680f",
+    "original_report_path": "config/10_shap_protocol_report_v4.md",
+    "original_report_sha256": "92ddab9b33c5645f1418aa49072d43e10cf07590aa0fd1ae55c2ec681f01606e"
+  },
+  "runtime_at_addendum_lock": {
+    "cuda_available": true,
+    "cuda_device": "Tesla T4",
+    "numpy": "2.0.2",
+    "python": "3.12.13",
+    "sklearn": "1.6.1",
+    "torch": "2.11.0+cu128"
+  },
+  "scaler_identity": {
+    "class": "StandardScaler",
+    "feature_count": 8,
+    "mean": [
+      0.00026990743091181735,
+      0.0005625441750865705,
+      0.0004869487758183737,
+      0.00017926199053869372,
+      0.20861933112499859,
+      0.12137175017453714,
+      0.12158956249675339,
+      0.1478909750028364
+    ],
+    "path": "data/sequences/baseline/scalers.pkl",
+    "scale": [
+      0.014065278784876345,
+      0.0091948476677582,
+      0.009078782824753428,
+      0.010081825331107476,
+      0.07868923698881226,
+      0.08159852726046402,
+      0.07793413049661282,
+      0.06313533302293077
+    ],
+    "sha256": "789b8a3e693d5ea19bb550cd01da7c440287052cb2a6a7c528923aca38d9eddd"
+  },
+  "stage": "10_FINAL_POST_HOC_SHAP_EXPLAINABILITY",
+  "status": "LOCKED_BEFORE_SHAP_COMPUTATION",
+  "unchanged_locked_decisions": {
+    "architecture": "NoSharing",
+    "background_size": 64,
+    "background_source": "training_only",
+    "ensemble_seeds": [
+      123,
+      777,
+      2026
+    ],
+    "explained_test_samples": 584,
+    "explainer": "GradientExplainer",
+    "feature_order_changed": false,
+    "local_sample_inventory_changed": false,
+    "local_smoothing": 0.0,
+    "method": "Expected Gradients",
+    "nsamples": 256,
+    "outputs_explained": 8,
+    "random_seed": 2026,
+    "reference_prediction": "FinalWinner_3SeedEnsemble",
+    "target_order_changed": false
+  }
+}

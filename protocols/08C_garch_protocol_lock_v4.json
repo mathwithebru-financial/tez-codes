@@ -1,0 +1,418 @@
+{
+  "assets": [
+    "BIST100",
+    "USDTRY",
+    "EURTRY",
+    "GOLD"
+  ],
+  "audit_requirements": [
+    "Exact protocol SHA-256 verification",
+    "Exact official-input SHA-256 verification",
+    "Exact 584-date alignment for every model and asset",
+    "No-look-ahead verification",
+    "Independent reconstruction from stored h, nu, S, Q and dates",
+    "Independent metric and loss-series reconstruction",
+    "Convergence, warning and retry inventory reconstruction",
+    "No silent fallback or imputation verification",
+    "Comparison-table reconstruction"
+  ],
+  "data_lock": {
+    "common_valid_index": {
+      "definition": "Common valid index produced from baseline features, full features, targets and target-realization dates.",
+      "end": "2024-12-30",
+      "n_rows": 3891,
+      "start": "2010-02-01"
+    },
+    "independent_verification_inputs": {
+      "meta_v4": {
+        "relative_path": "data/processed/meta_v4.json",
+        "sha256": "a80c21c16b1c57dc90fa734d271b0360f391bfce3b45370881771104a5028a27",
+        "size_bytes": 1536
+      },
+      "prices_clean": {
+        "relative_path": "data/processed/prices_clean.csv",
+        "sha256": "5c417779e460994c5068ca1621b4292f388b958a3c93db0c9de67d6109adef95",
+        "size_bytes": 317225
+      },
+      "sequence_meta": {
+        "relative_path": "data/sequences/baseline/lb10/sequence_meta.json",
+        "sha256": "78fa849524fa0e352c6b3c5c560b5b8658b6a85678afb38ec9c8c34b49d3f7e9",
+        "size_bytes": 1732
+      },
+      "split_meta": {
+        "relative_path": "data/processed/split_meta_v4.json",
+        "sha256": "ab9fb042e3656400bdf5d8c1c920f57b2bbd1d25199dd20efe3eb7116861ece6",
+        "size_bytes": 1215
+      },
+      "target_realization_dates": {
+        "relative_path": "data/processed/target_realization_dates.csv",
+        "sha256": "65a7fc7838f8e547c6640064fdd0d753be76f74ce363f74fe549654ace741ed5",
+        "size_bytes": 85631
+      },
+      "targets_all": {
+        "relative_path": "data/processed/targets_all.csv",
+        "sha256": "e4c3bbed7acd13ffe32628503a870824f9717ce08bb3c631f26578fdb4b28269",
+        "size_bytes": 682419
+      }
+    },
+    "logret_independent_reconstruction": {
+      "formula": "log(price[t] / price[t-1])",
+      "max_abs_diff_by_asset": {
+        "BIST100": 9.985502008591496e-17,
+        "EURTRY": 4.484260185400046e-16,
+        "GOLD": 9.974659986866641e-17,
+        "USDTRY": 4.839878497975292e-16
+      },
+      "maximum_allowed_diff": 1e-12,
+      "source": "prices_clean.csv"
+    },
+    "official_execution_inputs": {
+      "anchor_dates_test": {
+        "relative_path": "data/sequences/baseline/lb10/anchor_dates_test.npy",
+        "sha256": "40194047c9b7fe62adc0966f2c144e1be1e9c85f832d96ffe0a12624d34aab63",
+        "size_bytes": 23488
+      },
+      "features_baseline": {
+        "relative_path": "data/processed/features_baseline.csv",
+        "sha256": "0ebfaae1f5891007507825f380a3512c7743d9c5d3d6176ee559b9ea34c14102",
+        "size_bytes": 682405
+      },
+      "target_realization_dates_test": {
+        "relative_path": "data/sequences/baseline/lb10/target_realization_dates_test.npy",
+        "sha256": "0100eea598141cf5990b4d7ba5a8071236846ec7a1d1196c078b6c3af1fcf441",
+        "size_bytes": 23488
+      },
+      "y_test_raw": {
+        "relative_path": "data/sequences/baseline/lb10/y_test_raw.npy",
+        "sha256": "a37034c833365b89302dbf0e3d57c29dc2eaf6ada91bfd1fae16fd56f112adb8",
+        "size_bytes": 18816
+      }
+    },
+    "official_return_source": {
+      "columns": [
+        "BIST100_LogRet",
+        "USDTRY_LogRet",
+        "EURTRY_LogRet",
+        "GOLD_LogRet"
+      ],
+      "file_key": "features_baseline",
+      "unit": "decimal log return"
+    },
+    "official_test_target_source": {
+      "dtype": "float32",
+      "file_key": "y_test_raw",
+      "shape": [
+        584,
+        8
+      ],
+      "volatility_target_slice": [
+        4,
+        8
+      ]
+    },
+    "target_verification_rule": {
+      "diagnostic_float64_max_abs_diff": 2.917251629153128e-08,
+      "exact_array_equality_after_dtype_alignment": true,
+      "rule": "y_test_raw must be element-wise exactly equal to targets_all at test anchors after casting CSV values to the official NPY dtype.",
+      "tolerance_replacement_used": false
+    },
+    "test_dates": {
+      "anchor_count": 584,
+      "anchor_end": "2024-12-30",
+      "anchor_start": "2022-10-05",
+      "csv_npy_realization_exact_equality": true,
+      "realization_count": 584,
+      "realization_end": "2024-12-31",
+      "realization_start": "2022-10-06"
+    }
+  },
+  "environment": {
+    "arch": "8.0.0",
+    "numpy": "2.0.2",
+    "pandas": "2.2.2",
+    "python": "3.12.13",
+    "required_package_versions": {
+      "arch": "8.0.0",
+      "numpy": "2.0.2",
+      "pandas": "2.2.2",
+      "scipy": "1.16.3"
+    },
+    "scipy": "1.16.3"
+  },
+  "excluded_model_rule": "EGARCH and any other econometric specification cannot be added after official 08C GARCH test results are observed.",
+  "excluded_models": [
+    "EGARCH"
+  ],
+  "expanding_window": {
+    "enabled": true,
+    "first_anchor_zero_based_position": 3307,
+    "first_fit_observation_count_including_anchor": 3308,
+    "first_test_anchor": "2022-10-05",
+    "forecast_horizon": 1,
+    "future_information_forbidden": true,
+    "last_fit_observation_count_including_anchor": 3891,
+    "last_test_anchor": "2024-12-30",
+    "past_test_information_rule": "A realized test-period return may enter later fits only after it has become observable.",
+    "refit_frequency": "every test anchor",
+    "source_start_date": "2010-02-01"
+  },
+  "expected_inventory": {
+    "assets": 4,
+    "models": 2,
+    "primary_fits_without_retries": 4672,
+    "test_observations": 584
+  },
+  "fit_and_retry_policy": {
+    "maximum_attempts": 2,
+    "primary_attempt": {
+      "backcast": null,
+      "cov_type": "robust",
+      "disp": "off",
+      "options": {
+        "maxiter": 2000
+      },
+      "show_warning": false,
+      "starting_values": null,
+      "tol": 1e-08,
+      "update_freq": 0
+    },
+    "retry_attempt": {
+      "allowed": true,
+      "backcast": null,
+      "cov_type": "robust",
+      "disp": "off",
+      "options": {
+        "maxiter": 5000
+      },
+      "reason": "numerical convergence only",
+      "same_data": true,
+      "same_distribution": true,
+      "same_model": true,
+      "same_scale": true,
+      "show_warning": false,
+      "starting_values": null,
+      "tol": 1e-08,
+      "update_freq": 0
+    },
+    "retry_trigger": "A second fit attempt is allowed only after a failed numerical fit or invalid fitted output, never because of forecast performance. A CDF-root failure after an otherwise valid fit is recorded as an unresolved observation-level failure and does not trigger model switching.",
+    "silent_fallbacks": {
+      "normal_distribution": false,
+      "parameter_imputation": false,
+      "persistence": false,
+      "prediction_imputation": false
+    },
+    "unresolved_failure_rule": "Any unresolved fit, parameter, variance, root or prediction failure must be stored explicitly and prevents a clean 08C closure until resolved or formally reported as unresolved."
+  },
+  "fit_scale": {
+    "arch_input_unit": "percentage return",
+    "forecast_variance_unit": "percentage-return squared",
+    "input_log_return_multiplier": 100.0,
+    "sigma_to_decimal_divisor": 100.0,
+    "variance_to_decimal_divisor": 10000.0
+  },
+  "fit_success_criteria": {
+    "all_required": true,
+    "criteria": [
+      "result.convergence_flag == 0",
+      "bool(result.optimization_result.success) is True",
+      "all estimated parameters are finite",
+      "estimated nu is finite and greater than 2",
+      "one-step conditional variance is finite and greater than 0",
+      "conditional sigma is finite and greater than 0",
+      "CDF root is successfully bracketed and solved",
+      "central probability-mass error is <= 1e-10",
+      "primary prediction is finite",
+      "secondary predictions are finite",
+      "no silent fallback or imputation is used"
+    ],
+    "warning_policy": {
+      "all_warnings_captured": true,
+      "convergence_warning_triggers_failed_attempt": true,
+      "other_warnings_recorded_for_audit": true
+    }
+  },
+  "interpretation_guardrails": [
+    "08C audit PASS does not imply model success.",
+    "Lower point-estimate error does not imply statistical significance.",
+    "Statistical significance awaits stage 09 DM, Harvey and Holm-Bonferroni analyses.",
+    "08C does not change or retrain the locked final model.",
+    "08C is date-target aligned but not an input-representation-matched causal ablation.",
+    "No econometric model may be added or removed after official 08C results are observed.",
+    "GARCH-family performance may depend on asset and target definition."
+  ],
+  "locked_utc": "2026-07-16T14:23:14.012320+00:00",
+  "metrics": {
+    "primary": {
+      "name": "PinballLoss",
+      "tau": 0.5
+    },
+    "secondary": [
+      "MAE",
+      "RMSE",
+      "R2"
+    ]
+  },
+  "numerical_safety": {
+    "blind_max_zero_for_large_negative_values": false,
+    "negative_value_rule": "A theoretically non-negative value below -1e-14 fails. Values in [-1e-14, 0) may be set to zero only as floating-point rounding correction.",
+    "negative_variance_tolerance": 1e-14
+  },
+  "official_models": [
+    {
+      "dist": "StudentsT",
+      "mean": "Zero",
+      "model_id": "GARCH_1_1_StudentsT_ZeroMean",
+      "o": 0,
+      "p": 1,
+      "power": 2.0,
+      "q": 1,
+      "rescale": false,
+      "vol": "GARCH"
+    },
+    {
+      "dist": "StudentsT",
+      "mean": "Zero",
+      "model_id": "GJR_GARCH_1_1_StudentsT_ZeroMean",
+      "o": 1,
+      "p": 1,
+      "power": 2.0,
+      "q": 1,
+      "rescale": false,
+      "vol": "GARCH"
+    }
+  ],
+  "persistence_diagnostics": {
+    "GARCH_1_1": "alpha[1] + beta[1]",
+    "GJR_GARCH_1_1": "alpha[1] + 0.5 * gamma[1] + beta[1] under a symmetric standardized innovation distribution",
+    "high_persistence_rule": "High or near-integrated persistence is recorded and reported; the fit is not silently removed or replaced solely for this reason.",
+    "role": "diagnostic only; not a test-based exclusion rule"
+  },
+  "predictive_distribution": {
+    "mean_decimal": 0.0,
+    "nu_source": "nu estimated in the corresponding expanding-window fit",
+    "representation": "R[t+1] = sigma_decimal[t+1|t] * Z, where Z follows the arch standardized Student's t distribution and Var(Z)=1.",
+    "required_nu_rule": "finite and greater than 2",
+    "sigma_decimal": "sqrt(one-step arch variance forecast) / 100"
+  },
+  "preflight_evidence": {
+    "cdf_root_synthetic": {
+      "c": 0.0015,
+      "central_probability_mass": 0.5000000000000002,
+      "mass_error": 2.220446049250313e-16,
+      "official_initial_upper_bound": 0.012,
+      "passed": true,
+      "q": 0.007422104619247194,
+      "sigma": 0.012,
+      "symmetry_difference": 2.5413698923060224e-16,
+      "symmetry_ppf_q": 0.007340985017323767,
+      "symmetry_root_q": 0.007340985017324021,
+      "symmetry_upper_bound_doublings": 0,
+      "upper_bound_doublings": 0
+    },
+    "student_t": {
+      "distribution_name": "Standardized Student's t",
+      "median": 5.930667312846726e-17,
+      "second_moment": 1.0,
+      "test_nu": 8.0
+    },
+    "test_integrity": {
+      "no_08C_metric_computed": true,
+      "no_08C_model_fit": true,
+      "no_08C_prediction_computed": true,
+      "official_test_target_values_used_for_08C_metrics": false,
+      "official_test_target_values_used_for_selection": false,
+      "test_arrays_read_only_for_integrity_validation": true
+    }
+  },
+  "primary_forecast": {
+    "definitions": {
+      "C": "(Q - S**2 / 19) / 19",
+      "Q": "sum of squares of the 19 known returns",
+      "S": "sum of the 19 known returns",
+      "c": "S / 19"
+    },
+    "forecast_formula": "sqrt(252 * (C + q**2 / 20))",
+    "known_returns": "r[t-18], ..., r[t] in decimal log-return units",
+    "metric_alignment": "Conditional median for PinballLoss tau=0.5",
+    "name": "Deterministic conditional-median NextVol20 forecast",
+    "predictive_cdf": "F_R(x) = StudentsT.cdf(x / sigma_decimal, [nu]) under the Zero-mean specification.",
+    "random_simulation_used": false,
+    "root_equation": "F_R(c+q) - F_R(c-q) = 0.5 for q >= 0",
+    "root_method": "scipy.optimize.brentq",
+    "root_settings": {
+      "initial_upper_bound": "max(sigma_decimal, abs(c), 1e-12)",
+      "lower_bound": 0.0,
+      "maximum_allowed_mass_error": 1e-10,
+      "maximum_upper_bound_doublings": 100,
+      "maxiter": 200,
+      "rtol": 1e-12,
+      "upper_bound_update": "multiply by 2 until bracketed",
+      "xtol": 1e-14
+    },
+    "variance_identity": "V(R) = C + (R-c)**2 / 20"
+  },
+  "project_version": "v4_repro",
+  "protocol_version": 1,
+  "purpose": "GARCH-family econometric volatility baselines evaluated on the locked NextVol targets and test forecast origins.",
+  "required_outputs": [
+    "584 primary predictions per model and asset",
+    "584 expected-variance plug-in diagnostics per model and asset",
+    "584 direct conditional-sigma diagnostics per model and asset",
+    "per-model per-asset metrics",
+    "task-average volatility metrics",
+    "final-vs-GARCH comparison table",
+    "GARCH-vs-VolPersistence comparison table",
+    "584-length Pinball loss series for stage 09",
+    "anchor and realization dates",
+    "h, nu, S, Q, c, C, q and central-mass diagnostics",
+    "fit, warning, convergence, retry and persistence diagnostics",
+    "package versions and protocol SHA-256"
+  ],
+  "secondary_forecasts": {
+    "direct_conditional_sigma": {
+      "formula": "sqrt(h_decimal * 252)",
+      "role": "secondary diagnostic only",
+      "warning": "Not the official target-aligned primary prediction"
+    },
+    "expected_sample_variance_plugin": {
+      "formula_1": "sqrt(252 * (C + (h_decimal + c**2) / 20))",
+      "formula_2_equivalent": "sqrt(252 * (Q + h_decimal - (S**2 + h_decimal)/20) / 19)",
+      "role": "secondary diagnostic only"
+    }
+  },
+  "selection_policy": {
+    "hyperparameter_selection": false,
+    "model_selection": false,
+    "report_both_models_separately": true,
+    "test_tuning": false
+  },
+  "stage": "08C",
+  "status": "LOCKED_BEFORE_08C_GARCH_FITS_PREDICTIONS_AND_METRICS",
+  "target_columns": [
+    "BIST100_NextVol",
+    "USDTRY_NextVol",
+    "EURTRY_NextVol",
+    "GOLD_NextVol"
+  ],
+  "target_definition": {
+    "annualization_factor": 252,
+    "nextvol_rule": "NextVol[t] = Vol20[t+1]",
+    "return_type": "decimal log return",
+    "vol20_ddof": 1,
+    "vol20_min_periods": 20,
+    "vol20_window": 20
+  },
+  "target_indices": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "task": "volatility_only",
+  "warm_start_policy": {
+    "reason": "Prevent cross-anchor starting-parameter dependence and keep each fit independently reconstructable.",
+    "rule": "Every asset-model-anchor fit must be independently initialized using the arch default starting-value construction. Parameters from earlier anchors are not reused.",
+    "starting_values": null,
+    "warm_start_allowed": false
+  }
+}

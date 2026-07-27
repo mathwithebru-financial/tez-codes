@@ -1,0 +1,5 @@
+FROZEN RAW DATA SHA-256 — v4
+============================================================
+Source: /content/drive/MyDrive/tez_transformer/data/raw/raw_prices.csv
+Copied to: /content/drive/MyDrive/tez_transformer_v4_repro/data/raw/raw_prices.csv
+SHA-256: ab5f275d38dc98057b1cedcf58019adb26be7402c7ed5ae6ee3d6877b2444893

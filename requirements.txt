@@ -1,0 +1,12 @@
+# Versions recorded by locked experiment artifacts
+numpy==2.0.2
+pandas==2.2.2
+scipy==1.16.3
+torch==2.11.0
+xgboost==3.3.0
+arch==8.0.0
+shap==0.52.0
+statsmodels==0.14.6
+
+# Used by the archived scripts; the exact Colab runtime version was not recorded
+scikit-learn>=1.5,<2

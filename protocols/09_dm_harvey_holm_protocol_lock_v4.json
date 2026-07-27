@@ -1,0 +1,737 @@
+{
+  "comparison_counts": {
+    "return": 20,
+    "total": 42,
+    "volatility": 22
+  },
+  "comparison_inventory": [
+    {
+      "asset": "BIST100",
+      "baseline_family": "naive",
+      "baseline_model": "ReturnZero",
+      "comparison_id": "return__BIST100__FinalWinner_vs_ReturnZero",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "BIST100",
+      "baseline_family": "naive",
+      "baseline_model": "ReturnPersistence",
+      "comparison_id": "return__BIST100__FinalWinner_vs_ReturnPersistence",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "USDTRY",
+      "baseline_family": "naive",
+      "baseline_model": "ReturnZero",
+      "comparison_id": "return__USDTRY__FinalWinner_vs_ReturnZero",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "USDTRY",
+      "baseline_family": "naive",
+      "baseline_model": "ReturnPersistence",
+      "comparison_id": "return__USDTRY__FinalWinner_vs_ReturnPersistence",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "EURTRY",
+      "baseline_family": "naive",
+      "baseline_model": "ReturnZero",
+      "comparison_id": "return__EURTRY__FinalWinner_vs_ReturnZero",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "EURTRY",
+      "baseline_family": "naive",
+      "baseline_model": "ReturnPersistence",
+      "comparison_id": "return__EURTRY__FinalWinner_vs_ReturnPersistence",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "GOLD",
+      "baseline_family": "naive",
+      "baseline_model": "ReturnZero",
+      "comparison_id": "return__GOLD__FinalWinner_vs_ReturnZero",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "GOLD",
+      "baseline_family": "naive",
+      "baseline_model": "ReturnPersistence",
+      "comparison_id": "return__GOLD__FinalWinner_vs_ReturnPersistence",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "BIST100",
+      "baseline_family": "learned",
+      "baseline_model": "SingleTaskTransformer",
+      "comparison_id": "return__BIST100__FinalWinner_vs_SingleTaskTransformer",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "BIST100",
+      "baseline_family": "learned",
+      "baseline_model": "SingleTaskLSTM",
+      "comparison_id": "return__BIST100__FinalWinner_vs_SingleTaskLSTM",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "BIST100",
+      "baseline_family": "learned",
+      "baseline_model": "XGBoost",
+      "comparison_id": "return__BIST100__FinalWinner_vs_XGBoost",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "USDTRY",
+      "baseline_family": "learned",
+      "baseline_model": "SingleTaskTransformer",
+      "comparison_id": "return__USDTRY__FinalWinner_vs_SingleTaskTransformer",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "USDTRY",
+      "baseline_family": "learned",
+      "baseline_model": "SingleTaskLSTM",
+      "comparison_id": "return__USDTRY__FinalWinner_vs_SingleTaskLSTM",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "USDTRY",
+      "baseline_family": "learned",
+      "baseline_model": "XGBoost",
+      "comparison_id": "return__USDTRY__FinalWinner_vs_XGBoost",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "EURTRY",
+      "baseline_family": "learned",
+      "baseline_model": "SingleTaskTransformer",
+      "comparison_id": "return__EURTRY__FinalWinner_vs_SingleTaskTransformer",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "EURTRY",
+      "baseline_family": "learned",
+      "baseline_model": "SingleTaskLSTM",
+      "comparison_id": "return__EURTRY__FinalWinner_vs_SingleTaskLSTM",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "EURTRY",
+      "baseline_family": "learned",
+      "baseline_model": "XGBoost",
+      "comparison_id": "return__EURTRY__FinalWinner_vs_XGBoost",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "GOLD",
+      "baseline_family": "learned",
+      "baseline_model": "SingleTaskTransformer",
+      "comparison_id": "return__GOLD__FinalWinner_vs_SingleTaskTransformer",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "GOLD",
+      "baseline_family": "learned",
+      "baseline_model": "SingleTaskLSTM",
+      "comparison_id": "return__GOLD__FinalWinner_vs_SingleTaskLSTM",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "GOLD",
+      "baseline_family": "learned",
+      "baseline_model": "XGBoost",
+      "comparison_id": "return__GOLD__FinalWinner_vs_XGBoost",
+      "expected_observations": 584,
+      "holm_family": "RETURN_PRIMARY",
+      "loss_function": "absolute_error",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "return"
+    },
+    {
+      "asset": "BIST100",
+      "baseline_family": "naive",
+      "baseline_model": "VolPersistence",
+      "comparison_id": "volatility__BIST100__FinalWinner_vs_VolPersistence",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "USDTRY",
+      "baseline_family": "naive",
+      "baseline_model": "VolPersistence",
+      "comparison_id": "volatility__USDTRY__FinalWinner_vs_VolPersistence",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "EURTRY",
+      "baseline_family": "naive",
+      "baseline_model": "VolPersistence",
+      "comparison_id": "volatility__EURTRY__FinalWinner_vs_VolPersistence",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "GOLD",
+      "baseline_family": "naive",
+      "baseline_model": "VolPersistence",
+      "comparison_id": "volatility__GOLD__FinalWinner_vs_VolPersistence",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "BIST100",
+      "baseline_family": "learned",
+      "baseline_model": "SingleTaskTransformer",
+      "comparison_id": "volatility__BIST100__FinalWinner_vs_SingleTaskTransformer",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "BIST100",
+      "baseline_family": "learned",
+      "baseline_model": "SingleTaskLSTM",
+      "comparison_id": "volatility__BIST100__FinalWinner_vs_SingleTaskLSTM",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "BIST100",
+      "baseline_family": "learned",
+      "baseline_model": "XGBoost",
+      "comparison_id": "volatility__BIST100__FinalWinner_vs_XGBoost",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "USDTRY",
+      "baseline_family": "learned",
+      "baseline_model": "SingleTaskTransformer",
+      "comparison_id": "volatility__USDTRY__FinalWinner_vs_SingleTaskTransformer",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "USDTRY",
+      "baseline_family": "learned",
+      "baseline_model": "SingleTaskLSTM",
+      "comparison_id": "volatility__USDTRY__FinalWinner_vs_SingleTaskLSTM",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "USDTRY",
+      "baseline_family": "learned",
+      "baseline_model": "XGBoost",
+      "comparison_id": "volatility__USDTRY__FinalWinner_vs_XGBoost",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "EURTRY",
+      "baseline_family": "learned",
+      "baseline_model": "SingleTaskTransformer",
+      "comparison_id": "volatility__EURTRY__FinalWinner_vs_SingleTaskTransformer",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "EURTRY",
+      "baseline_family": "learned",
+      "baseline_model": "SingleTaskLSTM",
+      "comparison_id": "volatility__EURTRY__FinalWinner_vs_SingleTaskLSTM",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "EURTRY",
+      "baseline_family": "learned",
+      "baseline_model": "XGBoost",
+      "comparison_id": "volatility__EURTRY__FinalWinner_vs_XGBoost",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "GOLD",
+      "baseline_family": "learned",
+      "baseline_model": "SingleTaskTransformer",
+      "comparison_id": "volatility__GOLD__FinalWinner_vs_SingleTaskTransformer",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "GOLD",
+      "baseline_family": "learned",
+      "baseline_model": "SingleTaskLSTM",
+      "comparison_id": "volatility__GOLD__FinalWinner_vs_SingleTaskLSTM",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "GOLD",
+      "baseline_family": "learned",
+      "baseline_model": "XGBoost",
+      "comparison_id": "volatility__GOLD__FinalWinner_vs_XGBoost",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "BIST100",
+      "baseline_family": "garch_family",
+      "baseline_model": "GARCH_1_1_StudentsT_ZeroMean",
+      "comparison_id": "volatility__BIST100__FinalWinner_vs_GARCH_1_1_StudentsT_ZeroMean",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "EURTRY",
+      "baseline_family": "garch_family",
+      "baseline_model": "GARCH_1_1_StudentsT_ZeroMean",
+      "comparison_id": "volatility__EURTRY__FinalWinner_vs_GARCH_1_1_StudentsT_ZeroMean",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "GOLD",
+      "baseline_family": "garch_family",
+      "baseline_model": "GARCH_1_1_StudentsT_ZeroMean",
+      "comparison_id": "volatility__GOLD__FinalWinner_vs_GARCH_1_1_StudentsT_ZeroMean",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "BIST100",
+      "baseline_family": "garch_family",
+      "baseline_model": "GJR_GARCH_1_1_StudentsT_ZeroMean",
+      "comparison_id": "volatility__BIST100__FinalWinner_vs_GJR_GARCH_1_1_StudentsT_ZeroMean",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "EURTRY",
+      "baseline_family": "garch_family",
+      "baseline_model": "GJR_GARCH_1_1_StudentsT_ZeroMean",
+      "comparison_id": "volatility__EURTRY__FinalWinner_vs_GJR_GARCH_1_1_StudentsT_ZeroMean",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    },
+    {
+      "asset": "GOLD",
+      "baseline_family": "garch_family",
+      "baseline_model": "GJR_GARCH_1_1_StudentsT_ZeroMean",
+      "comparison_id": "volatility__GOLD__FinalWinner_vs_GJR_GARCH_1_1_StudentsT_ZeroMean",
+      "expected_observations": 584,
+      "holm_family": "VOLATILITY_PRIMARY",
+      "loss_function": "pinball_tau_0.5",
+      "reference_model": "FinalWinner_3SeedEnsemble",
+      "task": "volatility"
+    }
+  ],
+  "created_at_utc": "2026-07-21T17:52:11.800511+00:00",
+  "diebold_mariano": {
+    "alternative": "two_sided",
+    "forecast_horizon_h": 1,
+    "long_run_variance": {
+      "estimator": "DM horizon-based autocovariance estimator",
+      "maximum_lag": 0,
+      "reason": "h - 1 = 0 for one-step-ahead non-overlapping forecast errors"
+    },
+    "raw_p_value_reference": "standard_normal_two_sided",
+    "raw_statistic": "DM = mean(d) / sqrt(LRV / T)",
+    "zero_variance_policy": {
+      "all_differentials_zero": "statistic=0, p_value=1",
+      "nonzero_mean_with_zero_variance": "invalid_test_flag; no fabricated p-value"
+    }
+  },
+  "execution_boundaries": {
+    "comparison_family_change_after_results": false,
+    "hyperparameter_tuning": false,
+    "loss_function_switching_after_results": false,
+    "model_refitting": false,
+    "partial_garch_pair_testing": false,
+    "prediction_generation": false,
+    "test_results_computed_during_lock": false
+  },
+  "garch_scope": {
+    "eligible_complete_pairs": [
+      {
+        "asset": "BIST100",
+        "model_id": "GARCH_1_1_StudentsT_ZeroMean"
+      },
+      {
+        "asset": "EURTRY",
+        "model_id": "GARCH_1_1_StudentsT_ZeroMean"
+      },
+      {
+        "asset": "GOLD",
+        "model_id": "GARCH_1_1_StudentsT_ZeroMean"
+      },
+      {
+        "asset": "BIST100",
+        "model_id": "GJR_GARCH_1_1_StudentsT_ZeroMean"
+      },
+      {
+        "asset": "EURTRY",
+        "model_id": "GJR_GARCH_1_1_StudentsT_ZeroMean"
+      },
+      {
+        "asset": "GOLD",
+        "model_id": "GJR_GARCH_1_1_StudentsT_ZeroMean"
+      }
+    ],
+    "excluded_incomplete_pairs": [
+      {
+        "asset": "USDTRY",
+        "model_id": "GARCH_1_1_StudentsT_ZeroMean"
+      },
+      {
+        "asset": "USDTRY",
+        "model_id": "GJR_GARCH_1_1_StudentsT_ZeroMean"
+      }
+    ],
+    "partial_pair_metrics_allowed": false,
+    "usdtry_removed_from_thesis": false
+  },
+  "harvey_lebourne_newbold": {
+    "applied": true,
+    "correction_factor": "sqrt((T + 1 - 2h + h*(h-1)/T) / T)",
+    "degrees_of_freedom": "T - 1",
+    "modified_statistic": "DM_HLN = correction_factor * DM",
+    "p_value_reference": "student_t_two_sided",
+    "primary_unadjusted_p_value": "Harvey-modified two-sided p-value",
+    "year": 1997
+  },
+  "input_validation": {
+    "closure_sha256_verified": true,
+    "comparison_count": 42,
+    "complete_garch_pairs": 6,
+    "excluded_garch_pairs": 2,
+    "final_arrays_shape": [
+      584,
+      8
+    ],
+    "learned_loss_series_count": 24,
+    "naive_loss_series_count": 20
+  },
+  "interpretation_rules": {
+    "direction_is_never_inferred_from_p_value_alone": true,
+    "non_significance_is_not_equivalence": true,
+    "not_significant": "Holm-adjusted p >= 0.05",
+    "significant_baseline_better": "Holm-adjusted p < 0.05 and mean(d) < 0",
+    "significant_final_better": "Holm-adjusted p < 0.05 and mean(d) > 0"
+  },
+  "locked_input_identities": [
+    {
+      "path": "results/final_test/final_test_summary_v4.json",
+      "sha256": "8b1892c1f587c52d392c905ae1e12762b7c2b36280523a3e5d2ea4c517c8a492",
+      "size_bytes": 6510
+    },
+    {
+      "path": "results/final_test/final_test_y_true_raw_v4.npy",
+      "sha256": "a37034c833365b89302dbf0e3d57c29dc2eaf6ada91bfd1fae16fd56f112adb8",
+      "size_bytes": 18816
+    },
+    {
+      "path": "results/final_test/pred_final_ensemble_raw_v4.npy",
+      "sha256": "17f6c8ca42d833118e057b72b6f481c8cde5c77501ab737559f67b9a6e3e13a1",
+      "size_bytes": 18816
+    },
+    {
+      "path": "data/sequences/baseline/lb10/anchor_dates_test.npy",
+      "sha256": "40194047c9b7fe62adc0966f2c144e1be1e9c85f832d96ffe0a12624d34aab63",
+      "size_bytes": 23488
+    },
+    {
+      "path": "results/baselines/naive/naive_baseline_summary_v4.json",
+      "sha256": "f642a3d491cf615738e7b63e434cebd43be3b29008fd303fa56527ff228159cc",
+      "size_bytes": 3853
+    },
+    {
+      "path": "results/baselines/naive/naive_baseline_loss_series_v4.npz",
+      "sha256": "97633ac36d1e7d3a4266aef753902d5b79796baaadc7bad0d8c0640efb06477c",
+      "size_bytes": 52436
+    },
+    {
+      "path": "results/baselines/learned/learned_baseline_summary_v4.json",
+      "sha256": "dfe33ed3afa1ffd09391d893e37a9340139e78435358ec2ce41163eddc25acc0",
+      "size_bytes": 7001
+    },
+    {
+      "path": "results/baselines/learned/audit_08B/08B_FINAL_AUDIT_result_v4.json",
+      "sha256": "fbbb0937a1dd96a8f70a012f8b4a7ff87575a33e0c89c3f527c68ed4ef3b51d8",
+      "size_bytes": 6991
+    },
+    {
+      "path": "results/baselines/learned/learned_baseline_loss_series_v4.npz",
+      "sha256": "34ea36086107c4e2fbc3304c4507272d2ce24a8c84c22e2cda6636f9a4ecea0f",
+      "size_bytes": 110569
+    },
+    {
+      "path": "results/baselines/garch/garch_baseline_diagnostics_long_v4.csv",
+      "sha256": "33f06de63909fc486708b36292d49f47a19e58c92bb6e2c951744a503ee1e60b",
+      "size_bytes": 3288302
+    },
+    {
+      "path": "results/baselines/garch/08C_closure/08C_08C_R_closure_record_v4.json",
+      "sha256": "b9c56deaaca4fccf65284572f3c35efa80fb96d034a1d387c18f1c7622ff5ea8",
+      "size_bytes": 7540
+    },
+    {
+      "path": "results/baselines/naive/pred_return_zero_raw_v4.npy",
+      "sha256": "1d3444a35b616b6e31d7f40f2e01760c4643dfc36a6b7c683484263604df3c61",
+      "size_bytes": 9472
+    },
+    {
+      "path": "results/baselines/naive/pred_return_persistence_raw_v4.npy",
+      "sha256": "92a88d8219d66f744c68fac15705686894eae0d50e44600300beb577195cb39c",
+      "size_bytes": 9472
+    },
+    {
+      "path": "results/baselines/naive/pred_vol_persistence_raw_v4.npy",
+      "sha256": "44583a5bd9442efdea2d6b5114ac6529926496b3f40ccf638f5ff1de47a9061c",
+      "size_bytes": 9472
+    },
+    {
+      "path": "results/baselines/learned/predictions/pred_singletasktransformer_ensemble_raw_v4.npy",
+      "sha256": "9cb2063b63a9e0e52d2ebe00e66143e6aea4c789cb627e8ee1d6e578d6d3496c",
+      "size_bytes": 37504
+    },
+    {
+      "path": "results/baselines/learned/predictions/pred_singletasklstm_ensemble_raw_v4.npy",
+      "sha256": "5e93228c912aabe6f40a6bbc01980e7a20769622f9d25ee433262358a228cf09",
+      "size_bytes": 37504
+    },
+    {
+      "path": "results/baselines/learned/predictions/pred_xgboost_ensemble_raw_v4.npy",
+      "sha256": "67ad25643cf70dbf403b5eb56b62a951ac3548a3e30c482987c96a919b6fc3b9",
+      "size_bytes": 37504
+    }
+  ],
+  "loss_differential": {
+    "definition": "d_t = baseline_loss_t - final_model_loss_t",
+    "negative_mean_interpretation": "Baseline has lower loss.",
+    "positive_mean_interpretation": "Final Transformer has lower loss.",
+    "zero_null": "Equal expected predictive accuracy."
+  },
+  "multiple_testing": {
+    "adjusted_p_value_rule": "Within each family, sort raw p-values ascending and compute monotone Holm adjusted p-values.",
+    "alpha": 0.05,
+    "families": {
+      "RETURN_PRIMARY": {
+        "task": "return",
+        "test_count": 20
+      },
+      "VOLATILITY_PRIMARY": {
+        "task": "volatility",
+        "test_count": 22
+      }
+    },
+    "family_reason": "Return and volatility are distinct forecasting tasks with different targets and loss functions.",
+    "input_p_values": "Harvey-modified two-sided p-values",
+    "method": "Holm-Bonferroni",
+    "no_subdivision_by_asset_or_baseline": true,
+    "significance_rule": "holm_adjusted_p_value < 0.05"
+  },
+  "planned_outputs_after_validation": {
+    "comparison_report_md": "results/statistical_comparison/09_dm_harvey_holm_report_v4.md",
+    "comparison_results_csv": "results/statistical_comparison/09_dm_harvey_holm_results_v4.csv",
+    "comparison_summary_json": "results/statistical_comparison/09_dm_harvey_holm_summary_v4.json"
+  },
+  "primary_loss_functions": {
+    "return": {
+      "aggregate_metric": "MAE",
+      "formula": "|y_t - yhat_t|",
+      "name": "absolute_error"
+    },
+    "volatility": {
+      "aggregate_metric": "PinballLoss_tau_0.5",
+      "formula": "max(tau*(y_t-yhat_t), (tau-1)*(y_t-yhat_t))",
+      "name": "pinball_loss",
+      "tau": 0.5
+    }
+  },
+  "project_version": "v4",
+  "reference_model": {
+    "architecture": "NoSharing",
+    "ensemble_seeds": [
+      123,
+      777,
+      2026
+    ],
+    "feature_set": "baseline",
+    "lookback": 10,
+    "loss_strategy": "FixedLambda_0.7",
+    "primary_prediction": "FinalWinner_3SeedEnsemble",
+    "size": "small",
+    "winner_config_id": "arch=NoSharing__loss=FixedLambda_0.7__lb=10__size=small__feat=baseline"
+  },
+  "runtime": {
+    "numpy": "2.0.2",
+    "pandas": "2.2.2",
+    "python": "3.12.13",
+    "scipy": "1.16.3"
+  },
+  "sample": {
+    "anchor_period": [
+      "2022-10-05",
+      "2024-12-30"
+    ],
+    "forecast_horizon_h": 1,
+    "global_anchor_position": [
+      3307,
+      3890
+    ],
+    "local_anchor_index": [
+      0,
+      583
+    ],
+    "observations_per_comparison": 584,
+    "target_period": [
+      "2022-10-06",
+      "2024-12-31"
+    ]
+  },
+  "stage": "09_STATISTICAL_MODEL_COMPARISON",
+  "status": "LOCKED_BEFORE_TEST_EXECUTION"
+}

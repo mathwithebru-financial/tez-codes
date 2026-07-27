@@ -1,0 +1,419 @@
+{
+  "addendum_identity": {
+    "path": "config/10_shap_protocol_addendum_v4a.json",
+    "sha256": "ba2dd22bbf0f7d5d4218e9a32940d638c8d815ecb023f57efbe0f621aa9e8334"
+  },
+  "additivity_diagnostics": {
+    "interpretation": "Descriptive Monte Carlo approximation diagnostic; no post-result acceptance threshold is imposed.",
+    "overall": {
+      "maximum_absolute_residual": 0.0121249987516453,
+      "mean_absolute_residual": 0.001251550268057652,
+      "median_absolute_residual": 0.0005703422649728448,
+      "rmse_residual": 0.001977232813614278
+    },
+    "per_output": {
+      "BIST100_NextRet": {
+        "maximum_absolute_residual": 0.002010359346469656,
+        "mean_absolute_residual": 0.00040488960372362797,
+        "median_absolute_residual": 0.00033393506669253956,
+        "rmse_residual": 0.0005124037440425632
+      },
+      "BIST100_NextVol": {
+        "maximum_absolute_residual": 0.0121249987516453,
+        "mean_absolute_residual": 0.0020817951824365372,
+        "median_absolute_residual": 0.0013716558236751553,
+        "rmse_residual": 0.0028371142242753643
+      },
+      "EURTRY_NextRet": {
+        "maximum_absolute_residual": 0.0024699655991149948,
+        "mean_absolute_residual": 0.0003988816870922927,
+        "median_absolute_residual": 0.0003284637527264967,
+        "rmse_residual": 0.0005145302933171738
+      },
+      "EURTRY_NextVol": {
+        "maximum_absolute_residual": 0.006441516217998877,
+        "mean_absolute_residual": 0.0021105893831318296,
+        "median_absolute_residual": 0.0018658139108202326,
+        "rmse_residual": 0.00260310657026186
+      },
+      "GOLD_NextRet": {
+        "maximum_absolute_residual": 0.0014912677255911905,
+        "mean_absolute_residual": 0.00024336834185113073,
+        "median_absolute_residual": 0.00019091870774445857,
+        "rmse_residual": 0.00031856410247026407
+      },
+      "GOLD_NextVol": {
+        "maximum_absolute_residual": 0.007332154912636668,
+        "mean_absolute_residual": 0.002262789643142561,
+        "median_absolute_residual": 0.0018525370544182351,
+        "rmse_residual": 0.0028758774507370703
+      },
+      "USDTRY_NextRet": {
+        "maximum_absolute_residual": 0.002815053228126148,
+        "mean_absolute_residual": 0.00041698391249893015,
+        "median_absolute_residual": 0.0003586705720268835,
+        "rmse_residual": 0.0005383124326231651
+      },
+      "USDTRY_NextVol": {
+        "maximum_absolute_residual": 0.006401513452990545,
+        "mean_absolute_residual": 0.0020931043905843055,
+        "median_absolute_residual": 0.002317822286448265,
+        "rmse_residual": 0.002694621005323571
+      }
+    }
+  },
+  "array_shapes": {
+    "additivity_residual_raw": [
+      584,
+      8
+    ],
+    "expected_raw": [
+      8
+    ],
+    "expected_scaled": [
+      8
+    ],
+    "indices": [
+      584
+    ],
+    "official_predictions_raw": [
+      584,
+      8
+    ],
+    "shap_raw": [
+      584,
+      10,
+      8,
+      8
+    ],
+    "shap_scaled": [
+      584,
+      10,
+      8,
+      8
+    ],
+    "variance_raw": [
+      584,
+      10,
+      8,
+      8
+    ],
+    "variance_scaled": [
+      584,
+      10,
+      8,
+      8
+    ]
+  },
+  "chunk_inventory": {
+    "chunk_directory": "results/shap_analysis/_chunks_v4a",
+    "chunks": [
+      {
+        "filename": "chunk_0000_0015.npz",
+        "sample_count": 16,
+        "sample_end": 15,
+        "sample_start": 0,
+        "sha256": "cfd2c91292837077dfe37ffaa9b7a51774785a112ea0929b1e2e281f3a27bda8"
+      },
+      {
+        "filename": "chunk_0016_0031.npz",
+        "sample_count": 16,
+        "sample_end": 31,
+        "sample_start": 16,
+        "sha256": "b6d5eb01541f56a84ec989c6bafd2232728ab157c8054e38beca42f138e38f3d"
+      },
+      {
+        "filename": "chunk_0032_0047.npz",
+        "sample_count": 16,
+        "sample_end": 47,
+        "sample_start": 32,
+        "sha256": "7932d9a074ff3654cade07205e97729c9218181d19fb4dec758c2132f7e9a060"
+      },
+      {
+        "filename": "chunk_0048_0063.npz",
+        "sample_count": 16,
+        "sample_end": 63,
+        "sample_start": 48,
+        "sha256": "67991834881e07fc63a319fd3efe048de29e7b8fc7ec2b0243736a8129a70d8c"
+      },
+      {
+        "filename": "chunk_0064_0079.npz",
+        "sample_count": 16,
+        "sample_end": 79,
+        "sample_start": 64,
+        "sha256": "a1e66d352282dc2134e25c3ce17078f3c7a1dcf55a290fa8a24760ca1a9e8451"
+      },
+      {
+        "filename": "chunk_0080_0095.npz",
+        "sample_count": 16,
+        "sample_end": 95,
+        "sample_start": 80,
+        "sha256": "97b9286c96aa8d845316f799acfe667475d153432fa026b122559f6017bb649d"
+      },
+      {
+        "filename": "chunk_0096_0111.npz",
+        "sample_count": 16,
+        "sample_end": 111,
+        "sample_start": 96,
+        "sha256": "1ea8bbc10513c7188bc7148b15ff5bae3edc58597d29b657142d1571e4c85500"
+      },
+      {
+        "filename": "chunk_0112_0127.npz",
+        "sample_count": 16,
+        "sample_end": 127,
+        "sample_start": 112,
+        "sha256": "4abe42eba94ea909f495cfa932e64d23e464f9496282ff606aee8167c5ea1017"
+      },
+      {
+        "filename": "chunk_0128_0143.npz",
+        "sample_count": 16,
+        "sample_end": 143,
+        "sample_start": 128,
+        "sha256": "5b62c05d211c38249dc5ff2d16284d0bd81c710faa4556d3d9e8416403380e37"
+      },
+      {
+        "filename": "chunk_0144_0159.npz",
+        "sample_count": 16,
+        "sample_end": 159,
+        "sample_start": 144,
+        "sha256": "69a7caea345b641144894c78be43d9712199a3c5d82bb3b4582875f1233bf717"
+      },
+      {
+        "filename": "chunk_0160_0175.npz",
+        "sample_count": 16,
+        "sample_end": 175,
+        "sample_start": 160,
+        "sha256": "1ad9ecf663c58cf65d1d5e1a463c35f688b12c05b0810e30dd12771ea506292c"
+      },
+      {
+        "filename": "chunk_0176_0191.npz",
+        "sample_count": 16,
+        "sample_end": 191,
+        "sample_start": 176,
+        "sha256": "6a5e6b1f429adde5e976036cb74922cfaf25e1f184763420be864f585e2c7ed5"
+      },
+      {
+        "filename": "chunk_0192_0207.npz",
+        "sample_count": 16,
+        "sample_end": 207,
+        "sample_start": 192,
+        "sha256": "356aae252f79fe110b3ce8a53b1618ca5fd07759b30810482a354773542638c8"
+      },
+      {
+        "filename": "chunk_0208_0223.npz",
+        "sample_count": 16,
+        "sample_end": 223,
+        "sample_start": 208,
+        "sha256": "3aee40c6f3ade5188145291b8d45c5c7926880931e378af3c0d27ff61a9227da"
+      },
+      {
+        "filename": "chunk_0224_0239.npz",
+        "sample_count": 16,
+        "sample_end": 239,
+        "sample_start": 224,
+        "sha256": "df4055a9382bf52aa15052df97121770c7a7e3ac7256cd2ac8dce78a0e508c97"
+      },
+      {
+        "filename": "chunk_0240_0255.npz",
+        "sample_count": 16,
+        "sample_end": 255,
+        "sample_start": 240,
+        "sha256": "2c785a99cfdd6756a0e54ec3b52d4171a1783f018c04398fd3c896aac040f336"
+      },
+      {
+        "filename": "chunk_0256_0271.npz",
+        "sample_count": 16,
+        "sample_end": 271,
+        "sample_start": 256,
+        "sha256": "df21e9586123949e3d88c96138867be31197c0eff995943c4d0b816108860d32"
+      },
+      {
+        "filename": "chunk_0272_0287.npz",
+        "sample_count": 16,
+        "sample_end": 287,
+        "sample_start": 272,
+        "sha256": "f16ba87c26676fff4372648f6f92fd3f3533914d2863d5195b47e3d15b45f98c"
+      },
+      {
+        "filename": "chunk_0288_0303.npz",
+        "sample_count": 16,
+        "sample_end": 303,
+        "sample_start": 288,
+        "sha256": "10e9ce1c5aa043a21b529ace07c84b632b4b9d81df280623da0085470e7459ed"
+      },
+      {
+        "filename": "chunk_0304_0319.npz",
+        "sample_count": 16,
+        "sample_end": 319,
+        "sample_start": 304,
+        "sha256": "3c62d3ed21cf5c21d572ac5d7c50f731018123afb58025a6f18d371646231ae7"
+      },
+      {
+        "filename": "chunk_0320_0335.npz",
+        "sample_count": 16,
+        "sample_end": 335,
+        "sample_start": 320,
+        "sha256": "8a14f6e247fd0942b5f05c046fa376a55d029e6fabdb161a5d1e81bd24bb5128"
+      },
+      {
+        "filename": "chunk_0336_0351.npz",
+        "sample_count": 16,
+        "sample_end": 351,
+        "sample_start": 336,
+        "sha256": "472b95834970ed81195766eb99d8c3c94fa160040b26da996628dbc7bcc9bf19"
+      },
+      {
+        "filename": "chunk_0352_0367.npz",
+        "sample_count": 16,
+        "sample_end": 367,
+        "sample_start": 352,
+        "sha256": "8e0a323e1d04572e42495ffc3e67deb9a128bcf27bb5be9dc79d8785f6e3897a"
+      },
+      {
+        "filename": "chunk_0368_0383.npz",
+        "sample_count": 16,
+        "sample_end": 383,
+        "sample_start": 368,
+        "sha256": "a5b4f125e3a730137f61ec2fbbb0ff70f55a098fb8d1b4e3e18b6e5e84cfbb03"
+      },
+      {
+        "filename": "chunk_0384_0399.npz",
+        "sample_count": 16,
+        "sample_end": 399,
+        "sample_start": 384,
+        "sha256": "5bee526736476dd104e18de8583d08346be560e148ff329a9e20ed076da5b65f"
+      },
+      {
+        "filename": "chunk_0400_0415.npz",
+        "sample_count": 16,
+        "sample_end": 415,
+        "sample_start": 400,
+        "sha256": "7deaa78941620c3d81de10e9c7600dc8f2d6cb4268df050a003908b1bbbd7ed6"
+      },
+      {
+        "filename": "chunk_0416_0431.npz",
+        "sample_count": 16,
+        "sample_end": 431,
+        "sample_start": 416,
+        "sha256": "7f6c22964db1a7e90249bf1b3c58307a9c20345ceeee46c2468171e876eb7b35"
+      },
+      {
+        "filename": "chunk_0432_0447.npz",
+        "sample_count": 16,
+        "sample_end": 447,
+        "sample_start": 432,
+        "sha256": "45c88bb57b45236a6e7312ab034909754c73dd31d4fd758260d2ec7e953e9b40"
+      },
+      {
+        "filename": "chunk_0448_0463.npz",
+        "sample_count": 16,
+        "sample_end": 463,
+        "sample_start": 448,
+        "sha256": "774920bb460a631488ce05726781084386d0e6d17f2670cf6dcf3176ac46c8b2"
+      },
+      {
+        "filename": "chunk_0464_0479.npz",
+        "sample_count": 16,
+        "sample_end": 479,
+        "sample_start": 464,
+        "sha256": "49c2b3c1e39d7bd80ed5334f6b123c15115136f0ec97571e9f4ab7afb636d270"
+      },
+      {
+        "filename": "chunk_0480_0495.npz",
+        "sample_count": 16,
+        "sample_end": 495,
+        "sample_start": 480,
+        "sha256": "f17bbd54a5f8bb62f978fa117f1c97b2df481d93454665cc04c3a8733e116127"
+      },
+      {
+        "filename": "chunk_0496_0511.npz",
+        "sample_count": 16,
+        "sample_end": 511,
+        "sample_start": 496,
+        "sha256": "d878948fe1f7063508be85d71e87e772f968818b97f25ab211c4a5105526ccae"
+      },
+      {
+        "filename": "chunk_0512_0527.npz",
+        "sample_count": 16,
+        "sample_end": 527,
+        "sample_start": 512,
+        "sha256": "f1091ff7e1cf7d32892ad187f44169cf4973ee880683c50e271bc1e3e15b1ea6"
+      },
+      {
+        "filename": "chunk_0528_0543.npz",
+        "sample_count": 16,
+        "sample_end": 543,
+        "sample_start": 528,
+        "sha256": "42916ace1c4495db19d733056f7544aeea042235d4061a715b5c982cec3214d8"
+      },
+      {
+        "filename": "chunk_0544_0559.npz",
+        "sample_count": 16,
+        "sample_end": 559,
+        "sample_start": 544,
+        "sha256": "11ab62384dbb1fa8f37a4f1ba1af2a787e4ffed9e7c6c4888bf5f4b3976fd547"
+      },
+      {
+        "filename": "chunk_0560_0575.npz",
+        "sample_count": 16,
+        "sample_end": 575,
+        "sample_start": 560,
+        "sha256": "f6cfd0713ad1c8b2192a413cf0b8428f8a4e843ce65f4f393735ab85384fff9c"
+      },
+      {
+        "filename": "chunk_0576_0583.npz",
+        "sample_count": 8,
+        "sample_end": 583,
+        "sample_start": 576,
+        "sha256": "56d788ad55b698ac4ee779e9c370981099391a6062d8d78f259a50390eb0320f"
+      }
+    ],
+    "complete_index_coverage": true,
+    "covered_first_index": 0,
+    "covered_last_index": 583,
+    "expected_chunk_count": 37,
+    "observed_chunk_count": 37
+  },
+  "created_at_utc": "2026-07-22T19:18:12.955844+00:00",
+  "execution_boundaries": {
+    "features_reselected": false,
+    "hyperparameters_changed": false,
+    "models_refitted": false,
+    "models_trained": false,
+    "shap_is_not_causal": true,
+    "shap_is_post_hoc": true,
+    "winner_reselected": false
+  },
+  "finite_checks": {
+    "expected_raw": true,
+    "official_predictions_raw": true,
+    "shap_raw": true,
+    "shap_scaled": true,
+    "variance_raw": true,
+    "variance_scaled": true
+  },
+  "project_version": "v4a",
+  "protocol_identity": {
+    "path": "config/10_shap_protocol_lock_v4.json",
+    "sha256": "0a8c673faefc042dfee733f39ba6f18cd4b7ad4aee510dad9e8f5f39a77f680f"
+  },
+  "runtime": {
+    "cuda_available": true,
+    "cuda_device": "Tesla T4",
+    "numpy": "2.0.2",
+    "shap": "0.52.0",
+    "torch": "2.11.0+cu128"
+  },
+  "stage": "10_FINAL_POST_HOC_SHAP_EXPLAINABILITY",
+  "status": "SHAP_COMPUTED_PENDING_INDEPENDENT_AUDIT",
+  "variance_diagnostics": {
+    "negative_raw_count": 0,
+    "negative_scaled_count": 0,
+    "raw_maximum": 0.000614590011537075,
+    "raw_mean": 1.1123192962259054e-06,
+    "raw_minimum": 3.828375810810414e-11,
+    "scaled_maximum": 0.2943851947784424,
+    "scaled_mean": 0.0003699309891089797,
+    "scaled_minimum": 6.303172650490296e-09
+  }
+}

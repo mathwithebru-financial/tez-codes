@@ -1,0 +1,133 @@
+{
+  "project_version": "v4_repro",
+  "project_title": "Çoklu Görevli Transformer ile Finansal Risk ve Getiri Tahmini",
+  "created_at": "2026-07-10T15:36:34.864293",
+  "data": {
+    "source": "Frozen raw_prices.csv inherited from audited v3 source",
+    "internet_redownload": false,
+    "raw_file": "data/raw/raw_prices.csv",
+    "raw_sha256": "ab5f275d38dc98057b1cedcf58019adb26be7402c7ed5ae6ee3d6877b2444893",
+    "assets": [
+      "BIST100",
+      "USDTRY",
+      "EURTRY",
+      "GOLD"
+    ],
+    "tickers": {
+      "BIST100": "XU100.IS",
+      "USDTRY": "USDTRY=X",
+      "EURTRY": "EURTRY=X",
+      "GOLD": "GC=F"
+    },
+    "original_period": {
+      "start": "2010-01-01",
+      "end": "2024-12-31"
+    }
+  },
+  "features": {
+    "baseline": [
+      "LogRet",
+      "Vol20"
+    ],
+    "full": [
+      "LogRet",
+      "Vol20",
+      "MA5_Ratio",
+      "MA20_Ratio",
+      "RSI14",
+      "MACD",
+      "MACDSignal"
+    ],
+    "baseline_dim": 8,
+    "full_dim": 28,
+    "rsi14_zero_loss_rule": "If avg_loss == 0 and avg_gain > 0, RSI14 = 100"
+  },
+  "targets": {
+    "definition": [
+      "BIST100_NextRet",
+      "USDTRY_NextRet",
+      "EURTRY_NextRet",
+      "GOLD_NextRet",
+      "BIST100_NextVol",
+      "USDTRY_NextVol",
+      "EURTRY_NextVol",
+      "GOLD_NextVol"
+    ],
+    "return_rule": "NextRet[t] = LogRet[t+1]",
+    "volatility_rule": "NextVol[t] = Vol20[t+1]"
+  },
+  "split": {
+    "type": "chronological_target_realization_aware",
+    "ratios": {
+      "train": 0.7,
+      "validation": 0.15,
+      "test": 0.15
+    },
+    "rule": "Input history may cross backward into the previous split, but target realization may never cross forward into the next split.",
+    "random_split": false
+  },
+  "scaler": {
+    "type": "StandardScaler",
+    "fit_on": "train_only",
+    "validation": "transform_only",
+    "test": "transform_only"
+  },
+  "sequence": {
+    "lookbacks": [
+      10,
+      20,
+      30,
+      60
+    ],
+    "overlap_aware": true,
+    "principle": "Past input window may be carried; target may not be carried."
+  },
+  "models": [
+    "FullSharingMTL",
+    "PartialSharingMTL",
+    "HierarchicalMTL",
+    "NoSharing"
+  ],
+  "loss_strategies": [
+    "FixedLambda_0.3",
+    "FixedLambda_0.5",
+    "FixedLambda_0.7",
+    "UncertaintyWeighting",
+    "PCGrad"
+  ],
+  "model_sizes": {
+    "small": {
+      "d_model": 32,
+      "n_head": 4,
+      "n_layers": 2,
+      "d_ff": 128
+    },
+    "medium": {
+      "d_model": 64,
+      "n_head": 4,
+      "n_layers": 2,
+      "d_ff": 256
+    },
+    "large": {
+      "d_model": 128,
+      "n_head": 8,
+      "n_layers": 4,
+      "d_ff": 512
+    }
+  },
+  "grid": {
+    "architectures": 4,
+    "loss_strategies": 5,
+    "lookbacks": 4,
+    "sizes": 3,
+    "feature_sets": 2,
+    "total_configs": 480,
+    "official_grid_max_epochs": 50
+  },
+  "test_policy": {
+    "used_for_model_selection": false,
+    "first_model_evaluation_stage": "07_final_test_evaluation_v4.py",
+    "post_test_model_changes_allowed": false
+  },
+  "scientific_principle": "Kararlar kilitli. Sonuçlar kilitli değil. Veri karar verir."
+}
