@@ -50,6 +50,17 @@ The final model was compared with naive, learned, and econometric baselines usin
 
 “No significant difference” is not interpreted as model equivalence. These findings do not support a general superiority claim for the final Transformer model. The second thesis hypothesis was not directly tested because the selected `NoSharing` architecture contains no shared task representation.
 
+### Post-hoc volatility robustness check
+
+The 22 volatility comparisons were also evaluated in a separate, post-hoc robustness check using a Bartlett-HAC long-run variance estimate with `h=1`, `L=19`, weights `1-k/20`, and Holm correction across all 22 tests.
+
+| Analysis | Final model better | Comparator better | No significant difference |
+|---|---:|---:|---:|
+| Main Stage 09 | 2 | 18 | 2 |
+| Bartlett-HAC robustness | 2 | 12 | 8 |
+
+Six decisions changed from “comparator better” to “no significant difference”; no superiority direction reversed. The two significant final-model wins were preserved. This sensitivity check does not replace the locked Stage 09 analysis. See [`results/robustness/bartlett_dm_hln_v1/`](results/robustness/bartlett_dm_hln_v1/) for the validated compact outputs.
+
 SHAP was used only as a post-hoc description of the locked ensemble. It was not used for feature selection, model reselection, or causal inference.
 
 ## Repository structure
@@ -59,9 +70,9 @@ SHAP was used only as a post-hoc description of the locked ensemble. It was not 
 ├── config/       # schema and checksum inventories
 ├── data/          # exact frozen raw dataset and data notes
 ├── docs/         # result and reproducibility notes
-├── notebooks/    # output-cleared research notebook
-├── protocols/    # locked Stage 8C, 9, and 10 protocol records
-├── results/      # compact, publishable SHAP summaries
+├── notebooks/    # output-cleared research and robustness notebooks
+├── protocols/    # locked protocols and the post-hoc robustness protocol
+├── results/      # compact SHAP and robustness summaries
 └── scripts/      # verified v4 pipeline scripts
 ```
 

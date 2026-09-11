@@ -31,6 +31,19 @@ The final model's statistically significant wins occurred:
 
 These results do not establish universal model superiority. A non-significant DM-HLN result is not an equivalence result.
 
+## Post-hoc Bartlett-HAC robustness check
+
+The 22 volatility comparisons were rerun as a separate sensitivity analysis under the following frozen settings: one-step forecast horizon (`h=1`), Bartlett lag truncation `L=19`, weights `1-k/20`, Student-`t` reference distribution with 583 degrees of freedom, and Holm correction across all 22 volatility tests.
+
+| Analysis | Final model better | Comparator better | No significant difference |
+|---|---:|---:|---:|
+| Main Stage 09 | 2 | 18 | 2 |
+| Bartlett-HAC robustness | 2 | 12 | 8 |
+
+Six decisions changed from comparator superiority to no significant difference. No comparison reversed superiority direction, and the two significant final-model wins were preserved. The independent Colab reproduction differed from the reference by at most `2.6645352591003757e-15`, below the prespecified `1e-10` tolerance.
+
+This post-hoc check does not replace or retroactively modify the locked Stage 09 analysis. Compact validated outputs are available under [`results/robustness/bartlett_dm_hln_v1/`](../results/robustness/bartlett_dm_hln_v1/).
+
 ## Hypothesis boundary
 
 - **H1:** not supported by the aggregate comparison evidence.

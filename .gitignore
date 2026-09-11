@@ -42,6 +42,11 @@ results/**
 !results/shap/*.csv
 !results/shap/*.json
 !results/shap/*.md
+!results/robustness/
+!results/robustness/bartlett_dm_hln_v1/
+!results/robustness/bartlett_dm_hln_v1/*.csv
+!results/robustness/bartlett_dm_hln_v1/*.json
+!results/robustness/bartlett_dm_hln_v1/*.md
 
 # Operating-system files
 .DS_Store
