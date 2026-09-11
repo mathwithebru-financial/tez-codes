@@ -20,5 +20,6 @@ The scripts are preserved with their original Google Colab paths and scientific 
 | 08C check | `08C_validate_garch_protocol_lock_v4.py` | Validate the locked GARCH protocol |
 | 08C | `08C_garch_baselines_test_v4.py` | Evaluate GARCH and GJR-GARCH baselines |
 | 08C-R | `08C_R_garch_rescue_run_v4.py` | Run the locked numerical-convergence rescue |
+| 09D | `09D_bartlett_dm_hln_robustness_v1.py` | Run the post-hoc Bartlett-HAC DM-HLN volatility robustness analysis |
 
-Stage 09 DM-HLN/Holm and Stage 10 SHAP audit material is preserved in the notebook and in `protocols/`. Standalone Stage 09 and 10 scripts were not present in the verified Drive `scripts/` folder and have not been invented for this release.
+Stage 09 DM-HLN/Holm and Stage 10 SHAP audit material is preserved in the main notebook and in `protocols/`. Standalone scripts for the locked main Stage 09 and Stage 10 analyses were not present in the verified Drive `scripts/` folder and have not been invented for this release. Stage 09D is a later, post-hoc robustness check with its own frozen protocol and verified standalone script.

@@ -20,6 +20,20 @@ The following versions are explicitly recorded in locked protocol or diagnostic 
 
 The exact scikit-learn runtime version was not preserved in the verified artifacts. `requirements.txt` therefore records a compatible major-version range instead of inventing an exact pin.
 
+### Stage 09D post-hoc rerun environment
+
+The independent Colab reproduction record for the Bartlett-HAC robustness check contains:
+
+| Component | Recorded value |
+|---|---|
+| Python | 3.13.15 |
+| NumPy | 2.1.3 |
+| pandas | 2.2.3 |
+| SciPy | 1.16.3 |
+| statsmodels | 0.14.5 |
+
+These versions describe only the later Stage 09D robustness rerun; they do not revise the locked main-pipeline environment above. The Stage 09D notebook installs and records the statsmodels version used for that check.
+
 ## Data integrity
 
 The pipeline does not re-download market data. It expects the frozen raw file:
@@ -57,6 +71,8 @@ Changing these paths would alter the source hashes recorded during the experimen
 
 The public notebook has its cell outputs and execution counters removed. This cleaning changes the notebook file hash, but not the source code contained in its cells. The separately stored `.py` scripts and protocol records remain the primary source artifacts.
 
+The Stage 09D publication notebook was cleaned in the same way: source cells were retained, while outputs, execution counters, and account-specific Colab metadata were removed. Its standalone script and frozen protocol are included separately.
+
 ## Excluded artifacts
 
 The following are intentionally excluded:
@@ -67,6 +83,9 @@ The following are intentionally excluded:
 - large `.npy` and `.npz` arrays;
 - temporary SHAP chunks;
 - runtime logs and notebook output.
+- detailed Bartlett loss-differential series and numerical archives;
+- the Bartlett spreadsheet workbook;
+- source and audit ZIP packages, whose SHA-256 values are recorded in the robustness result notes.
 
 ## Reproduction levels
 
