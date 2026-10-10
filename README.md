@@ -13,7 +13,7 @@ The study evaluates return and volatility forecasts for four financial assets un
 | Assets | BIST 100, USD/TRY, EUR/TRY, Gold |
 | Raw period | 2010-01-04 to 2024-12-31 |
 | Return target | Next-period log return |
-| Volatility target | Next-period 20-day annualized realized volatility |
+| Volatility target | Next-period 20-day annualized historical volatility |
 | Primary return loss | Mean squared error |
 | Primary volatility loss | Pinball loss, τ = 0.5 |
 | Split | Chronological and target-realization-aware |
