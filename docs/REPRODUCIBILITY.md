@@ -48,7 +48,7 @@ Expected SHA-256:
 ab5f275d38dc98057b1cedcf58019adb26be7402c7ed5ae6ee3d6877b2444893
 ```
 
-The raw and derived datasets are not included in the public package. Checksums, schemas, and protocol locks are included to make the expected inputs auditable.
+The exact frozen raw dataset is included at `data/raw/raw_prices.csv` for reproducibility. Its SHA-256 matches the locked value above. Derived datasets are not included. Checksums, schemas, and protocol locks make the expected inputs auditable.
 
 ## Leakage controls
 
@@ -77,7 +77,7 @@ The Stage 09D publication notebook was cleaned in the same way: source cells wer
 
 The following are intentionally excluded:
 
-- raw and processed market data;
+- processed market data;
 - fitted scalers;
 - model checkpoints and `.pt` files;
 - large `.npy` and `.npz` arrays;
