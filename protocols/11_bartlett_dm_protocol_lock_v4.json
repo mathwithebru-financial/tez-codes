@@ -1,0 +1,96 @@
+{
+  "protocol_name": "11_bartlett_dm_robustness_v4",
+  "label": "POST-HOC ROBUSTNESS CHECK — sonradan yürütülen sağlamlık analizi; Stage 09 ana sonuçlarının yerine geçmez",
+  "created_utc": "2026-09-11T11:33:58.064876+00:00",
+  "created_before_computation": true,
+  "scope": {
+    "task": "volatility",
+    "n_comparisons": 22,
+    "comparison_ids": [
+      "volatility__BIST100__FinalWinner_vs_VolPersistence",
+      "volatility__USDTRY__FinalWinner_vs_VolPersistence",
+      "volatility__EURTRY__FinalWinner_vs_VolPersistence",
+      "volatility__GOLD__FinalWinner_vs_VolPersistence",
+      "volatility__BIST100__FinalWinner_vs_SingleTaskTransformer",
+      "volatility__BIST100__FinalWinner_vs_SingleTaskLSTM",
+      "volatility__BIST100__FinalWinner_vs_XGBoost",
+      "volatility__USDTRY__FinalWinner_vs_SingleTaskTransformer",
+      "volatility__USDTRY__FinalWinner_vs_SingleTaskLSTM",
+      "volatility__USDTRY__FinalWinner_vs_XGBoost",
+      "volatility__EURTRY__FinalWinner_vs_SingleTaskTransformer",
+      "volatility__EURTRY__FinalWinner_vs_SingleTaskLSTM",
+      "volatility__EURTRY__FinalWinner_vs_XGBoost",
+      "volatility__GOLD__FinalWinner_vs_SingleTaskTransformer",
+      "volatility__GOLD__FinalWinner_vs_SingleTaskLSTM",
+      "volatility__GOLD__FinalWinner_vs_XGBoost",
+      "volatility__BIST100__FinalWinner_vs_GARCH_1_1_StudentsT_ZeroMean",
+      "volatility__EURTRY__FinalWinner_vs_GARCH_1_1_StudentsT_ZeroMean",
+      "volatility__GOLD__FinalWinner_vs_GARCH_1_1_StudentsT_ZeroMean",
+      "volatility__BIST100__FinalWinner_vs_GJR_GARCH_1_1_StudentsT_ZeroMean",
+      "volatility__EURTRY__FinalWinner_vs_GJR_GARCH_1_1_StudentsT_ZeroMean",
+      "volatility__GOLD__FinalWinner_vs_GJR_GARCH_1_1_StudentsT_ZeroMean"
+    ]
+  },
+  "loss": {
+    "type": "pinball",
+    "tau": 0.5,
+    "formula": "rho(u)=max(tau*u,(tau-1)*u), u=y-yhat",
+    "scale": "raw (original units)"
+  },
+  "loss_differential": {
+    "definition": "d_t = L_baseline,t - L_final,t",
+    "sign": "positive => final model lower loss"
+  },
+  "forecast_horizon_h": 1,
+  "long_run_variance": {
+    "estimator": "Bartlett kernel (Newey-West)",
+    "max_lag_L": 19,
+    "weights": "w_k = 1 - k/(L+1) = 1 - k/20, k=1..19",
+    "formula": "omega = gamma_0 + 2*sum_{k=1}^{19} w_k*gamma_k; gamma_k=(1/n)*sum_{t=k+1}^{n}(d_t-dbar)(d_{t-k}-dbar)",
+    "rationale": "L=19: 20-gunluk hareketli volatilite hedeflerindeki ortusmenin dogrudan isaret ettigi azami gecikme; seri bagimliligin 19. gecikmeden sonra sona erdigi varsayilmamaktadir"
+  },
+  "dm_statistic": "DM = dbar / sqrt(omega/n)",
+  "hln_correction": {
+    "h": 1,
+    "factor": "c = sqrt((n+1-2h+h(h-1)/n)/n)",
+    "note": "h=1 gercek tahmin ufku; ana analizle karsilastirilabilirlik icin korunmustur. Gecikme siniri tahmin ufkundan bagimsiz belirlenmistir."
+  },
+  "reference_distribution": "Student-t with n-1 df, two-sided",
+  "multiple_comparison": {
+    "method": "Holm-Bonferroni",
+    "alpha": 0.05,
+    "family": "22 volatility comparisons (same family as Stage 09)"
+  },
+  "interpretation_rules": {
+    "SIGNIFICANT_FINAL_BETTER": "holm_rejected and dbar>0",
+    "SIGNIFICANT_BASELINE_BETTER": "holm_rejected and dbar<0",
+    "NOT_SIGNIFICANT": "not rejected"
+  },
+  "independent_crosscheck": "statsmodels sm.stats.sandwich_covariance / HAC with Bartlett maxlags=19, use_correction=False; omega must match custom implementation to 1e-10 relative",
+  "outputs": [
+    "11_bartlett_dm_results_v4.csv (per comparison: old vs new stat, p, holm, decision)",
+    "11_bartlett_dm_summary_v4.json"
+  ],
+  "immutability": "Stage 09 files are NOT modified. No parameter is tuned after seeing results.",
+  "no_outcome_predictions": "Protokolde sonuclara iliskin hicbir on tahmin yer almaz.",
+  "input_sha256": {
+    "y_true": "a37034c833365b89302dbf0e3d57c29dc2eaf6ada91bfd1fae16fd56f112adb8",
+    "pred_final": "17f6c8ca42d833118e057b72b6f481c8cde5c77501ab737559f67b9a6e3e13a1",
+    "pred_vol_persistence": "44583a5bd9442efdea2d6b5114ac6529926496b3f40ccf638f5ff1de47a9061c",
+    "pred_stt": "9cb2063b63a9e0e52d2ebe00e66143e6aea4c789cb627e8ee1d6e578d6d3496c",
+    "pred_lstm": "5e93228c912aabe6f40a6bbc01980e7a20769622f9d25ee433262358a228cf09",
+    "pred_xgb": "67ad25643cf70dbf403b5eb56b62a951ac3548a3e30c482987c96a919b6fc3b9",
+    "garch_diagnostics": "33f06de63909fc486708b36292d49f47a19e58c92bb6e2c951744a503ee1e60b",
+    "stage09_results": "5b18432c1f8e3e5e0faae36564deff1d62ccec45d8b4b053ed43aed82d207d77"
+  },
+  "input_paths": {
+    "y_true": "results/final_test/final_test_y_true_raw_v4.npy",
+    "pred_final": "results/final_test/pred_final_ensemble_raw_v4.npy",
+    "pred_vol_persistence": "results/baselines/naive/pred_vol_persistence_raw_v4.npy",
+    "pred_stt": "results/baselines/learned/predictions/pred_singletasktransformer_ensemble_raw_v4.npy",
+    "pred_lstm": "results/baselines/learned/predictions/pred_singletasklstm_ensemble_raw_v4.npy",
+    "pred_xgb": "results/baselines/learned/predictions/pred_xgboost_ensemble_raw_v4.npy",
+    "garch_diagnostics": "results/baselines/garch/garch_baseline_diagnostics_long_v4.csv",
+    "stage09_results": "/mnt/project/09_dm_harvey_holm_results_v4.csv"
+  }
+}
