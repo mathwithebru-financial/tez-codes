@@ -14,8 +14,9 @@ The study evaluates return and volatility forecasts for four financial assets un
 | Raw period | 2010-01-04 to 2024-12-31 |
 | Return target | Next-period log return |
 | Volatility target | Next-period 20-day annualized historical volatility |
-| Primary return loss | Mean squared error |
-| Primary volatility loss | Pinball loss, τ = 0.5 |
+| Return training loss | Mean squared error (MSE) |
+| Primary return evaluation and statistical comparison loss | Mean absolute error (MAE) |
+| Volatility training, primary evaluation, and statistical comparison loss | Pinball loss, τ = 0.5 |
 | Split | Chronological and target-realization-aware |
 | Test observations | 584 |
 | Final ensemble seeds | 123, 777, 2026 |
