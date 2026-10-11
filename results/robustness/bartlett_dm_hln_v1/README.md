@@ -27,7 +27,7 @@ All six changed decisions moved from “comparator better” to “no significan
 - Primary implementation: explicit Bartlett autocovariance sum
 - Cross-check: equivalent statsmodels HAC calculation
 
-The lag choice is a mechanically motivated sensitivity setting based on the overlap of adjacent 20-return realized-volatility targets. It is not presented as proof that dependence ends at lag 19.
+The lag choice is a mechanically motivated sensitivity setting based on the overlap of adjacent 20-day annualized historical-volatility targets. It is not presented as proof that dependence ends at lag 19.
 
 ## Published files
 
@@ -44,9 +44,12 @@ The detailed loss-differential series, numerical archive, spreadsheet workbook, 
 
 | Artifact | SHA-256 |
 |---|---|
-| Frozen protocol | `70a7aeb6bbfb0dfcfe7375e2d4e678837762af3b720e5b08c00fd8110f0074fc` |
+| Frozen Stage 09D computational protocol | `70a7aeb6bbfb0dfcfe7375e2d4e678837762af3b720e5b08c00fd8110f0074fc` |
+| Original reference protocol cited in thesis Appendix A.1 | `7e1d81c65adeba29639990521d308b63e44dc01ad61a3a95990b027e201d78af` |
 | Source ZIP | `bc7dac4b88d8808fe556351a7045b524832ab8588148736243c230370ad56871` |
 | Audit ZIP | `e7aba2784d2710ff27262c430e1b7614ac7d7f3700551f77fd097ec2cc338e9e` |
+
+The two protocol hashes refer to distinct documents: the [Stage 09D computational protocol](../../../protocols/09D_bartlett_dm_hln_robustness_protocol_v1.md) and the [original reference protocol cited in Appendix A.1](../../../protocols/11_bartlett_dm_protocol_lock_v4.json). The original JSON is published byte-for-byte with its own checksum. Both documents record the volatility-only robustness settings `h=1`, `L=19`, Bartlett weights `1-k/20`, and Holm correction over 22 comparisons.
 
 The maximum absolute numerical difference between the reference outputs and the independent Colab rerun was `2.6645352591003757e-15`, below the prespecified `1e-10` tolerance.
 
