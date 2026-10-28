@@ -1,0 +1,231 @@
+{
+  "protocol_id": "H2_CONTROLLED_SHARING_T4_V1",
+  "status": "TEMPLATE_AWAITING_ACTUAL_T4_RUNTIME_AND_INPUT_PREFLIGHT",
+  "created_date": "2026-10-28",
+  "purpose": "Exploratory Colab/Tesla T4 repetition of all nine fixed-design sharing fits, using the same frozen inputs and scientific settings as the accepted CPU supplement; not a new independent holdout or a pure causal test of hardware.",
+  "source_repository_commit": "2e7b0948b493b46b429169adf49e1faf63dd21f6",
+  "original_results_policy": "Read old v4 inputs only; do not execute archived modules at import time, modify old outputs, replace old checkpoints, relock old protocols or edit the thesis before results are checked.",
+  "source_root": "/content/drive/MyDrive/tez_transformer_v4_repro",
+  "separate_output_root": "/content/drive/MyDrive/tez_transformer_h2_t4_v1/runs",
+  "data": {
+    "strategy": "Repeat the existing chronological frozen splits on T4 as a supplementary exploratory environment check; the test period and CPU results have already been examined.",
+    "old_test_already_examined": true,
+    "features": "baseline",
+    "lookback": 10,
+    "assets": [
+      "BIST100",
+      "USDTRY",
+      "EURTRY",
+      "GOLD"
+    ],
+    "train_sequences": 2714,
+    "validation_sequences": 584,
+    "test_sequences": 584,
+    "scaling": "Original train-fitted scalers; no refit.",
+    "independent_confirmation": "No new unseen chronological period is introduced; independent confirmation is not claimed."
+  },
+  "arms": [
+    {
+      "id": "NS_base",
+      "architecture": "NoSharing",
+      "d_model": 32,
+      "n_head": 4,
+      "n_layers": 2,
+      "d_ff": 128,
+      "expected_parameters_analytical": 54536
+    },
+    {
+      "id": "FS_same_width",
+      "architecture": "FullSharingMTL",
+      "d_model": 32,
+      "n_head": 4,
+      "n_layers": 2,
+      "d_ff": 128,
+      "expected_parameters_analytical": 28456
+    },
+    {
+      "id": "FS_budget_control",
+      "architecture": "FullSharingMTL",
+      "d_model": 32,
+      "n_head": 4,
+      "n_layers": 2,
+      "d_ff": 329,
+      "expected_parameters_analytical": 54586
+    }
+  ],
+  "capacity_rule": {
+    "target": "NS_base total trainable parameters",
+    "choice": "Keep d_model, head count and layer count fixed; choose integer d_ff minimizing absolute parameter-count difference, with smaller d_ff as tie-break; no outcome-based search.",
+    "relative_tolerance": 0.01,
+    "counts_must_be_verified_by_instantiation": true,
+    "limitation": "Equal-width and approximately equal-budget comparisons are complementary controls; FF width changes in the budget arm and neither comparison proves a pure causal sharing effect."
+  },
+  "training": {
+    "status": "IMPLEMENTED_CPU_SEMANTICS_CHECKED_GPU_FULL_RUN_NOT_STARTED",
+    "seeds": [
+      123,
+      777,
+      2026
+    ],
+    "planned_arm_seed_runs": 9,
+    "epochs": 100,
+    "early_stopping": false,
+    "batch_size": 64,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1,
+    "dropout": 0.1,
+    "loss": "0.7 * scaled-return MSE + 0.3 * scaled-volatility pinball(tau=0.5)",
+    "batch_order": "Same deterministic batch permutations for each paired seed across arms.",
+    "checkpoint_rule": "Lowest original raw-scale combined validation score; earlier epoch breaks ties. Also report fixed final-epoch diagnostics.",
+    "test_access": "No new test predictions until all nine selected checkpoints and the analysis settings are frozen.",
+    "execution_mode": "H2_T4_EXPLORATORY_FIXED_DESIGN"
+  },
+  "outcomes": {
+    "primary_accuracy": {
+      "return": "Per-date absolute error averaged equally over the four assets, in raw units.",
+      "volatility": "Per-date pinball(tau=0.5) loss averaged equally over the four assets, in raw units."
+    },
+    "gap_proxy": "Held-out task loss minus training-evaluation task loss, using the same metric and model.eval() for both. Show both components, validation gap, histories and seed-level variation.",
+    "seed_policy": "Report every seed, mean and sample SD; primary loss series averages per-seed losses, rather than selecting the best seed or silently substituting an ensemble-forecast loss.",
+    "comparisons": [
+      "FS_same_width vs NS_base, return",
+      "FS_same_width vs NS_base, volatility",
+      "FS_budget_control vs NS_base, return",
+      "FS_budget_control vs NS_base, volatility"
+    ],
+    "planned_uncertainty": "Paired date-level loss differences; Bartlett-HAC L=19, h=1 HLN t-reference, Holm over the four performance comparisons. Report lag-0 sensitivity and finite-lag limitations. Generalization-gap contrasts remain descriptive with three seeds.",
+    "direction": "Positive (NS loss - FS loss) means sharing has lower held-out loss."
+  },
+  "interpretation": {
+    "consistent_pattern": "Both tasks show lower held-out error and smaller gap proxies, with per-seed and capacity-control results reported in full.",
+    "mixed_pattern": "Improvement restricted to one task, one control, or unstable across seeds is reported as mixed evidence.",
+    "gap_caution": "A small gap alone can reflect poor training fit or distribution shift; no claim that the reduction is exclusively overfitting or that a mediating mechanism has been proved.",
+    "no_favourable_result_requirement": true,
+    "environment_limitation": "Changing Python patch/build, CUDA kernels, driver and random-number streams can change fitted models. This is an environment robustness repetition, not isolation of a pure hardware effect."
+  },
+  "next_gate": "Verify copied 21 input identities and frozen code hashes, collect the actual installed T4 runtime, pass no-fit CPU-semantic and synthetic CUDA forward/backward checks, and freeze this separate protocol before the nine fits.",
+  "preflight": {
+    "status": "PENDING_ACTUAL_T4_STAGING_CHECKS",
+    "upstream_cpu_parameter_counts_verified": [
+      54536,
+      28456,
+      54586
+    ],
+    "gpu_training_started": false
+  },
+  "analysis": {
+    "evaluation_implementation_sha256": "e0c00890564c208df59e1c8ae6c5373c8a175a3675cdb0ab11aecbd8c564f27e",
+    "training_implementation_sha256": "de71f182000c57197919b1139212c9e2607dc60b8c40abf1e2e910ed2ed19cdc",
+    "primary_lag": 19,
+    "sensitivity_lag": 0,
+    "holm_family_size": 4,
+    "seed_loss_aggregation": "Arithmetic mean of per-seed per-date losses, not ensemble forecast loss.",
+    "gap_inference": "Descriptive means and sample standard deviations across three paired seeds; not a causal mediation test.",
+    "reproduction_tolerance": {
+      "relative": 1e-05,
+      "absolute": 1e-08,
+      "rule": "All nine selected models must reproduce train/validation metrics and combined validation scores in the same CUDA runtime before any test arrays are opened."
+    }
+  },
+  "project_root": "/content/drive/MyDrive/tez_transformer_h2_t4_v1",
+  "protected_roots": [
+    "/content/drive/MyDrive/tez_transformer_v4_repro",
+    "/content/drive/MyDrive/tez_transformer_h2_v1"
+  ],
+  "runtime_environment": null,
+  "cpu_reference_execution": {
+    "accepted_training_manifest_sha256": "edc01a81a4e235f2bf46d5fb9fe8a7c2f626ee65eb3a3d418d5ab56f179e9fb3",
+    "archive_sha256": "c5aaabac6331add3057df008b324e5a449380985f070e453a1bdebff02ecad6c",
+    "original_source_commit": "2e7b0948b493b46b429169adf49e1faf63dd21f6",
+    "cpu_results_previously_examined": true,
+    "policy": "Read frozen input/reference bytes only; retain all CPU results. Never merge different environments or choose the environment by favorable results."
+  },
+  "input_identities": {
+    "scripts/06_best_model_multiseed_v4.py": {
+      "sha256": "35de2ee398699003dfef6be36b70c112fb2c0d1b1e9577cbf64bef58877e16d8",
+      "size_bytes": 67206
+    },
+    "config/schema_v4.json": {
+      "sha256": "64a974eed40d08abf43498574311e1ca676f90f65100a3a1ea79e30924512a21",
+      "size_bytes": 3076
+    },
+    "data/raw/raw_prices.csv": {
+      "sha256": "ab5f275d38dc98057b1cedcf58019adb26be7402c7ed5ae6ee3d6877b2444893",
+      "size_bytes": 313321
+    },
+    "data/sequences/baseline/scalers.pkl": {
+      "sha256": "789b8a3e693d5ea19bb550cd01da7c440287052cb2a6a7c528923aca38d9eddd",
+      "size_bytes": 1724
+    },
+    "data/processed/selection_baseline_denominators_v4.json": {
+      "sha256": "5655b2e3f41fc508be68050700749c8627a6aee6e7789bdd7c5e02b301e35f6d",
+      "size_bytes": 1750
+    },
+    "data/sequences/baseline/lb10/sequence_meta.json": {
+      "sha256": "78fa849524fa0e352c6b3c5c560b5b8658b6a85678afb38ec9c8c34b49d3f7e9",
+      "size_bytes": 1732
+    },
+    "data/sequences/baseline/lb10/X_train.npy": {
+      "sha256": "83adbb5abf53ff7fbdcfcd227bd021560c254d21a1a9ba2e878dec7e837312e5",
+      "size_bytes": 868608
+    },
+    "data/sequences/baseline/lb10/y_train.npy": {
+      "sha256": "cddaaa137c7895dcae8f37d2ca714f77e0a245187ddf1b287d79438702361c19",
+      "size_bytes": 86976
+    },
+    "data/sequences/baseline/lb10/y_train_raw.npy": {
+      "sha256": "90a34ebca85428173f7fc0b971cd82b3f93af6eb2fcddeba0babd446ea526d08",
+      "size_bytes": 86976
+    },
+    "data/sequences/baseline/lb10/X_val.npy": {
+      "sha256": "97a205038e6a61c52320d6b6675500d5547591fa50792552797e30aeccc82601",
+      "size_bytes": 187008
+    },
+    "data/sequences/baseline/lb10/y_val.npy": {
+      "sha256": "e8b7a826cd3a849e785c63400a44ca38cb1af418372afca8b14de8aebc662816",
+      "size_bytes": 18816
+    },
+    "data/sequences/baseline/lb10/y_val_raw.npy": {
+      "sha256": "dbcbfc851b4a42d127c3a43cea96e890cd8d44cd7cde9afd4ff4edfc44c2d47c",
+      "size_bytes": 18816
+    },
+    "data/sequences/baseline/lb10/anchor_dates_train.npy": {
+      "sha256": "a7aafe8332d9da6ee6f2e2bb8efe978ceba38080d43282b37f850b6a55064632",
+      "size_bytes": 108688
+    },
+    "data/sequences/baseline/lb10/target_realization_dates_train.npy": {
+      "sha256": "87418317dddeadabe23e6d6f7dbace6167d59060a38494de0c916811b5764814",
+      "size_bytes": 108688
+    },
+    "data/sequences/baseline/lb10/anchor_dates_val.npy": {
+      "sha256": "beb9bcf462c39dec86df1f711b4117d52835238bffbba8196eafa60ec1762b56",
+      "size_bytes": 23488
+    },
+    "data/sequences/baseline/lb10/target_realization_dates_val.npy": {
+      "sha256": "20023deb6cb28a5d82fcb2a1adfc4c9682b2cdad608a2c5297c8ce557569d97d",
+      "size_bytes": 23488
+    },
+    "data/sequences/baseline/lb10/X_test.npy": {
+      "sha256": "d46eff86c8cf5d08ac4123105d9d906c350b0c306a89172d14526e12a7bd2d97",
+      "size_bytes": 187008
+    },
+    "data/sequences/baseline/lb10/y_test.npy": {
+      "sha256": "961739612ab1fc41b054c6a08cbbdedea214397a7e273b495ea466029004c755",
+      "size_bytes": 18816
+    },
+    "data/sequences/baseline/lb10/y_test_raw.npy": {
+      "sha256": "a37034c833365b89302dbf0e3d57c29dc2eaf6ada91bfd1fae16fd56f112adb8",
+      "size_bytes": 18816
+    },
+    "data/sequences/baseline/lb10/anchor_dates_test.npy": {
+      "sha256": "40194047c9b7fe62adc0966f2c144e1be1e9c85f832d96ffe0a12624d34aab63",
+      "size_bytes": 23488
+    },
+    "data/sequences/baseline/lb10/target_realization_dates_test.npy": {
+      "sha256": "0100eea598141cf5990b4d7ba5a8071236846ec7a1d1196c078b6c3af1fcf441",
+      "size_bytes": 23488
+    }
+  }
+}
