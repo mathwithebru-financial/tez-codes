@@ -60,68 +60,68 @@ nine fits were repeated in full_run_v2 with the same frozen code and protocol.
 
 1. Extract the archive and change into its H2_v1 directory. Python 3.12 was used.
 
-   cd /absolute/path/to/H2_v1
-   H2_ROOT="$(pwd -P)"
+cd /absolute/path/to/H2_v1
+H2_ROOT="$(pwd -P)"
 
 2. Verify every archived payload against its SHA256 manifest. The manifest does
-   not include itself (a cryptographic self-hash is not possible).
+not include itself (a cryptographic self-hash is not possible).
 
-   python3 - <<'PY'
-   import hashlib, json
-   from pathlib import Path
-   root = Path.cwd().resolve()
-   manifest = json.loads((root / "SHA256SUMS.json").read_text())
-   for relative, record in manifest["files"].items():
-       path = root / relative
-       assert path.is_file() and path.stat().st_size == record["size_bytes"], relative
-       assert hashlib.sha256(path.read_bytes()).hexdigest() == record["sha256"], relative
-   print("ALL_ARCHIVED_PAYLOAD_HASHES_VERIFIED", len(manifest["files"]))
-   PY
+python3 - <<'PY'
+import hashlib, json
+from pathlib import Path
+root = Path.cwd().resolve()
+manifest = json.loads((root / "SHA256SUMS.json").read_text())
+for relative, record in manifest["files"].items():
+    path = root / relative
+    assert path.is_file() and path.stat().st_size == record["size_bytes"], relative
+    assert hashlib.sha256(path.read_bytes()).hexdigest() == record["sha256"], relative
+print("ALL_ARCHIVED_PAYLOAD_HASHES_VERIFIED", len(manifest["files"]))
+PY
 
 3. Create an isolated Python environment and install the recorded dependencies.
-   This does not use any environment from the original computer.
+This does not use any environment from the original computer.
 
-   python3 -m venv .venv
-   . .venv/bin/activate
-   python -m pip install --index-url https://download.pytorch.org/whl/cpu "torch==2.11.0+cpu"
-   python -m pip install -r requirements_h2_v1.txt
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install --index-url https://download.pytorch.org/whl/cpu "torch==2.11.0+cpu"
+python -m pip install -r requirements_h2_v1.txt
 
 4. Verify the packaged frozen run without opening its test arrays or writing
-   result files. The statistics self-test reads the old reference loss series.
-   Keep implementation/ and full_run_v2/ directly under the same H2_v1 root:
-   the evaluator intentionally rejects run roots outside that project.
+result files. The statistics self-test reads the old reference loss series.
+Keep implementation/ and full_run_v2/ directly under the same H2_v1 root:
+the evaluator intentionally rejects run roots outside that project.
 
-   python implementation/evaluate_h2_v1.py \
-     --input-root "$H2_ROOT/inputs" --run-root "$H2_ROOT/full_run_v2" \
-     --reference-npz "$H2_ROOT/reference/bartlett_loss_differentials_v1.npz" \
-     --reference-csv "$H2_ROOT/reference/bartlett_dm_hln_results_v1.csv" --verify-only
+python implementation/evaluate_h2_v1.py \
+  --input-root "$H2_ROOT/inputs" --run-root "$H2_ROOT/full_run_v2" \
+  --reference-npz "$H2_ROOT/reference/bartlett_loss_differentials_v1.npz" \
+  --reference-csv "$H2_ROOT/reference/bartlett_dm_hln_results_v1.csv" --verify-only
 
-   Packaged evaluation_v1 results already exist. Do not use them as an output
-   directory. If a fresh analysis is needed, retain the frozen run and choose
-   a new path, for example --output "$H2_ROOT/full_run_v2/evaluation_replay_001"
-   instead of --verify-only. This opens test arrays only after all frozen gates.
+Packaged evaluation_v1 results already exist. Do not use them as an output
+directory. If a fresh analysis is needed, retain the frozen run and choose
+a new path, for example --output "$H2_ROOT/full_run_v2/evaluation_replay_001"
+instead of --verify-only. This opens test arrays only after all frozen gates.
 
 5. To repeat all nine fits, leave full_run_v2 unchanged. new_run_001 must not
-   exist; the trainer refuses an existing output root and any output within
-   inputs/. The protocol fixes 100 epochs, three seeds and all three arms.
+exist; the trainer refuses an existing output root and any output within
+inputs/. The protocol fixes 100 epochs, three seeds and all three arms.
 
-   python implementation/run_h2_training_v1.py \
-     --input-root "$H2_ROOT/inputs" --run-root "$H2_ROOT/new_run_001" \
-     --protocol "$H2_ROOT/protocol_locked_v1.json" --device cpu --threads 1 --workers 3
+python implementation/run_h2_training_v1.py \
+  --input-root "$H2_ROOT/inputs" --run-root "$H2_ROOT/new_run_001" \
+  --protocol "$H2_ROOT/protocol_locked_v1.json" --device cpu --threads 1 --workers 3
 
-   After all nine fits finish, verify that new run, then evaluate into its own
-   new subdirectory. The two commands are:
+After all nine fits finish, verify that new run, then evaluate into its own
+new subdirectory. The two commands are:
 
-   python implementation/evaluate_h2_v1.py \
-     --input-root "$H2_ROOT/inputs" --run-root "$H2_ROOT/new_run_001" \
-     --reference-npz "$H2_ROOT/reference/bartlett_loss_differentials_v1.npz" \
-     --reference-csv "$H2_ROOT/reference/bartlett_dm_hln_results_v1.csv" --verify-only
+python implementation/evaluate_h2_v1.py \
+  --input-root "$H2_ROOT/inputs" --run-root "$H2_ROOT/new_run_001" \
+  --reference-npz "$H2_ROOT/reference/bartlett_loss_differentials_v1.npz" \
+  --reference-csv "$H2_ROOT/reference/bartlett_dm_hln_results_v1.csv" --verify-only
 
-   python implementation/evaluate_h2_v1.py \
-     --input-root "$H2_ROOT/inputs" --run-root "$H2_ROOT/new_run_001" \
-     --reference-npz "$H2_ROOT/reference/bartlett_loss_differentials_v1.npz" \
-     --reference-csv "$H2_ROOT/reference/bartlett_dm_hln_results_v1.csv" \
-     --output "$H2_ROOT/new_run_001/evaluation_v1"
+python implementation/evaluate_h2_v1.py \
+  --input-root "$H2_ROOT/inputs" --run-root "$H2_ROOT/new_run_001" \
+  --reference-npz "$H2_ROOT/reference/bartlett_loss_differentials_v1.npz" \
+  --reference-csv "$H2_ROOT/reference/bartlett_dm_hln_results_v1.csv" \
+  --output "$H2_ROOT/new_run_001/evaluation_v1"
 
 The frozen implementation extracts only verified model/metric definitions from
 the archived Stage 06 source. Do not execute that original pipeline directly:

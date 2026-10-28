@@ -1,0 +1,18 @@
+{
+  "status": "DRIVE_ARCHIVE_SAVED_CHECKPOINT_REPLAY_PASS",
+  "original_drive_archive_sha256": "3dabce4ae911607344bfc300eba6f0afc495740b16d2001b0e8e5f488a19bd0e",
+  "downloaded_payloads_verified": 118,
+  "replay_type": "Recomputed all nine selected models from archived weights in a freshly extracted Drive archive; did not repeat all training in this check.",
+  "numerical_artifact_byte_hashes_equal": {
+    "h2_arm_summary_v1.csv": true,
+    "h2_seed_metrics_v1.csv": true,
+    "h2_dm_hln_holm_v1.csv": true,
+    "h2_gap_contrasts_v1.csv": true,
+    "h2_gap_contrast_summary_v1.csv": true,
+    "h2_test_asset_metrics_v1.csv": true,
+    "h2_final_epoch_train_validation_diagnostics_v1.csv": true,
+    "h2_autocovariances_v1.csv": true,
+    "h2_losses_predictions_v1.npz": true
+  },
+  "retraining_limit": "A new clean environment/hardware full-training replication has not been performed; pinned dependencies and full frozen inputs/code/checkpoints enable it. Bitwise equality across platforms is not promised."
+}
