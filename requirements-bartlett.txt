@@ -1,0 +1,6 @@
+# Recorded independent Stage 09D reproduction environment (Python 3.13.15)
+# This environment is separate from the locked main-pipeline requirements.txt.
+numpy==2.1.3
+pandas==2.2.3
+scipy==1.16.3
+statsmodels==0.14.5

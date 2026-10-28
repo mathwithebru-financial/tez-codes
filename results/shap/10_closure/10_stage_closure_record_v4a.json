@@ -1,0 +1,117 @@
+{
+  "audit_confirmations": {
+    "additivity_recomputed": true,
+    "canonical_tensor_shape": true,
+    "chunk_to_final_exact_equality": true,
+    "complete_index_coverage": true,
+    "execution_boundaries_verified": true,
+    "forty_eight_figure_integrity_checks": true,
+    "global_importance_recomputed": true,
+    "six_final_sha_identities": true,
+    "summary_top_three_verified": true,
+    "temporal_importance_recomputed": true,
+    "thirty_seven_chunk_sha_identities": true
+  },
+  "closed_at_utc": "2026-07-22T19:37:20.394377+00:00",
+  "closure_basis": {
+    "audit_mode": "READ_ONLY_NO_MODEL_NO_SHAP_NO_FILE_WRITING",
+    "canonical_shap_shape": [
+      584,
+      10,
+      8,
+      8
+    ],
+    "chunk_count": 37,
+    "complete_test_index_coverage": [
+      0,
+      583
+    ],
+    "figure_count": 48,
+    "full_shap_computation_completed": true,
+    "independent_final_audit": "PASS",
+    "input_features": 8,
+    "lookback": 10,
+    "model_outputs": 8,
+    "test_observations": 584
+  },
+  "descriptive_additivity_diagnostics": {
+    "interpretation": "Monte Carlo Expected Gradients approximation diagnostic. No post-result acceptance threshold was introduced.",
+    "maximum_absolute_residual": 0.0121249987516453,
+    "mean_absolute_residual": 0.001251550268057652,
+    "median_absolute_residual": 0.0005703422649728448,
+    "rmse_residual": 0.001977232813614278
+  },
+  "locked_artifacts": {
+    "final_outputs": [
+      {
+        "path": "results/shap_analysis/10_shap_values_ensemble_raw_v4.npz",
+        "sha256": "2bf3f66463ce14df9109fc83b55f0c3423930f9a73c1bcc760774f40cf05bcfd"
+      },
+      {
+        "path": "results/shap_analysis/10_shap_global_importance_v4.csv",
+        "sha256": "d4982bd537fd51c15ea13f740c3c6f6c9da51f8a75e7f2f3be7e34ec620e47c8"
+      },
+      {
+        "path": "results/shap_analysis/10_shap_temporal_importance_v4.csv",
+        "sha256": "4e0fcfa029f297f20d7d4c51246ca8d0c689bbb7130a5eea0e1efd2c20fb47b2"
+      },
+      {
+        "path": "results/shap_analysis/10_shap_quality_diagnostics_v4.json",
+        "sha256": "a190021844e2d3f80f41fd1356e8743ce4b4d38726adaceb411f7cbf61166a59"
+      },
+      {
+        "path": "results/shap_analysis/10_shap_summary_v4.json",
+        "sha256": "0d763086772522155e9e439839a6ad63df3d3382602f1753fe7f2ab12c05c7ce"
+      },
+      {
+        "path": "results/shap_analysis/10_shap_report_v4.md",
+        "sha256": "75c1c4d22494276798ffbf076614db850898850e6a0b98f7195a15031291f32b"
+      }
+    ],
+    "method_addendum": {
+      "path": "config/10_shap_protocol_addendum_v4a.json",
+      "sha256": "ba2dd22bbf0f7d5d4218e9a32940d638c8d815ecb023f57efbe0f621aa9e8334"
+    },
+    "protocol": {
+      "path": "config/10_shap_protocol_lock_v4.json",
+      "sha256": "0a8c673faefc042dfee733f39ba6f18cd4b7ad4aee510dad9e8f5f39a77f680f"
+    }
+  },
+  "method": {
+    "attribution_method": "Expected Gradients",
+    "background_size": 64,
+    "background_source": "training_only",
+    "explainer": "GradientExplainer",
+    "explainer_output_scale": "standardized_target_scale",
+    "nsamples": 256,
+    "random_seed": 2026,
+    "raw_scale_method": "phi_raw = phi_scaled * y_scaler.scale_",
+    "reported_attribution_scale": "raw_target_scale"
+  },
+  "methodological_boundaries": {
+    "cross_output_raw_magnitude_comparison_recommended": false,
+    "feature_selection_based_on_shap": false,
+    "model_reselection_based_on_shap": false,
+    "negative_transfer_claim_from_shap_alone": false,
+    "shap_is_not_causal": true,
+    "shap_is_post_hoc": true
+  },
+  "next_workstream": "THESIS_RESULTS_INTERPRETATION_AND_WRITING",
+  "project_version": "v4a",
+  "reference_model": {
+    "architecture": "NoSharing",
+    "features_reselected": false,
+    "hyperparameters_changed": false,
+    "models_refitted": false,
+    "models_retrained": false,
+    "prediction": "FinalWinner_3SeedEnsemble",
+    "seeds": [
+      123,
+      777,
+      2026
+    ],
+    "winner_reselected": false
+  },
+  "stage": "10_FINAL_POST_HOC_SHAP_EXPLAINABILITY",
+  "status": "CLOSED"
+}

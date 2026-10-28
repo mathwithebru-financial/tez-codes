@@ -1,0 +1,68 @@
+{
+  "comparison_counts": {
+    "return": 20,
+    "total": 42,
+    "volatility": 22
+  },
+  "created_at_utc": "2026-07-21T18:04:26.046813+00:00",
+  "interpretation_counts": {
+    "NOT_SIGNIFICANT": 3,
+    "SIGNIFICANT_BASELINE_BETTER": 34,
+    "SIGNIFICANT_FINAL_BETTER": 5,
+    "SIGNIFICANT_ZERO_DIRECTION": 0
+  },
+  "method": {
+    "alpha": 0.05,
+    "alternative": "two_sided",
+    "dm_maximum_lag": 0,
+    "dm_raw_reference": "standard_normal",
+    "forecast_horizon_h": 1,
+    "harvey_correction": true,
+    "harvey_p_reference": "student_t_df_T_minus_1",
+    "holm_families": {
+      "RETURN_PRIMARY": 20,
+      "VOLATILITY_PRIMARY": 22
+    },
+    "loss_differential": "baseline_loss - final_model_loss",
+    "multiple_testing": "Holm-Bonferroni"
+  },
+  "outputs": {
+    "report_md": {
+      "path": "results/statistical_comparison/09_dm_harvey_holm_report_v4.md",
+      "sha256": "716a588e7300828c1638af6e2df86dffeb7cbc01425777c1aa0e5fe3e599bbb4"
+    },
+    "results_csv": {
+      "path": "results/statistical_comparison/09_dm_harvey_holm_results_v4.csv",
+      "sha256": "5b18432c1f8e3e5e0faae36564deff1d62ccec45d8b4b053ed43aed82d207d77"
+    }
+  },
+  "project_version": "v4",
+  "protocol": {
+    "locked_inputs_verified": 17,
+    "path": "config/09_dm_harvey_holm_protocol_lock_v4.json",
+    "sha256": "703574062b981e5a4c5187b476c5ce5f7b1e01688818c58ec6d28b436ffbcec1"
+  },
+  "scope": {
+    "models_refitted": false,
+    "new_predictions_generated": false,
+    "partial_garch_pairs_tested": false,
+    "usdtry_garch_pairs_tested": false,
+    "usdtry_removed_from_thesis": false
+  },
+  "stage": "09_STATISTICAL_MODEL_COMPARISON",
+  "status": "COMPLETED",
+  "task_counts": {
+    "return": {
+      "comparisons": 20,
+      "not_significant": 1,
+      "significant_baseline_better": 16,
+      "significant_final_better": 3
+    },
+    "volatility": {
+      "comparisons": 22,
+      "not_significant": 2,
+      "significant_baseline_better": 18,
+      "significant_final_better": 2
+    }
+  }
+}

@@ -1,0 +1,4 @@
+# Recorded main Stage 09 statistical dependencies (no model fitting)
+numpy==2.0.2
+pandas==2.2.2
+scipy==1.16.3

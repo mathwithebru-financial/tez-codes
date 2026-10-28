@@ -1,0 +1,1942 @@
+{
+  "created_at_utc": "2026-07-22T19:18:12.984292+00:00",
+  "interpretation_boundaries": {
+    "causal_interpretation": false,
+    "cross_output_raw_magnitude_comparison": "Not recommended because outputs have different target units and scales.",
+    "feature_selection_use": false,
+    "model_reselection_use": false,
+    "negative_transfer_claim_from_shap_alone": false
+  },
+  "local_sample_indices": [
+    0,
+    194,
+    389,
+    583
+  ],
+  "local_sample_summaries": {
+    "0": {
+      "outputs": {
+        "BIST100_NextRet": {
+          "additivity_residual_raw": 0.0006738260513387082,
+          "expected_output_raw": 0.0012594835069578065,
+          "official_prediction_raw": -0.0043618399649858475,
+          "shap_sum_raw": -0.006295149523282362,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.001525316503830254,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 7,
+              "lag_name": "t-2",
+              "shap_raw": -0.001525316503830254
+            },
+            {
+              "absolute_shap_raw": 0.001291130669414997,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.001291130669414997
+            },
+            {
+              "absolute_shap_raw": 0.0008158673881553113,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0008158673881553113
+            },
+            {
+              "absolute_shap_raw": 0.0007750810473226011,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0007750810473226011
+            },
+            {
+              "absolute_shap_raw": 0.0006665530963800848,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0006665530963800848
+            }
+          ]
+        },
+        "BIST100_NextVol": {
+          "additivity_residual_raw": -0.0010149801146749349,
+          "expected_output_raw": 0.20752879046953832,
+          "official_prediction_raw": 0.4483911693096161,
+          "shap_sum_raw": 0.2418773589547527,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.23396174609661102,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.23396174609661102
+            },
+            {
+              "absolute_shap_raw": 0.005667155608534813,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.005667155608534813
+            },
+            {
+              "absolute_shap_raw": 0.004340147599577904,
+              "feature_index": 7,
+              "feature_name": "GOLD_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.004340147599577904
+            },
+            {
+              "absolute_shap_raw": 0.0016010717954486609,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 7,
+              "lag_name": "t-2",
+              "shap_raw": 0.0016010717954486609
+            },
+            {
+              "absolute_shap_raw": 0.0010472829453647137,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 8,
+              "lag_name": "t-1",
+              "shap_raw": 0.0010472829453647137
+            }
+          ]
+        },
+        "EURTRY_NextRet": {
+          "additivity_residual_raw": 0.0006267420782570289,
+          "expected_output_raw": 0.00044389267025840226,
+          "official_prediction_raw": -0.0003616709727793932,
+          "shap_sum_raw": -0.0014323057212948243,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.000905657303519547,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.000905657303519547
+            },
+            {
+              "absolute_shap_raw": 0.00042451341869309545,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.00042451341869309545
+            },
+            {
+              "absolute_shap_raw": 0.00037773759686388075,
+              "feature_index": 2,
+              "feature_name": "USDTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.00037773759686388075
+            },
+            {
+              "absolute_shap_raw": 0.000263513094978407,
+              "feature_index": 6,
+              "feature_name": "GOLD_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.000263513094978407
+            },
+            {
+              "absolute_shap_raw": 0.00025811881641857326,
+              "feature_index": 6,
+              "feature_name": "GOLD_LogRet",
+              "lag_index": 4,
+              "lag_name": "t-5",
+              "shap_raw": -0.00025811881641857326
+            }
+          ]
+        },
+        "EURTRY_NextVol": {
+          "additivity_residual_raw": 0.0037834559481756957,
+          "expected_output_raw": 0.1172773549263207,
+          "official_prediction_raw": 0.13138066232204437,
+          "shap_sum_raw": 0.01031985144754799,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.018065497279167175,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.018065497279167175
+            },
+            {
+              "absolute_shap_raw": 0.012099395506083965,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.012099395506083965
+            },
+            {
+              "absolute_shap_raw": 0.0012633176520466805,
+              "feature_index": 7,
+              "feature_name": "GOLD_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0012633176520466805
+            },
+            {
+              "absolute_shap_raw": 0.0010329635115340352,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0010329635115340352
+            },
+            {
+              "absolute_shap_raw": 0.0007578695076517761,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 7,
+              "lag_name": "t-2",
+              "shap_raw": 0.0007578695076517761
+            }
+          ]
+        },
+        "GOLD_NextRet": {
+          "additivity_residual_raw": -0.0006402223477474916,
+          "expected_output_raw": 4.0432532009996436e-05,
+          "official_prediction_raw": -0.005602547433227301,
+          "shap_sum_raw": -0.005002757617489806,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.0024490326177328825,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0024490326177328825
+            },
+            {
+              "absolute_shap_raw": 0.0014044083654880524,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 7,
+              "lag_name": "t-2",
+              "shap_raw": -0.0014044083654880524
+            },
+            {
+              "absolute_shap_raw": 0.0005173506215214729,
+              "feature_index": 7,
+              "feature_name": "GOLD_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0005173506215214729
+            },
+            {
+              "absolute_shap_raw": 0.0004715171526186168,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 7,
+              "lag_name": "t-2",
+              "shap_raw": 0.0004715171526186168
+            },
+            {
+              "absolute_shap_raw": 0.0004688344488386065,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 2,
+              "lag_name": "t-7",
+              "shap_raw": -0.0004688344488386065
+            }
+          ]
+        },
+        "GOLD_NextVol": {
+          "additivity_residual_raw": 0.0008363236789913908,
+          "expected_output_raw": 0.14436467760594002,
+          "official_prediction_raw": 0.18345403671264648,
+          "shap_sum_raw": 0.038253035427715076,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.02388795278966427,
+              "feature_index": 7,
+              "feature_name": "GOLD_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.02388795278966427
+            },
+            {
+              "absolute_shap_raw": 0.009237167425453663,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.009237167425453663
+            },
+            {
+              "absolute_shap_raw": 0.0031822503078728914,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0031822503078728914
+            },
+            {
+              "absolute_shap_raw": 0.0012161507038399577,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0012161507038399577
+            },
+            {
+              "absolute_shap_raw": 0.0006240121438167989,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0006240121438167989
+            }
+          ]
+        },
+        "USDTRY_NextRet": {
+          "additivity_residual_raw": 0.0007266403484817916,
+          "expected_output_raw": 0.0004143000256891041,
+          "official_prediction_raw": -0.00010988864960381761,
+          "shap_sum_raw": -0.0012508290237747133,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.0009973100386559963,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0009973100386559963
+            },
+            {
+              "absolute_shap_raw": 0.0009838312398642302,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0009838312398642302
+            },
+            {
+              "absolute_shap_raw": 0.00045768514974042773,
+              "feature_index": 2,
+              "feature_name": "USDTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.00045768514974042773
+            },
+            {
+              "absolute_shap_raw": 0.0003837912227027118,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 7,
+              "lag_name": "t-2",
+              "shap_raw": -0.0003837912227027118
+            },
+            {
+              "absolute_shap_raw": 0.00032749734236858785,
+              "feature_index": 6,
+              "feature_name": "GOLD_LogRet",
+              "lag_index": 4,
+              "lag_name": "t-5",
+              "shap_raw": -0.00032749734236858785
+            }
+          ]
+        },
+        "USDTRY_NextVol": {
+          "additivity_residual_raw": 0.004008266927806883,
+          "expected_output_raw": 0.11755007420778961,
+          "official_prediction_raw": 0.055191487073898315,
+          "shap_sum_raw": -0.06636685406169818,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.06948792934417725,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.06948792934417725
+            },
+            {
+              "absolute_shap_raw": 0.011141284368932247,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.011141284368932247
+            },
+            {
+              "absolute_shap_raw": 0.002992363879457116,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.002992363879457116
+            },
+            {
+              "absolute_shap_raw": 0.0009399518021382391,
+              "feature_index": 2,
+              "feature_name": "USDTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0009399518021382391
+            },
+            {
+              "absolute_shap_raw": 0.0008936489466577768,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 5,
+              "lag_name": "t-4",
+              "shap_raw": -0.0008936489466577768
+            }
+          ]
+        }
+      },
+      "sample_index": 0
+    },
+    "194": {
+      "outputs": {
+        "BIST100_NextRet": {
+          "additivity_residual_raw": 0.00018332250350140168,
+          "expected_output_raw": 0.0012594835069578065,
+          "official_prediction_raw": -0.0044486261904239655,
+          "shap_sum_raw": -0.005891432200883173,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.002606842666864395,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.002606842666864395
+            },
+            {
+              "absolute_shap_raw": 0.0022298218682408333,
+              "feature_index": 2,
+              "feature_name": "USDTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0022298218682408333
+            },
+            {
+              "absolute_shap_raw": 0.0015293072210624814,
+              "feature_index": 2,
+              "feature_name": "USDTRY_LogRet",
+              "lag_index": 2,
+              "lag_name": "t-7",
+              "shap_raw": -0.0015293072210624814
+            },
+            {
+              "absolute_shap_raw": 0.0014363285154104233,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0014363285154104233
+            },
+            {
+              "absolute_shap_raw": 0.0014210897497832775,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0014210897497832775
+            }
+          ]
+        },
+        "BIST100_NextVol": {
+          "additivity_residual_raw": -0.00380801817202292,
+          "expected_output_raw": 0.20752879046953832,
+          "official_prediction_raw": 0.34525880217552185,
+          "shap_sum_raw": 0.14153802987800645,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.14151857793331146,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.14151857793331146
+            },
+            {
+              "absolute_shap_raw": 0.004847296047955751,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.004847296047955751
+            },
+            {
+              "absolute_shap_raw": 0.0032082730904221535,
+              "feature_index": 7,
+              "feature_name": "GOLD_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0032082730904221535
+            },
+            {
+              "absolute_shap_raw": 0.002606986090540886,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.002606986090540886
+            },
+            {
+              "absolute_shap_raw": 0.0011427534045651555,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 2,
+              "lag_name": "t-7",
+              "shap_raw": -0.0011427534045651555
+            }
+          ]
+        },
+        "EURTRY_NextRet": {
+          "additivity_residual_raw": -0.00013882951742166458,
+          "expected_output_raw": 0.00044389267025840226,
+          "official_prediction_raw": 0.0027698827907443047,
+          "shap_sum_raw": 0.002464819637907567,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.003484308486804366,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 2,
+              "lag_name": "t-7",
+              "shap_raw": -0.003484308486804366
+            },
+            {
+              "absolute_shap_raw": 0.002165711484849453,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.002165711484849453
+            },
+            {
+              "absolute_shap_raw": 0.0015925144543871284,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0015925144543871284
+            },
+            {
+              "absolute_shap_raw": 0.0014996483223512769,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0014996483223512769
+            },
+            {
+              "absolute_shap_raw": 0.001168838469311595,
+              "feature_index": 2,
+              "feature_name": "USDTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.001168838469311595
+            }
+          ]
+        },
+        "EURTRY_NextVol": {
+          "additivity_residual_raw": 0.002255065420920299,
+          "expected_output_raw": 0.1172773549263207,
+          "official_prediction_raw": 0.30024755001068115,
+          "shap_sum_raw": 0.18071512966344017,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.14465098083019257,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.14465098083019257
+            },
+            {
+              "absolute_shap_raw": 0.037606652826070786,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.037606652826070786
+            },
+            {
+              "absolute_shap_raw": 0.001764656393788755,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 2,
+              "lag_name": "t-7",
+              "shap_raw": 0.001764656393788755
+            },
+            {
+              "absolute_shap_raw": 0.0014812966110184789,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 7,
+              "lag_name": "t-2",
+              "shap_raw": -0.0014812966110184789
+            },
+            {
+              "absolute_shap_raw": 0.0013972687302157283,
+              "feature_index": 7,
+              "feature_name": "GOLD_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0013972687302157283
+            }
+          ]
+        },
+        "GOLD_NextRet": {
+          "additivity_residual_raw": 0.00019438162249988054,
+          "expected_output_raw": 4.0432532009996436e-05,
+          "official_prediction_raw": -4.3639523937599733e-05,
+          "shap_sum_raw": -0.0002784536784474767,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.0030037742108106613,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0030037742108106613
+            },
+            {
+              "absolute_shap_raw": 0.0013189103920012712,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0013189103920012712
+            },
+            {
+              "absolute_shap_raw": 0.000942924409173429,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 8,
+              "lag_name": "t-1",
+              "shap_raw": -0.000942924409173429
+            },
+            {
+              "absolute_shap_raw": 0.0009132788982242346,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 8,
+              "lag_name": "t-1",
+              "shap_raw": 0.0009132788982242346
+            },
+            {
+              "absolute_shap_raw": 0.0008351485012099147,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 8,
+              "lag_name": "t-1",
+              "shap_raw": -0.0008351485012099147
+            }
+          ]
+        },
+        "GOLD_NextVol": {
+          "additivity_residual_raw": -0.0013484258429959373,
+          "expected_output_raw": 0.14436467760594002,
+          "official_prediction_raw": 0.0986279547214508,
+          "shap_sum_raw": -0.044388297041493274,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.04611240327358246,
+              "feature_index": 7,
+              "feature_name": "GOLD_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.04611240327358246
+            },
+            {
+              "absolute_shap_raw": 0.005943891126662493,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.005943891126662493
+            },
+            {
+              "absolute_shap_raw": 0.005416804924607277,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.005416804924607277
+            },
+            {
+              "absolute_shap_raw": 0.004057386424392462,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.004057386424392462
+            },
+            {
+              "absolute_shap_raw": 0.0008966439636424184,
+              "feature_index": 2,
+              "feature_name": "USDTRY_LogRet",
+              "lag_index": 2,
+              "lag_name": "t-7",
+              "shap_raw": -0.0008966439636424184
+            }
+          ]
+        },
+        "USDTRY_NextRet": {
+          "additivity_residual_raw": -0.00043626027434862883,
+          "expected_output_raw": 0.0004143000256891041,
+          "official_prediction_raw": 0.003246470121666789,
+          "shap_sum_raw": 0.003268430370326314,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.0033854867797344923,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 2,
+              "lag_name": "t-7",
+              "shap_raw": -0.0033854867797344923
+            },
+            {
+              "absolute_shap_raw": 0.0016298588598147035,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0016298588598147035
+            },
+            {
+              "absolute_shap_raw": 0.0013783224858343601,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0013783224858343601
+            },
+            {
+              "absolute_shap_raw": 0.0013242121785879135,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0013242121785879135
+            },
+            {
+              "absolute_shap_raw": 0.0010628900490701199,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 4,
+              "lag_name": "t-5",
+              "shap_raw": -0.0010628900490701199
+            }
+          ]
+        },
+        "USDTRY_NextVol": {
+          "additivity_residual_raw": 0.0004532489773315662,
+          "expected_output_raw": 0.11755007420778961,
+          "official_prediction_raw": 0.3156305253505707,
+          "shap_sum_raw": 0.1976272021654495,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.17945294082164764,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.17945294082164764
+            },
+            {
+              "absolute_shap_raw": 0.01812039688229561,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.01812039688229561
+            },
+            {
+              "absolute_shap_raw": 0.00262954062782228,
+              "feature_index": 2,
+              "feature_name": "USDTRY_LogRet",
+              "lag_index": 2,
+              "lag_name": "t-7",
+              "shap_raw": 0.00262954062782228
+            },
+            {
+              "absolute_shap_raw": 0.002333763986825943,
+              "feature_index": 7,
+              "feature_name": "GOLD_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.002333763986825943
+            },
+            {
+              "absolute_shap_raw": 0.0015646592946723104,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 2,
+              "lag_name": "t-7",
+              "shap_raw": -0.0015646592946723104
+            }
+          ]
+        }
+      },
+      "sample_index": 194
+    },
+    "389": {
+      "outputs": {
+        "BIST100_NextRet": {
+          "additivity_residual_raw": 0.00031134388710397356,
+          "expected_output_raw": 0.0012594835069578065,
+          "official_prediction_raw": 2.1533303879550658e-05,
+          "shap_sum_raw": -0.0015492940901822294,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.0013970171567052603,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 4,
+              "lag_name": "t-5",
+              "shap_raw": -0.0013970171567052603
+            },
+            {
+              "absolute_shap_raw": 0.0013527101837098598,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0013527101837098598
+            },
+            {
+              "absolute_shap_raw": 0.0012576979352161288,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0012576979352161288
+            },
+            {
+              "absolute_shap_raw": 0.0006061387248337269,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0006061387248337269
+            },
+            {
+              "absolute_shap_raw": 0.0005220223683863878,
+              "feature_index": 7,
+              "feature_name": "GOLD_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0005220223683863878
+            }
+          ]
+        },
+        "BIST100_NextVol": {
+          "additivity_residual_raw": 0.002159969919276583,
+          "expected_output_raw": 0.20752879046953832,
+          "official_prediction_raw": 0.2550086975097656,
+          "shap_sum_raw": 0.045319937120950726,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.04545969143509865,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.04545969143509865
+            },
+            {
+              "absolute_shap_raw": 0.00221019284799695,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.00221019284799695
+            },
+            {
+              "absolute_shap_raw": 0.0011995304375886917,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0011995304375886917
+            },
+            {
+              "absolute_shap_raw": 0.0011471051257103682,
+              "feature_index": 7,
+              "feature_name": "GOLD_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0011471051257103682
+            },
+            {
+              "absolute_shap_raw": 0.0010127844288945198,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 4,
+              "lag_name": "t-5",
+              "shap_raw": 0.0010127844288945198
+            }
+          ]
+        },
+        "EURTRY_NextRet": {
+          "additivity_residual_raw": -0.0003739792319344369,
+          "expected_output_raw": 0.00044389267025840226,
+          "official_prediction_raw": 0.002574087819084525,
+          "shap_sum_raw": 0.00250417438076056,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.002223728923127055,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.002223728923127055
+            },
+            {
+              "absolute_shap_raw": 0.0006168636027723551,
+              "feature_index": 2,
+              "feature_name": "USDTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0006168636027723551
+            },
+            {
+              "absolute_shap_raw": 0.0004942622617818415,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0004942622617818415
+            },
+            {
+              "absolute_shap_raw": 0.00044545307173393667,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 6,
+              "lag_name": "t-3",
+              "shap_raw": -0.00044545307173393667
+            },
+            {
+              "absolute_shap_raw": 0.0003748350136447698,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 4,
+              "lag_name": "t-5",
+              "shap_raw": 0.0003748350136447698
+            }
+          ]
+        },
+        "EURTRY_NextVol": {
+          "additivity_residual_raw": 0.0018139325612002571,
+          "expected_output_raw": 0.1172773549263207,
+          "official_prediction_raw": 0.09538430720567703,
+          "shap_sum_raw": -0.023706980281843926,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.01937822625041008,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.01937822625041008
+            },
+            {
+              "absolute_shap_raw": 0.007479362655431032,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.007479362655431032
+            },
+            {
+              "absolute_shap_raw": 0.0016540141077712178,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0016540141077712178
+            },
+            {
+              "absolute_shap_raw": 0.0009232324664480984,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0009232324664480984
+            },
+            {
+              "absolute_shap_raw": 0.000703398312907666,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 2,
+              "lag_name": "t-7",
+              "shap_raw": 0.000703398312907666
+            }
+          ]
+        },
+        "GOLD_NextRet": {
+          "additivity_residual_raw": 6.708951568915253e-05,
+          "expected_output_raw": 4.0432532009996436e-05,
+          "official_prediction_raw": 0.00016697340470273048,
+          "shap_sum_raw": 5.9451357003581506e-05,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.0009838074911385775,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0009838074911385775
+            },
+            {
+              "absolute_shap_raw": 0.0005733616999350488,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0005733616999350488
+            },
+            {
+              "absolute_shap_raw": 0.00041024002712219954,
+              "feature_index": 6,
+              "feature_name": "GOLD_LogRet",
+              "lag_index": 6,
+              "lag_name": "t-3",
+              "shap_raw": -0.00041024002712219954
+            },
+            {
+              "absolute_shap_raw": 0.000362399616278708,
+              "feature_index": 2,
+              "feature_name": "USDTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.000362399616278708
+            },
+            {
+              "absolute_shap_raw": 0.0003488378133624792,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0003488378133624792
+            }
+          ]
+        },
+        "GOLD_NextVol": {
+          "additivity_residual_raw": 5.496563754092687e-06,
+          "expected_output_raw": 0.14436467760594002,
+          "official_prediction_raw": 0.11429703235626221,
+          "shap_sum_raw": -0.030073141813431903,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.032870300114154816,
+              "feature_index": 7,
+              "feature_name": "GOLD_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.032870300114154816
+            },
+            {
+              "absolute_shap_raw": 0.0035633158404380083,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0035633158404380083
+            },
+            {
+              "absolute_shap_raw": 0.001118420623242855,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.001118420623242855
+            },
+            {
+              "absolute_shap_raw": 0.0009911920642480254,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0009911920642480254
+            },
+            {
+              "absolute_shap_raw": 0.0008564639720134437,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0008564639720134437
+            }
+          ]
+        },
+        "USDTRY_NextRet": {
+          "additivity_residual_raw": -0.00045379806045554253,
+          "expected_output_raw": 0.0004143000256891041,
+          "official_prediction_raw": 0.0019304478773847222,
+          "shap_sum_raw": 0.001969945912151161,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.002718126168474555,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.002718126168474555
+            },
+            {
+              "absolute_shap_raw": 0.0008416897617280483,
+              "feature_index": 6,
+              "feature_name": "GOLD_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0008416897617280483
+            },
+            {
+              "absolute_shap_raw": 0.00063610530924052,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.00063610530924052
+            },
+            {
+              "absolute_shap_raw": 0.00043931487016379833,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 6,
+              "lag_name": "t-3",
+              "shap_raw": -0.00043931487016379833
+            },
+            {
+              "absolute_shap_raw": 0.00038256129482761025,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 4,
+              "lag_name": "t-5",
+              "shap_raw": 0.00038256129482761025
+            }
+          ]
+        },
+        "USDTRY_NextVol": {
+          "additivity_residual_raw": 0.0028962403810998266,
+          "expected_output_raw": 0.11755007420778961,
+          "official_prediction_raw": 0.05400249734520912,
+          "shap_sum_raw": -0.06644381724368031,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.05850015580654144,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.05850015580654144
+            },
+            {
+              "absolute_shap_raw": 0.003258774057030678,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.003258774057030678
+            },
+            {
+              "absolute_shap_raw": 0.0011205178452655673,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0011205178452655673
+            },
+            {
+              "absolute_shap_raw": 0.0009527640650048852,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 1,
+              "lag_name": "t-8",
+              "shap_raw": -0.0009527640650048852
+            },
+            {
+              "absolute_shap_raw": 0.0009467537747696042,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 6,
+              "lag_name": "t-3",
+              "shap_raw": -0.0009467537747696042
+            }
+          ]
+        }
+      },
+      "sample_index": 389
+    },
+    "583": {
+      "outputs": {
+        "BIST100_NextRet": {
+          "additivity_residual_raw": 0.0002951946940882382,
+          "expected_output_raw": 0.0012594835069578065,
+          "official_prediction_raw": -0.0002137439587386325,
+          "shap_sum_raw": -0.0017684221597846772,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.0005903075798414648,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0005903075798414648
+            },
+            {
+              "absolute_shap_raw": 0.0005397718050517142,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0005397718050517142
+            },
+            {
+              "absolute_shap_raw": 0.000508263532537967,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.000508263532537967
+            },
+            {
+              "absolute_shap_raw": 0.0004766507481690496,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0004766507481690496
+            },
+            {
+              "absolute_shap_raw": 0.00045281730126589537,
+              "feature_index": 6,
+              "feature_name": "GOLD_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.00045281730126589537
+            }
+          ]
+        },
+        "BIST100_NextVol": {
+          "additivity_residual_raw": -0.0022670255030018405,
+          "expected_output_raw": 0.20752879046953832,
+          "official_prediction_raw": 0.19336386024951935,
+          "shap_sum_raw": -0.011897904717017127,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.014773990027606487,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.014773990027606487
+            },
+            {
+              "absolute_shap_raw": 0.003273497335612774,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.003273497335612774
+            },
+            {
+              "absolute_shap_raw": 0.002069283975288272,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.002069283975288272
+            },
+            {
+              "absolute_shap_raw": 0.0009319044766016304,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0009319044766016304
+            },
+            {
+              "absolute_shap_raw": 0.00040484583587385714,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.00040484583587385714
+            }
+          ]
+        },
+        "EURTRY_NextRet": {
+          "additivity_residual_raw": -0.00021622236672774395,
+          "expected_output_raw": 0.00044389267025840226,
+          "official_prediction_raw": 0.0015187844401225448,
+          "shap_sum_raw": 0.0012911141365918866,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.0016431697877123952,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0016431697877123952
+            },
+            {
+              "absolute_shap_raw": 0.00042253173887729645,
+              "feature_index": 2,
+              "feature_name": "USDTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.00042253173887729645
+            },
+            {
+              "absolute_shap_raw": 0.0002925399166997522,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0002925399166997522
+            },
+            {
+              "absolute_shap_raw": 0.000251351622864604,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 2,
+              "lag_name": "t-7",
+              "shap_raw": 0.000251351622864604
+            },
+            {
+              "absolute_shap_raw": 0.00015515420818701386,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 8,
+              "lag_name": "t-1",
+              "shap_raw": -0.00015515420818701386
+            }
+          ]
+        },
+        "EURTRY_NextVol": {
+          "additivity_residual_raw": -0.0030222800657407484,
+          "expected_output_raw": 0.1172773549263207,
+          "official_prediction_raw": 0.07363710552453995,
+          "shap_sum_raw": -0.040617969336040005,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.0353693924844265,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0353693924844265
+            },
+            {
+              "absolute_shap_raw": 0.005979207344353199,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.005979207344353199
+            },
+            {
+              "absolute_shap_raw": 0.0006347632152028382,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0006347632152028382
+            },
+            {
+              "absolute_shap_raw": 0.0005847383290529251,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 3,
+              "lag_name": "t-6",
+              "shap_raw": 0.0005847383290529251
+            },
+            {
+              "absolute_shap_raw": 0.0005668350495398045,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 7,
+              "lag_name": "t-2",
+              "shap_raw": 0.0005668350495398045
+            }
+          ]
+        },
+        "GOLD_NextRet": {
+          "additivity_residual_raw": 0.00013760138248433901,
+          "expected_output_raw": 4.0432532009996436e-05,
+          "official_prediction_raw": 0.0008426375570707023,
+          "shap_sum_raw": 0.0006646036425763668,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.00042067523463629186,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.00042067523463629186
+            },
+            {
+              "absolute_shap_raw": 0.00040047906804829836,
+              "feature_index": 7,
+              "feature_name": "GOLD_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.00040047906804829836
+            },
+            {
+              "absolute_shap_raw": 0.00021180097246542573,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 7,
+              "lag_name": "t-2",
+              "shap_raw": -0.00021180097246542573
+            },
+            {
+              "absolute_shap_raw": 0.0001860377233242616,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0001860377233242616
+            },
+            {
+              "absolute_shap_raw": 0.00017563103756401688,
+              "feature_index": 4,
+              "feature_name": "EURTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.00017563103756401688
+            }
+          ]
+        },
+        "GOLD_NextVol": {
+          "additivity_residual_raw": 0.0021157986011625662,
+          "expected_output_raw": 0.14436467760594002,
+          "official_prediction_raw": 0.14828762412071228,
+          "shap_sum_raw": 0.0018071479136096968,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.0025486485101282597,
+              "feature_index": 7,
+              "feature_name": "GOLD_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0025486485101282597
+            },
+            {
+              "absolute_shap_raw": 0.001077768043614924,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.001077768043614924
+            },
+            {
+              "absolute_shap_raw": 0.000838733627460897,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.000838733627460897
+            },
+            {
+              "absolute_shap_raw": 0.0004812389670405537,
+              "feature_index": 1,
+              "feature_name": "BIST100_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0004812389670405537
+            },
+            {
+              "absolute_shap_raw": 0.00023207024787552655,
+              "feature_index": 2,
+              "feature_name": "USDTRY_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.00023207024787552655
+            }
+          ]
+        },
+        "USDTRY_NextRet": {
+          "additivity_residual_raw": -0.0003054758383955825,
+          "expected_output_raw": 0.0004143000256891041,
+          "official_prediction_raw": 0.00245511787943542,
+          "shap_sum_raw": 0.0023462936921418986,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.0022676698863506317,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0022676698863506317
+            },
+            {
+              "absolute_shap_raw": 0.0004068687267135829,
+              "feature_index": 6,
+              "feature_name": "GOLD_LogRet",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.0004068687267135829
+            },
+            {
+              "absolute_shap_raw": 0.0003750098403543234,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 2,
+              "lag_name": "t-7",
+              "shap_raw": 0.0003750098403543234
+            },
+            {
+              "absolute_shap_raw": 0.0003615916066337377,
+              "feature_index": 0,
+              "feature_name": "BIST100_LogRet",
+              "lag_index": 7,
+              "lag_name": "t-2",
+              "shap_raw": -0.0003615916066337377
+            },
+            {
+              "absolute_shap_raw": 0.00023288703232537955,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": 0.00023288703232537955
+            }
+          ]
+        },
+        "USDTRY_NextVol": {
+          "additivity_residual_raw": -0.0035294291359572044,
+          "expected_output_raw": 0.11755007420778961,
+          "official_prediction_raw": 0.04925849661231041,
+          "shap_sum_raw": -0.064762148459522,
+          "top_five_feature_lag_contributions": [
+            {
+              "absolute_shap_raw": 0.05553870648145676,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.05553870648145676
+            },
+            {
+              "absolute_shap_raw": 0.0032727455254644156,
+              "feature_index": 5,
+              "feature_name": "EURTRY_Vol20",
+              "lag_index": 9,
+              "lag_name": "t",
+              "shap_raw": -0.0032727455254644156
+            },
+            {
+              "absolute_shap_raw": 0.0009192407596856356,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 3,
+              "lag_name": "t-6",
+              "shap_raw": -0.0009192407596856356
+            },
+            {
+              "absolute_shap_raw": 0.0009073639521375299,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 8,
+              "lag_name": "t-1",
+              "shap_raw": -0.0009073639521375299
+            },
+            {
+              "absolute_shap_raw": 0.000862309942021966,
+              "feature_index": 3,
+              "feature_name": "USDTRY_Vol20",
+              "lag_index": 5,
+              "lag_name": "t-4",
+              "shap_raw": -0.000862309942021966
+            }
+          ]
+        }
+      },
+      "sample_index": 583
+    }
+  },
+  "method": {
+    "attribution_method": "Expected Gradients",
+    "background_size": 64,
+    "background_source": "training_only",
+    "explainer": "GradientExplainer",
+    "explainer_output_scale": "standardized_target_scale",
+    "nsamples": 256,
+    "random_seed": 2026,
+    "reported_attribution_scale": "raw_target_scale"
+  },
+  "project_version": "v4a",
+  "reference_model": {
+    "architecture": "NoSharing",
+    "features": [
+      "BIST100_LogRet",
+      "BIST100_Vol20",
+      "USDTRY_LogRet",
+      "USDTRY_Vol20",
+      "EURTRY_LogRet",
+      "EURTRY_Vol20",
+      "GOLD_LogRet",
+      "GOLD_Vol20"
+    ],
+    "lookback": 10,
+    "outputs": [
+      "BIST100_NextRet",
+      "USDTRY_NextRet",
+      "EURTRY_NextRet",
+      "GOLD_NextRet",
+      "BIST100_NextVol",
+      "USDTRY_NextVol",
+      "EURTRY_NextVol",
+      "GOLD_NextVol"
+    ],
+    "prediction": "FinalWinner_3SeedEnsemble",
+    "seeds": [
+      123,
+      777,
+      2026
+    ],
+    "test_observations": 584
+  },
+  "stage": "10_FINAL_POST_HOC_SHAP_EXPLAINABILITY",
+  "status": "SHAP_COMPUTED_PENDING_INDEPENDENT_AUDIT",
+  "top_three_features_by_output": {
+    "BIST100_NextRet": [
+      {
+        "feature_name": "BIST100_LogRet",
+        "mean_abs_shap_raw": 0.00020521968740134516,
+        "normalized_share_within_output": 0.2044287571403216,
+        "rank": 1
+      },
+      {
+        "feature_name": "USDTRY_Vol20",
+        "mean_abs_shap_raw": 0.00019130772365724455,
+        "normalized_share_within_output": 0.19057041102547873,
+        "rank": 2
+      },
+      {
+        "feature_name": "BIST100_Vol20",
+        "mean_abs_shap_raw": 0.00017166122562254344,
+        "normalized_share_within_output": 0.17099963189482406,
+        "rank": 3
+      }
+    ],
+    "BIST100_NextVol": [
+      {
+        "feature_name": "BIST100_Vol20",
+        "mean_abs_shap_raw": 0.008795494006057752,
+        "normalized_share_within_output": 0.8348091546328368,
+        "rank": 1
+      },
+      {
+        "feature_name": "USDTRY_Vol20",
+        "mean_abs_shap_raw": 0.0005590761463708312,
+        "normalized_share_within_output": 0.05306374887024772,
+        "rank": 2
+      },
+      {
+        "feature_name": "BIST100_LogRet",
+        "mean_abs_shap_raw": 0.0003851069611993625,
+        "normalized_share_within_output": 0.03655176349397077,
+        "rank": 3
+      }
+    ],
+    "EURTRY_NextRet": [
+      {
+        "feature_name": "BIST100_LogRet",
+        "mean_abs_shap_raw": 0.00030110159136803306,
+        "normalized_share_within_output": 0.34542533517462315,
+        "rank": 1
+      },
+      {
+        "feature_name": "BIST100_Vol20",
+        "mean_abs_shap_raw": 0.0001278424833063842,
+        "normalized_share_within_output": 0.14666157174734962,
+        "rank": 2
+      },
+      {
+        "feature_name": "USDTRY_Vol20",
+        "mean_abs_shap_raw": 8.849252940161416e-05,
+        "normalized_share_within_output": 0.10151909689391306,
+        "rank": 3
+      }
+    ],
+    "EURTRY_NextVol": [
+      {
+        "feature_name": "EURTRY_Vol20",
+        "mean_abs_shap_raw": 0.0037246212367995236,
+        "normalized_share_within_output": 0.6441552850036872,
+        "rank": 1
+      },
+      {
+        "feature_name": "USDTRY_Vol20",
+        "mean_abs_shap_raw": 0.0012590460171945231,
+        "normalized_share_within_output": 0.21774593830528283,
+        "rank": 2
+      },
+      {
+        "feature_name": "BIST100_Vol20",
+        "mean_abs_shap_raw": 0.00028097197130227443,
+        "normalized_share_within_output": 0.04859274775756376,
+        "rank": 3
+      }
+    ],
+    "GOLD_NextRet": [
+      {
+        "feature_name": "USDTRY_Vol20",
+        "mean_abs_shap_raw": 0.0001711356584815103,
+        "normalized_share_within_output": 0.1962026866295138,
+        "rank": 1
+      },
+      {
+        "feature_name": "BIST100_LogRet",
+        "mean_abs_shap_raw": 0.00016570534171385037,
+        "normalized_share_within_output": 0.18997696635287553,
+        "rank": 2
+      },
+      {
+        "feature_name": "BIST100_Vol20",
+        "mean_abs_shap_raw": 0.00016130812566518424,
+        "normalized_share_within_output": 0.18493566981600026,
+        "rank": 3
+      }
+    ],
+    "GOLD_NextVol": [
+      {
+        "feature_name": "GOLD_Vol20",
+        "mean_abs_shap_raw": 0.0029758591937657664,
+        "normalized_share_within_output": 0.7013834314314276,
+        "rank": 1
+      },
+      {
+        "feature_name": "BIST100_Vol20",
+        "mean_abs_shap_raw": 0.0003712076722200736,
+        "normalized_share_within_output": 0.08749033269478038,
+        "rank": 2
+      },
+      {
+        "feature_name": "USDTRY_Vol20",
+        "mean_abs_shap_raw": 0.0003510983198896567,
+        "normalized_share_within_output": 0.08275073796835007,
+        "rank": 3
+      }
+    ],
+    "USDTRY_NextRet": [
+      {
+        "feature_name": "BIST100_LogRet",
+        "mean_abs_shap_raw": 0.0003574865277504184,
+        "normalized_share_within_output": 0.3676690174789751,
+        "rank": 1
+      },
+      {
+        "feature_name": "BIST100_Vol20",
+        "mean_abs_shap_raw": 0.0001285529118686406,
+        "normalized_share_within_output": 0.13221455672254787,
+        "rank": 2
+      },
+      {
+        "feature_name": "GOLD_LogRet",
+        "mean_abs_shap_raw": 9.733999653647064e-05,
+        "normalized_share_within_output": 0.10011258637684176,
+        "rank": 3
+      }
+    ],
+    "USDTRY_NextVol": [
+      {
+        "feature_name": "USDTRY_Vol20",
+        "mean_abs_shap_raw": 0.0072317125753214246,
+        "normalized_share_within_output": 0.8097007330071727,
+        "rank": 1
+      },
+      {
+        "feature_name": "EURTRY_Vol20",
+        "mean_abs_shap_raw": 0.0006733203572670839,
+        "normalized_share_within_output": 0.0753885032278924,
+        "rank": 2
+      },
+      {
+        "feature_name": "BIST100_Vol20",
+        "mean_abs_shap_raw": 0.0004568860809825242,
+        "normalized_share_within_output": 0.051155378593829376,
+        "rank": 3
+      }
+    ]
+  },
+  "top_three_lags_by_output": {
+    "BIST100_NextRet": [
+      {
+        "lag_name": "t",
+        "mean_abs_shap_raw": 0.0005023246182580437,
+        "normalized_share_within_output": 0.4003109007398489,
+        "rank": 1
+      },
+      {
+        "lag_name": "t-1",
+        "mean_abs_shap_raw": 9.422831995774546e-05,
+        "normalized_share_within_output": 0.07509212621968434,
+        "rank": 2
+      },
+      {
+        "lag_name": "t-4",
+        "mean_abs_shap_raw": 9.33969364611444e-05,
+        "normalized_share_within_output": 0.07442958278803104,
+        "rank": 3
+      }
+    ],
+    "BIST100_NextVol": [
+      {
+        "lag_name": "t",
+        "mean_abs_shap_raw": 0.011903478049473011,
+        "normalized_share_within_output": 0.9038384828255973,
+        "rank": 1
+      },
+      {
+        "lag_name": "t-1",
+        "mean_abs_shap_raw": 0.00016833700032284937,
+        "normalized_share_within_output": 0.012781933006710773,
+        "rank": 2
+      },
+      {
+        "lag_name": "t-2",
+        "mean_abs_shap_raw": 0.00016118343613560259,
+        "normalized_share_within_output": 0.012238758434125838,
+        "rank": 3
+      }
+    ],
+    "EURTRY_NextRet": [
+      {
+        "lag_name": "t",
+        "mean_abs_shap_raw": 0.0005160869032193381,
+        "normalized_share_within_output": 0.4736460958942629,
+        "rank": 1
+      },
+      {
+        "lag_name": "t-1",
+        "mean_abs_shap_raw": 7.775598710596701e-05,
+        "normalized_share_within_output": 0.07136166311411624,
+        "rank": 2
+      },
+      {
+        "lag_name": "t-9",
+        "mean_abs_shap_raw": 7.396751094034761e-05,
+        "normalized_share_within_output": 0.06788473522844295,
+        "rank": 3
+      }
+    ],
+    "EURTRY_NextVol": [
+      {
+        "lag_name": "t",
+        "mean_abs_shap_raw": 0.005877306597626655,
+        "normalized_share_within_output": 0.8131614713557033,
+        "rank": 1
+      },
+      {
+        "lag_name": "t-1",
+        "mean_abs_shap_raw": 0.00018141660501244346,
+        "normalized_share_within_output": 0.02510010172344015,
+        "rank": 2
+      },
+      {
+        "lag_name": "t-3",
+        "mean_abs_shap_raw": 0.00016809458957789422,
+        "normalized_share_within_output": 0.02325691905256231,
+        "rank": 3
+      }
+    ],
+    "GOLD_NextRet": [
+      {
+        "lag_name": "t",
+        "mean_abs_shap_raw": 0.0003860598080476777,
+        "normalized_share_within_output": 0.35408621305798726,
+        "rank": 1
+      },
+      {
+        "lag_name": "t-1",
+        "mean_abs_shap_raw": 9.856783515147037e-05,
+        "normalized_share_within_output": 0.09040441597535537,
+        "rank": 2
+      },
+      {
+        "lag_name": "t-7",
+        "mean_abs_shap_raw": 8.835815607291785e-05,
+        "normalized_share_within_output": 0.08104030573620931,
+        "rank": 3
+      }
+    ],
+    "GOLD_NextVol": [
+      {
+        "lag_name": "t",
+        "mean_abs_shap_raw": 0.004780417280112496,
+        "normalized_share_within_output": 0.90136132317645,
+        "rank": 1
+      },
+      {
+        "lag_name": "t-8",
+        "mean_abs_shap_raw": 7.0464420610068e-05,
+        "normalized_share_within_output": 0.01328626763654786,
+        "rank": 2
+      },
+      {
+        "lag_name": "t-2",
+        "mean_abs_shap_raw": 6.888129563225165e-05,
+        "normalized_share_within_output": 0.012987764903178808,
+        "rank": 3
+      }
+    ],
+    "USDTRY_NextRet": [
+      {
+        "lag_name": "t",
+        "mean_abs_shap_raw": 0.0006186894947308091,
+        "normalized_share_within_output": 0.5090495803210842,
+        "rank": 1
+      },
+      {
+        "lag_name": "t-1",
+        "mean_abs_shap_raw": 8.07955439695549e-05,
+        "normalized_share_within_output": 0.06647751109368806,
+        "rank": 2
+      },
+      {
+        "lag_name": "t-7",
+        "mean_abs_shap_raw": 7.989718241013742e-05,
+        "normalized_share_within_output": 0.06573835101631025,
+        "rank": 3
+      }
+    ],
+    "USDTRY_NextVol": [
+      {
+        "lag_name": "t",
+        "mean_abs_shap_raw": 0.009516935991051183,
+        "normalized_share_within_output": 0.8524531325244475,
+        "rank": 1
+      },
+      {
+        "lag_name": "t-1",
+        "mean_abs_shap_raw": 0.00020849468747017447,
+        "normalized_share_within_output": 0.018675333071040728,
+        "rank": 2
+      },
+      {
+        "lag_name": "t-3",
+        "mean_abs_shap_raw": 0.00020013006138839998,
+        "normalized_share_within_output": 0.017926094901055224,
+        "rank": 3
+      }
+    ]
+  }
+}

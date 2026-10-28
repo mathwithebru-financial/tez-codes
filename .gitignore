@@ -42,6 +42,14 @@ results/**
 !results/shap/*.csv
 !results/shap/*.json
 !results/shap/*.md
+!results/shap/10_closure/
+!results/shap/10_closure/*.json
+!results/shap/10_closure/*.md
+!results/shap/10_closure/*.sha256
+!results/statistical_comparison/
+!results/statistical_comparison/*.csv
+!results/statistical_comparison/*.json
+!results/statistical_comparison/*.md
 !results/robustness/
 !results/robustness/bartlett_dm_hln_v1/
 !results/robustness/bartlett_dm_hln_v1/*.csv

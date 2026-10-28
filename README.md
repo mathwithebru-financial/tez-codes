@@ -64,6 +64,8 @@ Six decisions changed from “comparator better” to “no significant differen
 
 SHAP was used only as a post-hoc description of the locked ensemble. It was not used for feature selection, model reselection, or causal inference.
 
+The final SHAP closure record is `CLOSED` with independent audit status `PASS`. The earlier SHAP report is retained unchanged, including its then-pending audit status; the later closure record documents completion. See [`results/shap/`](results/shap/).
+
 ## Repository structure
 
 ```text
@@ -74,27 +76,27 @@ SHAP was used only as a post-hoc description of the locked ensemble. It was not 
 ├── notebooks/    # output-cleared research and robustness notebooks
 ├── protocols/    # locked protocols and the post-hoc robustness protocol
 ├── results/      # compact SHAP and robustness summaries
-└── scripts/      # verified v4 pipeline scripts
+└── scripts/      # archived pipeline sources and isolated rerun adapters
 ```
 
 ## Reproducibility boundary
 
-The Python scripts are preserved as executed in Google Colab and therefore use:
+The original pipeline scripts and the recovered main Stage 09 source retain the Google Colab root used during execution:
 
 ```text
 /content/drive/MyDrive/tez_transformer_v4_repro
 ```
 
-They have not been refactored after validation because that would change the audited source hashes. To run the archived pipeline as written:
+Their original calculation code has not been silently refactored. The recovered main notebook now includes the actual Stage 09 DM-HLN/Holm and Stage 10 SHAP computation cells. Its outputs and account-specific execution metadata are cleared for publication.
 
-1. Use Python 3.12 in Google Colab.
-2. Place the project at the Drive path above.
-3. Install the dependencies in `requirements.txt`.
-4. Use the included frozen raw file at [`data/raw/raw_prices.csv`](data/raw/raw_prices.csv).
-5. Verify its SHA-256 before executing the pipeline; see [`data/README.md`](data/README.md).
-6. Run the scripts in the order documented in [`scripts/README.md`](scripts/README.md).
+Use the reproduction route appropriate to the available inputs:
 
-The exact frozen raw dataset is included for reproducibility. Derived datasets, scalers, model checkpoints, and large prediction arrays remain intentionally excluded; their expected identities are recorded through checksums and protocol locks.
+- **Inspect the archive:** read the scripts, notebook, protocols, compact results, and checksum inventories. Do not use **Run all** on the historical main notebook: it includes protocol creation, prior diagnostics, and guards against overwriting locked outputs.
+- **Recompute main Stage 09:** use `scripts/reproduce_archived_analysis_v4.py` with an isolated copy of the exact frozen Stage 09 inputs. It adapts execution paths around the recovered source; it does not refit models. See [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
+- **Recompute Bartlett-HAC robustness:** use the standalone Stage 09D script or the corrected Bartlett notebook, with `requirements-bartlett.txt` and the required archived inputs.
+- **Repeat training or SHAP:** provide the required processed data, scalers, checkpoints, and other locked inputs in a separate working copy, following the recorded stage order and environment. The main notebook preserves the SHAP preparation, smoke-test, full computation, assembly, audit, and closure source.
+
+The frozen raw dataset is included. Derived datasets, scalers, checkpoints, and large arrays remain intentionally excluded from the public repository. Their hashes identify the required frozen inputs; they do not supply those bytes. Fresh training is a separate reproduction level and may not recreate the exact checkpoint hashes required by later locked analyses.
 
 ## Verified environment records
 
@@ -121,6 +123,8 @@ ab5f275d38dc98057b1cedcf58019adb26be7402c7ed5ae6ee3d6877b2444893
 ```
 
 Protocol files and companion checksum files are included under `protocols/`. The code and protocol records are research artifacts; inclusion in this repository does not by itself guarantee bitwise reproduction on different hardware or library builds.
+
+The recovered analysis sources are inventoried separately in [`config/recovered_analysis_manifest_v4.json`](config/recovered_analysis_manifest_v4.json). The [28 October 2026 verification record](docs/validation/archive_recovery_checks_20261028.json) records isolated reruns of all 42 main Stage 09 tests and all 22 Bartlett tests, plus source and SHAP-output identity checks. It does not claim a new training or GPU SHAP run.
 
 ## Status
 

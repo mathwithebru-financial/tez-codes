@@ -20,6 +20,13 @@ The scripts are preserved with their original Google Colab paths and scientific 
 | 08C check | `08C_validate_garch_protocol_lock_v4.py` | Validate the locked GARCH protocol |
 | 08C | `08C_garch_baselines_test_v4.py` | Evaluate GARCH and GJR-GARCH baselines |
 | 08C-R | `08C_R_garch_rescue_run_v4.py` | Run the locked numerical-convergence rescue |
+| 09 | `09_dm_harvey_holm_v4.py` | Exact recovered source cell for the 42 locked main DM-HLN/Holm comparisons |
 | 09D | `09D_bartlett_dm_hln_robustness_v1.py` | Run the post-hoc Bartlett-HAC DM-HLN volatility robustness analysis |
 
-Stage 09 DM-HLN/Holm and Stage 10 SHAP audit material is preserved in the main notebook and in `protocols/`. Standalone scripts for the locked main Stage 09 and Stage 10 analyses were not present in the verified Drive `scripts/` folder and have not been invented for this release. Stage 09D is a later, post-hoc robustness check with its own frozen protocol and verified standalone script.
+`09_dm_harvey_holm_v4.py` was extracted from the recovered main notebook without changing its calculation source. It retains the original Colab root and output guards. `reproduce_archived_analysis_v4.py` is a separately documented adapter for executing that source against an isolated frozen-input copy and new outputs. Use the adapter's `--help` and the instructions in [`docs/REPRODUCIBILITY.md`](../docs/REPRODUCIBILITY.md).
+
+Stage 10 SHAP computation source is in [`notebooks/tez_transformer_v4_repro.ipynb`](../notebooks/tez_transformer_v4_repro.ipynb). Preparation and smoke-test cells must precede full SHAP computation: they create the loaded ensemble and other required runtime variables. The notebook also preserves assembly, independent audit, and closure code. No standalone Stage 10 implementation has been invented.
+
+Stage 09D is a later volatility-only robustness check with its own protocol and standalone script. It does not replace main Stage 09. Its separate dependency file is `requirements-bartlett.txt`.
+
+The numbered stages describe the historical workflow, not an instruction to rerun every cell over a completed archive. Preserve original locked outputs and use a separate working copy for reproduction.

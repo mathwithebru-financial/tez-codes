@@ -1,0 +1,117 @@
+{
+  "verification_date": "2026-10-28",
+  "scope": "Recovered analysis sources and isolated statistical reruns; no new training or GPU SHAP run",
+  "main_notebook": {
+    "original_code_cells": 125,
+    "publication_code_cells": 125,
+    "all_original_source_cells_identical": true,
+    "outputs_cleared": true,
+    "nbformat_validation": "PASS"
+  },
+  "stage09": {
+    "status": "PASS",
+    "comparison_count": 42,
+    "n_per_comparison": 584,
+    "interpretation_counts": {
+      "SIGNIFICANT_BASELINE_BETTER": 34,
+      "SIGNIFICANT_FINAL_BETTER": 5,
+      "NOT_SIGNIFICANT": 3
+    },
+    "all_nonnumeric_fields_equal": true,
+    "max_abs_numeric_difference_from_reference": 1.0061396160665481e-16,
+    "max_abs_difference_by_column": {
+      "n": 0.0,
+      "mean_final_loss": 0.0,
+      "mean_baseline_loss": 0.0,
+      "mean_loss_differential": 0.0,
+      "median_loss_differential": 0.0,
+      "relative_loss_reduction_pct": 0.0,
+      "loss_differential_gamma0": 0.0,
+      "dm_standard_error": 0.0,
+      "dm_raw_statistic": 0.0,
+      "dm_raw_p_normal_two_sided": 0.0,
+      "hln_correction_factor": 0.0,
+      "dm_hln_statistic": 0.0,
+      "dm_hln_p_t_two_sided": 9.974659986866641e-17,
+      "holm_rank": 0.0,
+      "holm_critical_value": 0.0,
+      "holm_adjusted_p": 1.0061396160665481e-16
+    },
+    "comparison_tolerance": 1e-10,
+    "input_hashes_verified": 17,
+    "source_sha256": "b29519a53efa68600978bc3efec962b939eea2a664d25eadf3160b9a102a9612",
+    "protocol_sha256": "703574062b981e5a4c5187b476c5ce5f7b1e01688818c58ec6d28b436ffbcec1",
+    "source_adaptation": "ROOT assignment only, in memory",
+    "created_at_utc": "2026-10-28T18:27:33.008014+00:00",
+    "software": {
+      "numpy": "2.3.5",
+      "pandas": "2.2.3",
+      "scipy": "1.17.0"
+    }
+  },
+  "bartlett": {
+    "status": "PASS",
+    "comparison_count": 22,
+    "bartlett_counts": {
+      "SIGNIFICANT_FINAL_BETTER": 2,
+      "SIGNIFICANT_BASELINE_BETTER": 12,
+      "NOT_SIGNIFICANT": 8
+    },
+    "changed_decision_count": 6,
+    "direction_reversal_count": 0,
+    "max_abs_numeric_difference_from_reference": 0.0,
+    "comparison_tolerance": 1e-10,
+    "all_nonnumeric_fields_equal": true,
+    "analysis_source_sha256": "3857bb5174c6011e093446add420421f788e0bbc5110253aa44ea92fa91b5ada",
+    "created_at_utc": "2026-10-28T18:28:52.170698+00:00",
+    "software": {
+      "numpy": "2.3.5",
+      "pandas": "2.2.3",
+      "scipy": "1.17.0",
+      "statsmodels": "0.14.5"
+    }
+  },
+  "bartlett_operational_notebook": {
+    "all_code_cells_executed": "PASS",
+    "nbformat_validation": "PASS",
+    "removed_folder_dependency_removed": true
+  },
+  "shap": {
+    "recomputed": false,
+    "checks": [
+      {
+        "file": "10_shap_values_ensemble_raw_v4.npz",
+        "sha256": "2bf3f66463ce14df9109fc83b55f0c3423930f9a73c1bcc760774f40cf05bcfd",
+        "matches_saved_execution_output": true
+      },
+      {
+        "file": "10_shap_global_importance_v4.csv",
+        "sha256": "d4982bd537fd51c15ea13f740c3c6f6c9da51f8a75e7f2f3be7e34ec620e47c8",
+        "matches_saved_execution_output": true
+      },
+      {
+        "file": "10_shap_temporal_importance_v4.csv",
+        "sha256": "4e0fcfa029f297f20d7d4c51246ca8d0c689bbb7130a5eea0e1efd2c20fb47b2",
+        "matches_saved_execution_output": true
+      },
+      {
+        "file": "10_shap_quality_diagnostics_v4.json",
+        "sha256": "a190021844e2d3f80f41fd1356e8743ce4b4d38726adaceb411f7cbf61166a59",
+        "matches_saved_execution_output": true
+      },
+      {
+        "file": "10_shap_summary_v4.json",
+        "sha256": "0d763086772522155e9e439839a6ad63df3d3382602f1753fe7f2ab12c05c7ce",
+        "matches_saved_execution_output": true
+      },
+      {
+        "file": "10_shap_report_v4.md",
+        "sha256": "75c1c4d22494276798ffbf076614db850898850e6a0b98f7195a15031291f32b",
+        "matches_saved_execution_output": true
+      }
+    ],
+    "closure_status": "CLOSED",
+    "independent_audit": "PASS"
+  },
+  "existing_output_rejection": "PASS"
+}

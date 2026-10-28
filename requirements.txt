@@ -10,3 +10,6 @@ statsmodels==0.14.6
 
 # Used by the archived scripts; the exact Colab runtime version was not recorded
 scikit-learn>=1.5,<2
+
+# Stage 10 figure generation; exact recorded runtime version was not preserved
+matplotlib
