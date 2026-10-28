@@ -19,3 +19,9 @@ Kurulum yalnız bir TeslaT4 GPU bulunduğunda ilerler. Kurulum sonundaki ayrı y
 - T4/GPU kurulumunun bütünü yerel hazırlık ortamında çalıştırılmadı; kullanıcı Colab çıktısıyla doğrulanacaktır.
 
 Sonraki aşama, sürümleri doğrulanan ayrı ortamdan 21 donmuş girdiyi kontrol edip yeni T4 eğitim/analiz kodlarını ve protokolü sabitlemektir. T4 tekrarı önceden incelenmiş test dönemi üzerinde keşifsel bir ortam sağlamlık kontrolüdür. Üç model × üç tohum koşusunun tamamı raporlanacaktır.
+
+## Girdi ve protokol hazırlığı
+
+`stage_inputs_and_lock_t4_v1.py`, Drive bağlandıktan sonra ayrı H2 Python yürütücüsüyle çalıştırılır. Eski CPU arşivinin tam kimliği doğrulanır; yalnız 21 donmuş girdi ve iki sayısal referans yeni proje klasörüne kopyalanır. Aynı dosyalar yeniden kullanılır; farklı mevcut dosyada işlem durur. Gerçek T4 ortamı ve sürücü kaydı alınır; eğitim/doğrulama girdileri, ölçekleyici ve tarihler kontrol edilir. Üç yapıda sentetik CUDA ileri/geri geçişi yapılır; optimizer adımı ve gerçek veri tahmini yoktur. Yeni protokol ve readiness_t4_v1.json bütün kontroller geçtikten sonra yazılır.
+
+Bu hazırlık `runs/t4_full_run_v1` dizinini oluşturmaz ve dokuz eğitimi başlatmaz. Eğitim ayrı adımda, protokol sabitlendikten sonra başlatılır. Hazırlık kodunun sentetik yol/kimlik/ZIP kontrolleri yerelde geçmiş; asıl Drive/T4 ön kontrolü Colab üzerinde yürütülecektir.
