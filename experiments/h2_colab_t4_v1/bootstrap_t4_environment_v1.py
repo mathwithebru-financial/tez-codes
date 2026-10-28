@@ -35,6 +35,14 @@ def clean_environment():
     return environment
 
 
+def require_uv_version(version_text):
+    # Official wheels may append a platform or build identifier to --version.
+    # Keep the exact numeric pin; the informational suffix is not a version.
+    fields = version_text.split()
+    if len(fields) < 2 or fields[0] != "uv" or fields[1] != UV_VERSION:
+        raise RuntimeError(f"Beklenmeyen kurulum aracı: {version_text}")
+
+
 def main():
     if platform.system() != "Linux" or not Path("/content").is_dir():
         raise RuntimeError("Bu kurulum Colab Linux çalışma zamanı içindir.")
@@ -74,8 +82,7 @@ def main():
                    "UV_PYTHON_INSTALL_BIN": "0"})
     uv = [sys.executable, "-m", "uv"]
     installed_uv = run(uv + ["--version"], env=uv_env, capture=True).stdout.strip()
-    if installed_uv != f"uv {UV_VERSION}":
-        raise RuntimeError(f"Beklenmeyen kurulum aracı: {installed_uv}")
+    require_uv_version(installed_uv)
     if not venv.exists():
         print("Ayrı Python 3.12.13 ortamı oluşturuluyor...", flush=True)
         run(uv + ["venv", "--no-config", "--managed-python", "--python", PYTHON_VERSION, str(venv)], env=uv_env)
