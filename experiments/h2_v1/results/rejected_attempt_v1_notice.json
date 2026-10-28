@@ -1,0 +1,23 @@
+{
+  "status": "REJECTED_BEFORE_ANY_TEST_EVALUATION",
+  "recorded_at_utc": "2026-10-28T19:40:59.511766+00:00",
+  "attempt": "full_run_v1",
+  "training_status": {
+    "status": "FAILED_NO_TEST_ACCESS",
+    "completed": 9,
+    "error_type": "AssertionError",
+    "error": "Paired-seed batch order differs: 2026",
+    "failures": [],
+    "test_arrays_loaded": false
+  },
+  "problem": {
+    "file": "full_run_v1/runs/FS_same_width_seed2026/history.csv",
+    "actual_sha256": "8d91e1884db251c73131b9781c2ef35ef7a97e61b5ffe1d96d487e288ec0e8ab",
+    "completed_record_sha256": "c9f4e0c29a5cc06232c83e95be8b489b179ea478c3970a6af8df42695768228b",
+    "observed_epochs": 99,
+    "recorded_epochs_ran": 100
+  },
+  "cause": "UNKNOWN; no cause attribution is made.",
+  "policy": "Discard this attempt for inference. Rerun the full nine-fit schedule using the identical frozen training implementation, settings and seeds in full_run_v2 before test access. No H2 test prediction has been made.",
+  "original_thesis_sha256": "052028a391397e969afc94ed8acb046c7738df4a2968bd44577c3fb70d2ea2e0"
+}

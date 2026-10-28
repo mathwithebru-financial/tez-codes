@@ -1,6 +1,6 @@
 # H2: kontrollü görev paylaşımı deneyi, v1
 
-28 Ekim 2026: ön kontrol ve bir epoch teknik pilot tamamlandı; dokuz tam eğitim ayrı dizinde başlatıldı. Bu aşamada test sonucu yoktur. Mevcut v4 tez dosyası, sonuçlar ve ana dal değiştirilmez. `protocol_draft.json` ve ön kontrol defteri hazırlık geçmişi olarak korunur; yürütülen tasarım `protocol_locked_v1.json` içindedir.
+28 Ekim 2026: dokuz eğitim, eğitim-sonrası kimlik kapısı ve keşifsel test değerlendirmesi tamamlandı. H2 bu kurulumda desteklenmedi: iki FullSharing kolu da her iki görevde daha yüksek test kaybı üretti. Mevcut v4 tez dosyası, sonuçlar ve ana dal değiştirilmedi. `protocol_draft.json` hazırlık geçmişidir; yürütülen tasarım `protocol_locked_v1.json` içindedir.
 
 | Kol | Yapı | FF boyutu | Doğrulanmış parametre |
 |---|---|---:|---:|
@@ -15,7 +15,7 @@ Her kol 123/777/2026 tohumlarıyla 100 epoch eğitilir. Bütün kollarda aynı v
 - `run_h2_training_v1.py` yalnız eğitim/doğrulama dizilerini açar. Beş test dosyasının yalnız byte kimliği kilitlenir. Yeni ve girdilerden ayrı bir çıktı dizini gerekir; eski sonuçların üzerine yazılmaz.
 - `evaluate_h2_v1.py`, dokuz eğitimin tamamını, 100 epoch geçmişini, en iyi/son kontrol noktalarını, kaynakları ve kilitli analiz kodunu doğrulamadan test dizilerini açmaz.
 - `requirements_h2_v1.txt` bu çalıştırmanın doğrudan bağımlılık sürümleridir. Torch CPU resmi indeksinden kurulmuştur. Pilot eski sklearn sürümü uyarısını yakalamış, tam eğitimden önce scaler ile aynı sklearn 1.6.1 kurulmuştur.
-- Arşivde `inputs/`, `implementation/`, `protocol_locked_v1.json`, `full_run_v1/` ve bağımsız sayısal doğrulama için eski Bartlett referansları birlikte saklanacaktır. Yerel mutlak yollar yürütme kaydının parçasıdır; tekrar çalıştırırken girdi yolu yeni konuma verilir ve dosya kimlikleri aynı tutulur.
+- Arşivde `inputs/`, `implementation/`, `protocol_locked_v1.json`, `full_run_v2/` ve bağımsız sayısal doğrulama için eski Bartlett referansları birlikte saklanmıştır. Yerel mutlak yollar yürütme kaydının parçasıdır; tekrar çalıştırırken girdi yolu yeni konuma verilir ve dosya kimlikleri aynı tutulur.
 
 Eğitim örneği (girdi kopyası ve yeni çıktı yolu verilerek):
 
@@ -34,3 +34,12 @@ Kimlik kontrolü başarılıysa `--verify-only` yerine `--output /path/to/h2_v1/
 ## Yorum sınırı
 
 Mevcut 584 tarihli test dönemi daha önce incelendiğinden bu deney tamamlayıcı ve keşifseldir. Getiri MAE ve volatilite pinball kayıpları dört varlık ve üç tohum üzerinde eşit ağırlıkla hesaplanır; birincil seri, tohumların kayıp ortalamasıdır. Dört karşılaştırmada Bartlett-HAC L=19, h=1 HLN ve Holm kullanılır; L=0 duyarlılık analizi ayrıdır. Eğitim-dış örneklem kayıp farkları üç tohumla betimseldir. Küçük fark tek başına aşırı uyum mekanizmasını kanıtlamaz. Bütün tohumlar ve kontroller raporlanır; olumlu sonuç zorunlu değildir.
+
+
+## Sonuç ve teknik kayıt
+
+Üç tohumun ortalama getiri MAE / volatilite pinball kayıpları: NS_base 0.007527158 / 0.005522560; FS_same_width 0.008344425 / 0.008160073; FS_budget_control 0.009146968 / 0.008945911. Dört birincil L=19/Holm karşılaştırması NoSharing lehinedir; L=0 duyarlılık kararları aynıdır. Tohum düzeyindeki 12 test kaybı karşılaştırmasında da NoSharing daha düşüktür. Ortalama genelleme farkları paylaşım kollarında daha büyüktür; bu, tek başına nedensel aşırı uyum testi değildir.
+
+İlk dokuz eğitimlik deneme (`full_run_v1`), bir geçmiş dosyasının kimlik/satır uyuşmazlığı nedeniyle test açılmadan reddedilmiştir. Aynı sabit kod, ayar ve tohumlarla dokuz eğitimin tamamı `full_run_v2` içinde yeniden yapılmış; bütün kapılar geçtikten sonra değerlendirilmiştir. Reddedilen denemenin teknik kayıtları arşivde ayrı tutulur. Çıkarımda yalnız kabul edilen ikinci deneme kullanılır.
+
+Sayısal tablolar `results/` altındadır; dört yeni karşılaştırma eski ana analizdeki 42 testle birleştirilmez. Tam girdiler, kontrol noktaları, geçmişler, dosya kimlikleri ve tekrar çalıştırma yönergeleri ayrı Drive arşivindedir: https://drive.google.com/drive/folders/1BzYnz5qPTI6fST9dwa1g55nehUtZDYTs . Yeni sonuçlar henüz tez metnine eklenmemiştir.

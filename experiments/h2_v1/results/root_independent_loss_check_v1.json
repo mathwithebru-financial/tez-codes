@@ -1,0 +1,7 @@
+{
+  "status": "ROOT_INDEPENDENT_TEST_LOSS_RECOMPUTATION_PASS",
+  "test_dates": 584,
+  "runs_verified": 9,
+  "maximum_absolute_loss_delta": 9.454242944073599e-17,
+  "method": "Recomputed raw per-asset test errors from stored truths/predictions, averaged assets and then seeds; did not refit or select models."
+}

@@ -1,0 +1,93 @@
+{
+  "status": "H2_EVALUATION_COMPLETE_EXPLORATORY",
+  "accepted_attempt": "full_run_v2",
+  "prior_attempt": "REJECTED_BEFORE_TEST_ACCESS",
+  "old_main_commit": "2e7b0948b493b46b429169adf49e1faf63dd21f6",
+  "training_implementation_sha256": "9acad5fc975a641908d4ebe8ec402d38e2bf940ca96c2ddb479a508110934b88",
+  "evaluation_implementation_sha256": "7c2e819a71c9c5cdb5fe522c4c7083f9961fa0c2d719224a934ed0935f292a53",
+  "locked_training_manifest_sha256": "edc01a81a4e235f2bf46d5fb9fe8a7c2f626ee65eb3a3d418d5ab56f179e9fb3",
+  "selected_checkpoints_frozen_sha256": "7a6f6f8930c488370b463fa22fb43e091b975152caa31a943ab01351c8c52f6d",
+  "runs": [
+    {
+      "arm": "NS_base",
+      "seed": 123,
+      "epochs": 100,
+      "selected_epoch": 27,
+      "best_checkpoint_sha256": "f67d0c5ce7ef7fc898c4eab9ee39db2a1148b5ff0aa342510a2a23b2f3ea0961",
+      "final_checkpoint_sha256": "614c90de78178f162e094fce6a072cad60f4b101efd2420c9ccba9047661820c",
+      "history_sha256": "62591dffe4d4175a16f01aac73fdf334c262722437d04fecb486e6c1cb72a3bd"
+    },
+    {
+      "arm": "NS_base",
+      "seed": 777,
+      "epochs": 100,
+      "selected_epoch": 47,
+      "best_checkpoint_sha256": "f9ceb10aab01000f42211024bafef8cac1c8ea912b33e27a9eaf9d3b143363e5",
+      "final_checkpoint_sha256": "4725a451da3a4b2ff087afffd0d6786b076dc2f5e0b586ff431658cb6cf784d6",
+      "history_sha256": "6995531cd58b26c731c9a909da64a5ce3b3595bcc7496b0dba90261ef591a460"
+    },
+    {
+      "arm": "NS_base",
+      "seed": 2026,
+      "epochs": 100,
+      "selected_epoch": 22,
+      "best_checkpoint_sha256": "db50fe77fe8987fc04eebe934b9585b32ea76d78fd3398bc397eea2bfa7b270b",
+      "final_checkpoint_sha256": "c845aecc557d55de0831b9d959664646727831d9be623a4d7dfd60ef49f5c270",
+      "history_sha256": "02450bbbc89748acb2cc09cab9910723c0b5d31b4f7bf435fab69a2201e17462"
+    },
+    {
+      "arm": "FS_same_width",
+      "seed": 123,
+      "epochs": 100,
+      "selected_epoch": 43,
+      "best_checkpoint_sha256": "727329f221fece2a3f0033027d0d0cd7cd614dba3678fde341604d9cf4d90bac",
+      "final_checkpoint_sha256": "6dff5eb452f930184723c4c6691262a5c2e72451da6a7ccc69539ddaa37abc22",
+      "history_sha256": "3832c7f80ca70c7ca3065f5cab6141dbea75661bb5f57d4d5d5be5840b3e1903"
+    },
+    {
+      "arm": "FS_same_width",
+      "seed": 777,
+      "epochs": 100,
+      "selected_epoch": 34,
+      "best_checkpoint_sha256": "d987f870d3fc4d6a3eb2998247a454982ae9ee0831e1d1c6a1ee9d09e46b53fa",
+      "final_checkpoint_sha256": "48f0f36fe9952d5807bada5b3cc0304dd86119c69ff55f84977dae0ee007a107",
+      "history_sha256": "46f233996043037569229bceb352aac6a6ec057765806ad29473a9084e91fe86"
+    },
+    {
+      "arm": "FS_same_width",
+      "seed": 2026,
+      "epochs": 100,
+      "selected_epoch": 96,
+      "best_checkpoint_sha256": "c8d5ae55ffee6f16b0feba8f9ade184b30f6db4074b592c06196d372b03a4333",
+      "final_checkpoint_sha256": "b172cf7cf80ea95e619a342c2726c27cb7f1c81ad229dff9180782ddf733d5d5",
+      "history_sha256": "b7d2d474450b4b0f4adc15c761bada56528b43577b94d0b3db26a79f7dbe4cca"
+    },
+    {
+      "arm": "FS_budget_control",
+      "seed": 123,
+      "epochs": 100,
+      "selected_epoch": 66,
+      "best_checkpoint_sha256": "07a7f73197e26b6411b95b442f4ecae3298f72214bc66d9309df7c99e4f5d7ca",
+      "final_checkpoint_sha256": "382dcdbbb85d444f84428e7b5d0c57f6d095876b72d4d08870a80254c9704a3f",
+      "history_sha256": "a5291f02e3d42d588b5f46870cde3903ba316da729019ae70287fed6c991c254"
+    },
+    {
+      "arm": "FS_budget_control",
+      "seed": 777,
+      "epochs": 100,
+      "selected_epoch": 86,
+      "best_checkpoint_sha256": "b74f4a1e1b36f610916069c762a16c884e61a84df310f35c072987dbd43265d3",
+      "final_checkpoint_sha256": "1d4d5a733ec9a1a82cb34ed0ef1b59e3b0268fd97a260f80b7a56af2be77e441",
+      "history_sha256": "86520afb03685d906ba9af2d873f64ee8b26c129b74fa0c563b0684c5faa222c"
+    },
+    {
+      "arm": "FS_budget_control",
+      "seed": 2026,
+      "epochs": 100,
+      "selected_epoch": 76,
+      "best_checkpoint_sha256": "1a82c98354c3070850305b7448ef3f1bfc4e36bc6b8086e751b6e73337fcfc1b",
+      "final_checkpoint_sha256": "4e6a8167cd827a939b79de65fadbca2bb37fbd878517b9cb365ed5eefbb3da07",
+      "history_sha256": "3640883cd26e80f87e1095939c207b8ac4137983898661224ffbdf8dcf56e682"
+    }
+  ]
+}
