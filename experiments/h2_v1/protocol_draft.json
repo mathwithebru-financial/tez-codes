@@ -1,0 +1,107 @@
+{
+  "protocol_id": "H2_CONTROLLED_SHARING_V1",
+  "status": "DRAFT_PREFLIGHT_PENDING_NOT_EXECUTED",
+  "created_date": "2026-10-28",
+  "purpose": "Supplementary exploratory investigation of task sharing, held-out accuracy and generalization-gap proxies; not a retroactive confirmatory test.",
+  "source_repository_commit": "2e7b0948b493b46b429169adf49e1faf63dd21f6",
+  "original_results_policy": "Read old v4 inputs only; do not execute archived modules at import time, modify old outputs, replace old checkpoints, relock old protocols or edit the thesis before results are checked.",
+  "source_root": "/content/drive/MyDrive/tez_transformer_v4_repro",
+  "separate_output_root": "/content/drive/MyDrive/tez_transformer_h2_v1",
+  "data": {
+    "strategy": "Use existing chronological frozen splits as an explicitly exploratory supplement.",
+    "old_test_already_examined": true,
+    "features": "baseline",
+    "lookback": 10,
+    "assets": [
+      "BIST100",
+      "USDTRY",
+      "EURTRY",
+      "GOLD"
+    ],
+    "train_sequences": 2714,
+    "validation_sequences": 584,
+    "test_sequences": 584,
+    "scaling": "Original train-fitted scalers; no refit.",
+    "independent_confirmation": "Would require a separately frozen chronological period not previously examined; not claimed by this draft."
+  },
+  "arms": [
+    {
+      "id": "NS_base",
+      "architecture": "NoSharing",
+      "d_model": 32,
+      "n_head": 4,
+      "n_layers": 2,
+      "d_ff": 128,
+      "expected_parameters_analytical": 54536
+    },
+    {
+      "id": "FS_same_width",
+      "architecture": "FullSharingMTL",
+      "d_model": 32,
+      "n_head": 4,
+      "n_layers": 2,
+      "d_ff": 128,
+      "expected_parameters_analytical": 28456
+    },
+    {
+      "id": "FS_budget_control",
+      "architecture": "FullSharingMTL",
+      "d_model": 32,
+      "n_head": 4,
+      "n_layers": 2,
+      "d_ff": 329,
+      "expected_parameters_analytical": 54586
+    }
+  ],
+  "capacity_rule": {
+    "target": "NS_base total trainable parameters",
+    "choice": "Keep d_model, head count and layer count fixed; choose integer d_ff minimizing absolute parameter-count difference, with smaller d_ff as tie-break; no outcome-based search.",
+    "relative_tolerance": 0.01,
+    "counts_must_be_verified_by_instantiation": true,
+    "limitation": "Equal-width and approximately equal-budget comparisons are complementary controls; FF width changes in the budget arm and neither comparison proves a pure causal sharing effect."
+  },
+  "training": {
+    "status": "NOT_IMPLEMENTED_OR_RUN_IN_THIS_PREPARATION",
+    "seeds": [
+      123,
+      777,
+      2026
+    ],
+    "planned_arm_seed_runs": 9,
+    "epochs": 100,
+    "early_stopping": false,
+    "batch_size": 64,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1,
+    "dropout": 0.1,
+    "loss": "0.7 * scaled-return MSE + 0.3 * scaled-volatility pinball(tau=0.5)",
+    "batch_order": "Same deterministic batch permutations for each paired seed across arms.",
+    "checkpoint_rule": "Lowest original raw-scale combined validation score; earlier epoch breaks ties. Also report fixed final-epoch diagnostics.",
+    "test_access": "No new test predictions until all nine selected checkpoints and the analysis settings are frozen."
+  },
+  "outcomes": {
+    "primary_accuracy": {
+      "return": "Per-date absolute error averaged equally over the four assets, in raw units.",
+      "volatility": "Per-date pinball(tau=0.5) loss averaged equally over the four assets, in raw units."
+    },
+    "gap_proxy": "Held-out task loss minus training-evaluation task loss, using the same metric and model.eval() for both. Show both components, validation gap, histories and seed-level variation.",
+    "seed_policy": "Report every seed, mean and sample SD; primary loss series averages per-seed losses, rather than selecting the best seed or silently substituting an ensemble-forecast loss.",
+    "comparisons": [
+      "FS_same_width vs NS_base, return",
+      "FS_same_width vs NS_base, volatility",
+      "FS_budget_control vs NS_base, return",
+      "FS_budget_control vs NS_base, volatility"
+    ],
+    "planned_uncertainty": "Paired date-level loss differences; Bartlett-HAC L=19, h=1 HLN t-reference, Holm over the four performance comparisons. Report lag-0 sensitivity and finite-lag limitations. Generalization-gap contrasts remain descriptive with three seeds.",
+    "direction": "Positive (NS loss - FS loss) means sharing has lower held-out loss."
+  },
+  "interpretation": {
+    "consistent_pattern": "Both tasks show lower held-out error and smaller gap proxies, with per-seed and capacity-control results reported in full.",
+    "mixed_pattern": "Improvement restricted to one task, one control, or unstable across seeds is reported as mixed evidence.",
+    "gap_caution": "A small gap alone can reflect poor training fit or distribution shift; no claim that the reduction is exclusively overfitting or that a mediating mechanism has been proved.",
+    "no_favourable_result_requirement": true
+  },
+  "next_gate": "Run the read-only preflight, inspect its report, verify the capacity counts and input identities, then finalize the separate training implementation before any H2 model fitting."
+}
