@@ -1,0 +1,192 @@
+{
+  "protocol_id": "H2_ORIGINAL_PERIOD_INDEPENDENT_TASK_COMPARISON_V1",
+  "status": "FIXED_BEFORE_ORIGINAL_PERIOD_STL_EVALUATION",
+  "created_date": "2026-10-29",
+  "purpose": "Complete the independent-task H2 comparison on the thesis's unchanged original 584 test examples, using the same fifteen frozen models. Preserve all existing thesis, H2 and 2026 supplementary results.",
+  "classification": {
+    "label": "supplementary_retrospective_original_test_comparison",
+    "original_hypothesis_preexisted": true,
+    "original_test_already_examined": true,
+    "prior_2026_aggregate_outcomes_already_examined": true,
+    "independent_confirmation_claimed": false,
+    "exposure_scope": "The original thesis test data and prior sharing-model results were already examined. The 2026 supplementary comparison was also completed before this original-period evaluation plan was written.",
+    "chronology_scope": "Fix this supplementary analysis before this workflow deserializes the original test arrays for the newly trained STL controls. This does not restore unseen status to a previously examined test period.",
+    "selection_scope": "Reuse the already frozen checkpoint selections; perform no new training, checkpoint search, architecture selection or outcome-dependent period selection."
+  },
+  "project_root": "/content/drive/MyDrive/tez_transformer_h2_original_period_v1",
+  "source_project_root": "/content/drive/MyDrive/tez_transformer_h2_external_2026_v1",
+  "existing_h2_run_root": "/content/drive/MyDrive/tez_transformer_h2_t4_v1/runs/t4_full_run_v1",
+  "protected_roots": [
+    "/content/drive/MyDrive/tez_transformer_v4_repro",
+    "/content/drive/MyDrive/tez_transformer_h2_v1",
+    "/content/drive/MyDrive/tez_transformer_h2_t4_v1",
+    "/content/drive/MyDrive/tez_transformer_h2_external_2026_v1"
+  ],
+  "source_identities": {
+    "original_training_manifest": {
+      "path": "source_records/locked_training_manifest.json",
+      "sha256": "517c06f3b1a5d71de9739f56ef6a2af7cf9a918ed2cf303a52d30bfc7b9f393a"
+    },
+    "existing_h2_checkpoints_manifest": {
+      "path": "source_records/selected_checkpoints_frozen.json",
+      "sha256": "12cf2481978546689f9087d7d97cb4d8325756a15f393a9c936a31e2a47876f4"
+    },
+    "selected_stl_checkpoints_manifest": {
+      "path": "runs/stl_run_v1/selected_stl_checkpoints_frozen.json",
+      "sha256": "c1c546a9233f0ce7e77dffe33850b58ed5028e4d695597871f3c216d8f3c5f44"
+    },
+    "source_analysis_lock": {
+      "path": "analysis_locked_v1.json",
+      "sha256": "a155ad428996a6c1d40ca6a755212206ca9092a7b0fdc76200c3a1f063bdb274"
+    },
+    "original_evaluation_helper": {
+      "path": "implementation/evaluate_external_h2_v1.py",
+      "sha256": "773f01d1c9d5cd8b535d2c8640c86b0b039ab9391d6265fb734543861d953a0f"
+    },
+    "stl_training_helper": {
+      "path": "implementation/run_stl_controls_v1.py",
+      "sha256": "a7c6e85302d0da1d280fa114575fc837109d5ed631104c7635df2bbb46380343"
+    },
+    "original_preparation_helper": {
+      "path": "implementation/prepare_external_sequences_v1.py",
+      "sha256": "8648220271dbed9d537e86f42f944b52ce69755a77a846d84a4fadecab501179"
+    }
+  },
+  "legacy_original_period_reference": {
+    "root": "/content/drive/MyDrive/tez_transformer_h2_t4_v1/runs/t4_full_run_v1",
+    "path": "evaluation_v1/h2_losses_predictions_v1.npz",
+    "sha256": "b7bcbdd52cd5c30b2d0f4e8c5cfc4859fad1a31cb366968f628f64a689448b0a",
+    "size_bytes": 561947,
+    "contents_used": "Nine existing H2 models' raw original-test predictions, eighteen original-test daily task-loss series, and original test dates; use only to check compatibility after this workflow's analysis lock.",
+    "precision_reference_source_sha256": "e0c00890564c208df59e1c8ae6c5373c8a175a3675cdb0ab11aecbd8c564f27e",
+    "precision_rule": "The archived original-period evaluator casts raw truth and raw predictions to float64 before pointwise subtraction. Apply that same loss arithmetic to every model and split in this original-period comparison.",
+    "compatibility_relative_tolerance": 0.00001,
+    "compatibility_absolute_tolerance": 0.00000001,
+    "compatibility_policy": "Verify the same original test dates and model identities; compare reproduced existing-model raw predictions and daily losses with this immutable archive using the declared tolerances. Report differences and retain the archive unchanged."
+  },
+  "design": {
+    "thesis_raw_start_inclusive": "2010-01-04",
+    "thesis_raw_end_inclusive": "2024-12-31",
+    "assets": ["BIST100", "USDTRY", "EURTRY", "GOLD"],
+    "features": "Original baseline features; per-asset LogRet and Vol20 in the unchanged archived column order, eight inputs per model.",
+    "lookback": 10,
+    "seeds": [123, 777, 2026],
+    "n_train_sequences": 2714,
+    "n_validation_sequences": 584,
+    "n_test_sequences": 584,
+    "test_start_inclusive": "2022-10-06",
+    "test_end_inclusive": "2024-12-31",
+    "target_date_definition": "Original target-realization dates; retain all 584 examples in their archived order.",
+    "n_selected_models": 15,
+    "n_existing_h2_models": 9,
+    "n_independent_stl_models": 6,
+    "n_new_fits": 0,
+    "n_arm_seed_predictions": 12,
+    "reuse_existing_checkpoints": true,
+    "existing_frozen_arms": [
+      {"id": "NS_base", "architecture": "NoSharing", "d_ff": 128, "parameters": 54536},
+      {"id": "FS_same_width", "architecture": "FullSharingMTL", "d_ff": 128, "parameters": 28456},
+      {"id": "FS_budget_control", "architecture": "FullSharingMTL", "d_ff": 329, "parameters": 54586}
+    ],
+    "independent_control": {
+      "id": "STL_pair",
+      "architecture": "Separate return-only and volatility-only SingleTaskTransformer models per seed",
+      "parameters_each": 27268,
+      "parameters_pair": 54536
+    }
+  },
+  "data_policy": {
+    "input_root_relative_to_source_project": "inputs",
+    "all_original_input_identities": "The 21 source-relative identities in original_training_manifest.input_identities; verify all as opaque bytes before the new analysis lock, including the five original test-array files.",
+    "sequence_directory": "data/sequences/baseline/lb10",
+    "test_files": [
+      "X_test.npy",
+      "y_test.npy",
+      "y_test_raw.npy",
+      "anchor_dates_test.npy",
+      "target_realization_dates_test.npy"
+    ],
+    "scalers": "Use the unchanged original train-fitted scalers; no fit or recalibration.",
+    "splits": "Use only the original archived train, validation and test arrays; do not reconstruct a new split, remove dates or append examples.",
+    "calendar_and_missingness": "Retain the original prepared data and archived calendar exactly. This evaluation introduces no new imputation or calendar rules.",
+    "source_access_allowlist": "Read frozen manifests, implementation helpers, the 21 original input files, the archived 08B model-definition source, fifteen selected checkpoints and their training/validation evidence. The source project folder name describes where those frozen artifacts are stored, not the dates evaluated here.",
+    "forbidden_source_subtree": "new_period",
+    "new_prices_downloaded": false,
+    "new_period_price_or_result_arrays_read": false,
+    "old_source_or_result_files_modified": false
+  },
+  "model_policy": {
+    "training_started": false,
+    "hyperparameters_changed": false,
+    "checkpoint_selection_changed": false,
+    "test_based_model_selection": false,
+    "replay": "Recompute the frozen selected models' original training and validation metrics before original-test inference, using the existing replay tolerances.",
+    "replay_relative_tolerance": 0.00001,
+    "replay_absolute_tolerance": 0.00000001,
+    "training_scope": "All reused fits use the original training and validation data. No 2026 observations were used for these fits.",
+    "control_scope": "STL changes separate optimization, gradient clipping and task-specific checkpoint selection together with sharing. Interpret this independent-training bundle rather than a pure isolated causal sharing intervention."
+  },
+  "runtime": {
+    "python": "3.12.13",
+    "packages": {
+      "torch": "2.11.0+cu128",
+      "numpy": "2.3.5",
+      "pandas": "2.2.3",
+      "scipy": "1.17.0",
+      "scikit-learn": "1.6.1"
+    },
+    "gpu": "Tesla T4",
+    "cuda_runtime": "12.8",
+    "cudnn_version": 91900,
+    "execution_policy": "Use the unchanged verified deterministic evaluation configuration and training/validation replay tolerances from the frozen source helpers."
+  },
+  "outcomes": {
+    "return_primary": "Raw-scale MAE, averaged equally over the four assets per target date.",
+    "volatility_primary": "Raw-scale pinball loss at tau=0.5, averaged equally over the four assets per target date.",
+    "precision": "Retain float32 forecast and prepared-array storage. Cast raw truth and predictions to float64 before pointwise subtraction and MAE/pinball evaluation; use float64 aggregation and statistical inference for all fifteen models and all train/validation/test gap components. This matches the archived original-584 H2 evaluation rather than the separate 2026 evaluator's pointwise float32 convention.",
+    "seed_aggregation": "Calculate each seed's pointwise loss, average four assets within date and then average the three seed loss series. Do not substitute loss of averaged forecasts or treat dates times seeds as independent observations.",
+    "primary_comparisons": [
+      {"sharing_arm": "FS_same_width", "control": "STL_pair", "task": "return"},
+      {"sharing_arm": "FS_same_width", "control": "STL_pair", "task": "volatility"},
+      {"sharing_arm": "FS_budget_control", "control": "STL_pair", "task": "return"},
+      {"sharing_arm": "FS_budget_control", "control": "STL_pair", "task": "volatility"}
+    ],
+    "secondary_comparisons": [
+      {"sharing_arm": "FS_same_width", "control": "NS_base", "task": "return"},
+      {"sharing_arm": "FS_same_width", "control": "NS_base", "task": "volatility"},
+      {"sharing_arm": "FS_budget_control", "control": "NS_base", "task": "return"},
+      {"sharing_arm": "FS_budget_control", "control": "NS_base", "task": "volatility"}
+    ],
+    "loss_difference_direction": "Control loss minus full-sharing loss; a positive difference favors sharing.",
+    "statistics": {
+      "method": "DM with Bartlett-HAC long-run variance and HLN h=1 correction",
+      "lag": 19,
+      "h": 1,
+      "autocovariance_denominator": "T",
+      "two_sided": true,
+      "reference_distribution": "Student t",
+      "reference_df": 583,
+      "holm_alpha": 0.05,
+      "primary_family_size": 4,
+      "secondary_family_size": 4,
+      "multiplicity": "Holm correction separately within the four primary and four secondary comparisons; report both families completely.",
+      "sensitivity_lag": 0,
+      "sensitivity_rule": "Repeat the same two four-comparison families at lag0 as separately labelled sensitivity analyses; retain lag19 as the main specification.",
+      "n_planned_contrasts": 8,
+      "n_tests_including_sensitivity": 16,
+      "confidence_intervals": "Pointwise 95% Student-t intervals for the mean loss difference; not multiplicity-adjusted."
+    },
+    "reporting": "Report every arm, seed and asset; seed mean and sample standard deviation with denominator n_seeds-1. Report exact target dates and all 584 examples.",
+    "overfitting_component": "Report raw-primary-loss train/validation/original-test gaps and learning curves descriptively. Three seeds do not establish a causal overfitting mechanism; the loss-series DM comparison is not a test of the gap.",
+    "interpretation": "Assess each task and full-sharing control separately. Improvement in only one task does not support improvement in both tasks. Keep period, capacity, optimization, checkpoint-selection and prior-exposure limits explicit."
+  },
+  "gates": {
+    "analysis_lock_status": "ORIGINAL_PERIOD_ANALYSIS_FIXED_BEFORE_CURRENT_TEST_INFERENCE",
+    "lock_before_current_original_test_deserialization": true,
+    "independent_unseen_test_claim_allowed": false,
+    "before_current_test_inference": "Verify this plan, implementation identities, source manifests, all fifteen selected checkpoint identities and all 21 original input identities as opaque bytes, then write an immutable analysis lock in the new original-period project.",
+    "evaluation_stage": "Only after that lock is verified, deserialize the archived original test arrays, verify exact shapes and all 584 chronological target dates, replay selected training/validation metrics, and evaluate all fixed models.",
+    "output_policy": "Write only in the new original-period project. Reuse only byte-identical completed outputs; retain partial or differing outputs for review without replacement.",
+    "amendments": "Version any necessary correction with its reason and an accurate record of prior data or outcome access. Preserve every earlier plan and result."
+  }
+}
