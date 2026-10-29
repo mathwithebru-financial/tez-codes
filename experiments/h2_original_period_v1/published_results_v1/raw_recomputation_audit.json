@@ -1,0 +1,132 @@
+{
+  "status": "PASS",
+  "created_at_utc": "2026-10-29T18:40:30.185986+00:00",
+  "independently_recomputed_from_raw_forecasts": true,
+  "original_evaluator_functions_imported": false,
+  "models_reexecuted_or_retrained": false,
+  "new_prices_downloaded": false,
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "manifest_sha256": "193dbc57d5f56b1ff45541d2030204054e197c79fd61506196f9c00313d0cfb0",
+  "legacy_archive_sha256": "b7bcbdd52cd5c30b2d0f4e8c5cfc4859fad1a31cb366968f628f64a689448b0a",
+  "n_scientific_artifacts_verified": 11,
+  "counts": {
+    "pointwise_loss_values_recomputed": 56064,
+    "n_dates": 584,
+    "n_seeds": 3,
+    "n_arms": 4,
+    "n_DM_tests": 16,
+    "n_Holm_families": 4,
+    "n_legacy_forecast_arrays_matched_exactly": 9,
+    "n_legacy_test_loss_series_matched_exactly": 18,
+    "n_legacy_metadata_arrays_matched_exactly": 3,
+    "n_replay_rows_checked": 48,
+    "n_learning_curve_rows_checked": 2400
+  },
+  "checks_by_category": {
+    "file_hashes": 25,
+    "metadata": 10,
+    "arrays": 9,
+    "legacy_arrays": 40,
+    "pointwise_losses": 8,
+    "legacy_replay_csv": 31,
+    "daily_losses": 5257,
+    "seed_asset_losses": 241,
+    "seed_mean_sd": 121,
+    "DM_HLN_Holm": 209,
+    "report_crosslink": 176,
+    "train_validation_replay": 194,
+    "generalization_gaps": 169,
+    "gap_component_replay_tolerance": 48,
+    "legacy_train_validation_gap_components": 36,
+    "gap_mean_sd": 105,
+    "learning_curves": 122
+  },
+  "total_checks": 6801,
+  "maximum_absolute_differences_by_category": {
+    "pointwise_losses": 0.0,
+    "daily_losses": 0.0,
+    "seed_asset_losses": 0.0,
+    "seed_mean_sd": 0.0,
+    "DM_HLN_Holm": 7.105427357601002e-15,
+    "report_crosslink": 7.105427357601002e-15,
+    "train_validation_replay": 0.0,
+    "generalization_gaps": 0.0,
+    "float64_gap_components_vs_float32_replay": 4.746316464854239e-10,
+    "legacy_train_validation_gap_components": 0.0,
+    "gap_mean_sd": 0.0,
+    "learning_curves": 0.0
+  },
+  "failures": [],
+  "lag19_comparison_summary": [
+    {
+      "family": "primary",
+      "sharing_arm": "FS_same_width",
+      "task": "return",
+      "sharing_loss_increase_percent": 28.077328713228322,
+      "holm_adjusted_p": 7.172715569924422e-11
+    },
+    {
+      "family": "primary",
+      "sharing_arm": "FS_same_width",
+      "task": "volatility",
+      "sharing_loss_increase_percent": 64.92816564886039,
+      "holm_adjusted_p": 1.8147476385863475e-09
+    },
+    {
+      "family": "primary",
+      "sharing_arm": "FS_budget_control",
+      "task": "return",
+      "sharing_loss_increase_percent": 32.15993240115119,
+      "holm_adjusted_p": 1.9293431624964358e-10
+    },
+    {
+      "family": "primary",
+      "sharing_arm": "FS_budget_control",
+      "task": "volatility",
+      "sharing_loss_increase_percent": 91.59838179677848,
+      "holm_adjusted_p": 1.8147476385863475e-09
+    },
+    {
+      "family": "secondary",
+      "sharing_arm": "FS_same_width",
+      "task": "return",
+      "sharing_loss_increase_percent": 16.772895857391593,
+      "holm_adjusted_p": 3.805008688095029e-08
+    },
+    {
+      "family": "secondary",
+      "sharing_arm": "FS_same_width",
+      "task": "volatility",
+      "sharing_loss_increase_percent": 63.981203925183635,
+      "holm_adjusted_p": 4.732813043100886e-09
+    },
+    {
+      "family": "secondary",
+      "sharing_arm": "FS_budget_control",
+      "task": "return",
+      "sharing_loss_increase_percent": 20.495158494085544,
+      "holm_adjusted_p": 3.805008688095029e-08
+    },
+    {
+      "family": "secondary",
+      "sharing_arm": "FS_budget_control",
+      "task": "volatility",
+      "sharing_loss_increase_percent": 90.49828871585358,
+      "holm_adjusted_p": 4.732813043100886e-09
+    }
+  ],
+  "precision_notes": [
+    "Original584 pointwise errors were recomputed after separately casting raw truth and forecasts from float32 to float64.",
+    "Train/validation gap components use float64 pointwise losses; replay and learning-curve primary-loss records use archived float32 arithmetic. Their small differences were checked against stated rtol1e-5/atol1e-8 rather than incorrectly requiring exact equality.",
+    "For the original nine models, every float64 train/validation gap component also matched the pinned legacy daily loss archive."
+  ],
+  "limitations": [
+    "This audit independently scored saved raw forecasts and verified records; it did not rerun checkpoint forward passes.",
+    "STL float64 historical train/validation component means were checked for agreement with replay tolerances and their aggregation/SD was recalculated, but independent historical raw STL forecasts were not available among these output artifacts.",
+    "This retrospective original-test comparison cannot restore unseen status or establish causal overfitting reduction."
+  ]
+}

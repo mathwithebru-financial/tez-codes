@@ -1,0 +1,162 @@
+{
+  "artifacts": {
+    "analysis_report_v1.json": {
+      "sha256": "12b8ddd633bcc98705b709748b0a397844024b524a2f1889d43e7a4bb7411aeb",
+      "size_bytes": 21560
+    },
+    "daily_seed_mean_primary_losses_v1.csv": {
+      "sha256": "530bf7eb38dc2fa3da1f8e4b3a1ebad7e5e0a41c607cb1809317db469d3aef53",
+      "size_bytes": 105577
+    },
+    "dm_holm_comparisons_v1.csv": {
+      "sha256": "79f2871ac994759bc6c57bf39ddfc68d13115d5978dd3cc9bc91b43df4047cd9",
+      "size_bytes": 6455
+    },
+    "generalization_gaps_descriptive_v1.csv": {
+      "sha256": "e48007d17a065e15bbfed3085ac43b3d799ef59274ca45d39525d804243ac654",
+      "size_bytes": 4577
+    },
+    "generalization_gaps_seed_summary_v1.csv": {
+      "sha256": "5bef850dc3d9bf81b8dffefadaceb8dfff6bac278729d12602d47fba74c7af6a",
+      "size_bytes": 2965
+    },
+    "learning_curves_v1.csv": {
+      "sha256": "670dca6ad7a6628b4c74d8125b1b1af1043f97877a930b6c6ca3f4c11c1e0db1",
+      "size_bytes": 293492
+    },
+    "original_nine_test_replay_v1.csv": {
+      "sha256": "30fc3e5c4df3158139a239a5ec9b1dabb798c97149ca354bdc7073d60f8935ed",
+      "size_bytes": 2161
+    },
+    "predictions_and_losses_v1.npz": {
+      "sha256": "acd314e80afd12ba27fc967c96a43369175cefbb09863b27e4bae0d6ba495100",
+      "size_bytes": 499846
+    },
+    "primary_losses_by_seed_and_asset_v1.csv": {
+      "sha256": "c7764b0771e5730491befaca4a1d18518cede1f62813d759fdea3f40bd9da620",
+      "size_bytes": 7263
+    },
+    "primary_losses_seed_summary_v1.csv": {
+      "sha256": "06195a13aa516f9b39413e733251225af5cbbbed5983310aa1239873d12d374a",
+      "size_bytes": 3700
+    },
+    "train_validation_replay_v1.csv": {
+      "sha256": "c39f23e47e3c995ff09498f7d47d431587aeab52b5dea814377dfd27005b9510",
+      "size_bytes": 5848
+    }
+  },
+  "created_at_utc": "2026-10-29T18:34:00.988918+00:00",
+  "external_2026_data_or_output_files_opened": false,
+  "input_identities": {
+    "analysis_lock_sha256": "dbd7167d8aecc2cb02696d82b07bcfce1f6e3260cc53467a50d948a9f0d5d908",
+    "evaluation_implementation_sha256": "aeece22bd61ea34855ca94eee3957c38ff92ce563b316946f5223b9ee6427446",
+    "original_test_input_identities": {
+      "X_test.npy": {
+        "sha256": "d46eff86c8cf5d08ac4123105d9d906c350b0c306a89172d14526e12a7bd2d97",
+        "size_bytes": 187008
+      },
+      "anchor_dates_test.npy": {
+        "sha256": "40194047c9b7fe62adc0966f2c144e1be1e9c85f832d96ffe0a12624d34aab63",
+        "size_bytes": 23488
+      },
+      "target_realization_dates_test.npy": {
+        "sha256": "0100eea598141cf5990b4d7ba5a8071236846ec7a1d1196c078b6c3af1fcf441",
+        "size_bytes": 23488
+      },
+      "y_test.npy": {
+        "sha256": "961739612ab1fc41b054c6a08cbbdedea214397a7e273b495ea466029004c755",
+        "size_bytes": 18816
+      },
+      "y_test_raw.npy": {
+        "sha256": "a37034c833365b89302dbf0e3d57c29dc2eaf6ada91bfd1fae16fd56f112adb8",
+        "size_bytes": 18816
+      }
+    },
+    "protocol_plan_sha256": "f952059f03f84e69732964c58a6fcb1f14b1b7cc72c5b2e97a1a6358de361641",
+    "source_analysis_lock_sha256": "a155ad428996a6c1d40ca6a755212206ca9092a7b0fdc76200c3a1f063bdb274",
+    "source_scientific_evidence": {
+      "analysis_lock_sha256": "a155ad428996a6c1d40ca6a755212206ca9092a7b0fdc76200c3a1f063bdb274",
+      "existing_h2_checkpoints_manifest_sha256": "12cf2481978546689f9087d7d97cb4d8325756a15f393a9c936a31e2a47876f4",
+      "existing_h2_selected_checkpoints": [
+        {
+          "arm": "NS_base",
+          "path": "runs/NS_base_seed123/best_checkpoint.pt",
+          "seed": 123,
+          "sha256": "a37b5920e301ae629aed5199c5d80e1716312b668c7a32a87e826852057e19c3"
+        },
+        {
+          "arm": "NS_base",
+          "path": "runs/NS_base_seed777/best_checkpoint.pt",
+          "seed": 777,
+          "sha256": "fc57de940bfcd1e366574222fc949e03f91ae31c0a85eb870e5d7bc94889380a"
+        },
+        {
+          "arm": "NS_base",
+          "path": "runs/NS_base_seed2026/best_checkpoint.pt",
+          "seed": 2026,
+          "sha256": "56766d96369d250aec67f5d221920bf06f10cebd9fccaec0ecf6fd68a2f2b7f5"
+        },
+        {
+          "arm": "FS_same_width",
+          "path": "runs/FS_same_width_seed123/best_checkpoint.pt",
+          "seed": 123,
+          "sha256": "eebd94e15f2bb1e86da6aee19f4ccefc3f15ab422fe7042c89673fea0b5297bd"
+        },
+        {
+          "arm": "FS_same_width",
+          "path": "runs/FS_same_width_seed777/best_checkpoint.pt",
+          "seed": 777,
+          "sha256": "9b12e4e56c2b7acc2e7cece8f418ddc3eb7f8f8c8ee5acdd7251ffe334053126"
+        },
+        {
+          "arm": "FS_same_width",
+          "path": "runs/FS_same_width_seed2026/best_checkpoint.pt",
+          "seed": 2026,
+          "sha256": "0417299cf9f419ac177d238d8b3a92ed895bb826974d72dc00f55dd2e02d5e09"
+        },
+        {
+          "arm": "FS_budget_control",
+          "path": "runs/FS_budget_control_seed123/best_checkpoint.pt",
+          "seed": 123,
+          "sha256": "cc56b822a40edb24ec14829a347afe4791cab3bc8f185c7b6f8e3daf168ba0ea"
+        },
+        {
+          "arm": "FS_budget_control",
+          "path": "runs/FS_budget_control_seed777/best_checkpoint.pt",
+          "seed": 777,
+          "sha256": "ba4c53e4573ffafe87795513d25d1beab155549e2c139fbead4b6bbb5d4e245e"
+        },
+        {
+          "arm": "FS_budget_control",
+          "path": "runs/FS_budget_control_seed2026/best_checkpoint.pt",
+          "seed": 2026,
+          "sha256": "9e4e862fd7e6e36ef5812153bdad22467ec6c742c2c274394da4876469511ca2"
+        }
+      ],
+      "implementation_sha256": {
+        "acquire_external_prices_v1.py": "258fc4ed7311a4f4936e0bca3b8102c470761f5ef3bdf532491d364c4e2d4342",
+        "evaluate_external_h2_v1.py": "773f01d1c9d5cd8b535d2c8640c86b0b039ab9391d6265fb734543861d953a0f",
+        "lock_external_analysis_v1.py": "1e2d4b827ad3118288756f88f5be53a036429eb68afd63b63d1c2edc8d0f4ea1",
+        "prepare_external_sequences_v1.py": "8648220271dbed9d537e86f42f944b52ce69755a77a846d84a4fadecab501179",
+        "run_stl_controls_v1.py": "a7c6e85302d0da1d280fa114575fc837109d5ed631104c7635df2bbb46380343",
+        "stage_external_plan_v1.py": "3f27ecb19b82a6d6f4aa223758baf8e98d215adfd28619bc1148ef2c1f8acec4"
+      },
+      "protocol_plan_sha256": "0073b3bcc80a342d25f1034fef66d5eb353a9e4e5c14ae3719f57e98de81a659",
+      "selected_stl_checkpoints_manifest_sha256": "c1c546a9233f0ce7e77dffe33850b58ed5028e4d695597871f3c216d8f3c5f44"
+    }
+  },
+  "n_arm_seed_predictions": 12,
+  "n_dm_tests_including_sensitivity": 16,
+  "n_planned_contrasts": 8,
+  "n_selected_models": 15,
+  "old_project_writes": false,
+  "old_test_arrays_loaded": true,
+  "original_test_arrays_loaded": true,
+  "period": {
+    "end_inclusive": "2024-12-31",
+    "n_target_dates": 584,
+    "start": "2022-10-06"
+  },
+  "status": "H2_ORIGINAL_PERIOD_EVALUATION_COMPLETE",
+  "training_started": false
+}

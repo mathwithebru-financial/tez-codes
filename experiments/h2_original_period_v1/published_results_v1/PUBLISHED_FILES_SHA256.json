@@ -1,0 +1,51 @@
+{
+  "scope": "Compact original-period public result subset; complete eleven-artifact bundle retained in Drive. No raw model inputs or checkpoints included.",
+  "original_evaluation_manifest_sha256": "193dbc57d5f56b1ff45541d2030204054e197c79fd61506196f9c00313d0cfb0",
+  "files": {
+    "evaluation_manifest_v1.json": {
+      "sha256": "193dbc57d5f56b1ff45541d2030204054e197c79fd61506196f9c00313d0cfb0",
+      "size_bytes": 6830,
+      "role": "exact_original_scientific_output"
+    },
+    "analysis_report_v1.json": {
+      "sha256": "12b8ddd633bcc98705b709748b0a397844024b524a2f1889d43e7a4bb7411aeb",
+      "size_bytes": 21560,
+      "role": "exact_original_scientific_output"
+    },
+    "dm_holm_comparisons_v1.csv": {
+      "sha256": "79f2871ac994759bc6c57bf39ddfc68d13115d5978dd3cc9bc91b43df4047cd9",
+      "size_bytes": 6455,
+      "role": "exact_original_scientific_output"
+    },
+    "primary_losses_seed_summary_v1.csv": {
+      "sha256": "06195a13aa516f9b39413e733251225af5cbbbed5983310aa1239873d12d374a",
+      "size_bytes": 3700,
+      "role": "exact_original_scientific_output"
+    },
+    "generalization_gaps_seed_summary_v1.csv": {
+      "sha256": "5bef850dc3d9bf81b8dffefadaceb8dfff6bac278729d12602d47fba74c7af6a",
+      "size_bytes": 2965,
+      "role": "exact_original_scientific_output"
+    },
+    "original_nine_test_replay_v1.csv": {
+      "sha256": "30fc3e5c4df3158139a239a5ec9b1dabb798c97149ca354bdc7073d60f8935ed",
+      "size_bytes": 2161,
+      "role": "exact_original_scientific_output"
+    },
+    "train_validation_replay_v1.csv": {
+      "sha256": "c39f23e47e3c995ff09498f7d47d431587aeab52b5dea814377dfd27005b9510",
+      "size_bytes": 5848,
+      "role": "exact_original_scientific_output"
+    },
+    "raw_recomputation_audit.json": {
+      "sha256": "8e49e321ba9b18a38f9a56b05ecf1bfd9d3cc714d4dc5e919cf19328d64b87c2",
+      "size_bytes": 4840,
+      "role": "post_run_audit"
+    },
+    "provenance_audit.json": {
+      "sha256": "56c8f4e6ca97f93cd2c43736a27d57940dc3dccdc9c9b9ff2085832cfaaa0347",
+      "size_bytes": 3399,
+      "role": "post_run_audit"
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "scope": "provenance and manifest verification; independent numerical recomputation handled separately",
+  "n_checks": 34,
+  "all_passed": true,
+  "checks": [
+    {
+      "check": "manifest matches supplied Colab SHA",
+      "passed": true
+    },
+    {
+      "check": "artifact SHA analysis_report_v1.json",
+      "passed": true
+    },
+    {
+      "check": "artifact bytes analysis_report_v1.json",
+      "passed": true
+    },
+    {
+      "check": "artifact SHA daily_seed_mean_primary_losses_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "artifact bytes daily_seed_mean_primary_losses_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "artifact SHA dm_holm_comparisons_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "artifact bytes dm_holm_comparisons_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "artifact SHA generalization_gaps_descriptive_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "artifact bytes generalization_gaps_descriptive_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "artifact SHA generalization_gaps_seed_summary_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "artifact bytes generalization_gaps_seed_summary_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "artifact SHA learning_curves_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "artifact bytes learning_curves_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "artifact SHA original_nine_test_replay_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "artifact bytes original_nine_test_replay_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "artifact SHA predictions_and_losses_v1.npz",
+      "passed": true
+    },
+    {
+      "check": "artifact bytes predictions_and_losses_v1.npz",
+      "passed": true
+    },
+    {
+      "check": "artifact SHA primary_losses_by_seed_and_asset_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "artifact bytes primary_losses_by_seed_and_asset_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "artifact SHA primary_losses_seed_summary_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "artifact bytes primary_losses_seed_summary_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "artifact SHA train_validation_replay_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "artifact bytes train_validation_replay_v1.csv",
+      "passed": true
+    },
+    {
+      "check": "analysis lock identity",
+      "passed": true
+    },
+    {
+      "check": "reviewed evaluator identity",
+      "passed": true
+    },
+    {
+      "check": "reviewed original period protocol identity",
+      "passed": true
+    },
+    {
+      "check": "unchanged source analysis lock identity",
+      "passed": true
+    },
+    {
+      "check": "report comparisons equal supplied output",
+      "passed": true
+    },
+    {
+      "check": "all same 15 selected checkpoints source evidence",
+      "passed": true
+    },
+    {
+      "check": "external_2026_data_or_output_files_opened false",
+      "passed": true
+    },
+    {
+      "check": "training_started false",
+      "passed": true
+    },
+    {
+      "check": "old_project_writes false",
+      "passed": true
+    },
+    {
+      "check": "original test explicitly marked seen",
+      "passed": true
+    },
+    {
+      "check": "fixed 584 target dates and original period",
+      "passed": true
+    }
+  ]
+}
