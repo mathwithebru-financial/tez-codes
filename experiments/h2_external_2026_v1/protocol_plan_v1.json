@@ -1,0 +1,150 @@
+{
+  "protocol_id": "H2_EXTERNAL_2026_WITH_INDEPENDENT_TASK_CONTROLS_V1",
+  "status": "STAGED_PLAN_NO_NEW_DATA",
+  "created_date": "2026-10-29",
+  "purpose": "Prespecified new-period external assessment of the existing frozen H2 sharing models, supplemented with independently trained return and volatility controls. Preserve every original v4 and H2 result.",
+  "classification": {
+    "label": "prespecified_new_period_external_assessment",
+    "original_hypothesis_preexisted": true,
+    "known_prior_research_data_exposure_end": "2025-12-31",
+    "earlier_2025_use": "A saved earlier three-asset notebook contains executed model test results spanning 2023-2025; this is separate from the current v4 thesis and its H2 fits.",
+    "inspected_v4_and_existing_h2_end": "2024-12-31",
+    "2026_experiments_in_inspected_records": "not_found",
+    "user_recollection": "unsure; not treated as a declaration of no prior access",
+    "older_project_directories_in_current_mount": "tez_transformer and transformer_tez not present in the read-only user check",
+    "coverage_limit": "Inspection cannot prove that deleted, unsaved or inaccessible work never used 2026 data. Report this scope; do not claim an absolutely pristine holdout."
+  },
+  "protected_roots": [
+    "/content/drive/MyDrive/tez_transformer_v4_repro",
+    "/content/drive/MyDrive/tez_transformer_h2_v1",
+    "/content/drive/MyDrive/tez_transformer_h2_t4_v1"
+  ],
+  "project_root": "/content/drive/MyDrive/tez_transformer_h2_external_2026_v1",
+  "design": {
+    "assets": [
+      "BIST100",
+      "USDTRY",
+      "EURTRY",
+      "GOLD"
+    ],
+    "features": "baseline; interleaved per-asset LogRet, Vol20; all eight inputs for every model",
+    "lookback": 10,
+    "seeds": [
+      123,
+      777,
+      2026
+    ],
+    "epochs": 100,
+    "stl_tasks": [
+      "return",
+      "volatility"
+    ],
+    "existing_frozen_arms": [
+      {
+        "id": "NS_base",
+        "architecture": "NoSharing",
+        "d_ff": 128,
+        "parameters": 54536
+      },
+      {
+        "id": "FS_same_width",
+        "architecture": "FullSharingMTL",
+        "d_ff": 128,
+        "parameters": 28456
+      },
+      {
+        "id": "FS_budget_control",
+        "architecture": "FullSharingMTL",
+        "d_ff": 329,
+        "parameters": 54586
+      }
+    ],
+    "new_control": {
+      "id": "STL_pair",
+      "architecture": "Two independent SingleTaskTransformer models",
+      "parameters_each": 27268,
+      "parameters_pair": 54536,
+      "new_fits": 6
+    },
+    "reuse_existing_checkpoints": true,
+    "old_training_and_validation_arrays": "Copy the 21 identities locked by the old T4 manifest; never resplit or refit scalers.",
+    "old_test_arrays": "May be copied and hashed as opaque bytes only; not deserialized by staging or STL training.",
+    "new_test_start_inclusive": "2026-01-01",
+    "new_test_end_inclusive": "2026-10-28",
+    "minimum_new_target_rows": 150,
+    "new_period_rule": "Select by target-realization date on the union calendar, preserve backward input history. No outcome-dependent date selection or window shifting.",
+    "minimum_observed_price_rows_per_asset_in_new_period": 150
+  },
+  "stl_training": {
+    "model_structure": "Same SingleTaskTransformer branch structure as archived 08B, 8 inputs, 4 task outputs, d_model32, 4 heads, 2 layers, d_ff128, dropout0.1.",
+    "initialization": "For each seed instantiate the archived NoSharing template and copy each corresponding task branch into a disjoint independent STL model; record the mapping and initial state identities.",
+    "batch_order": "Same independently seeded mini-batch index order per seed across the two STL tasks; record hashes. Identical dropout streams across architectures are not claimed.",
+    "optimizer": "AdamW; one optimizer per task",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 64,
+    "gradient_clip_norm": 1.0,
+    "early_stopping": false,
+    "return_training_loss": "Unweighted scaled-target MSE",
+    "volatility_training_loss": "Unweighted scaled-target pinball, tau0.5",
+    "checkpoint_selection": "Earliest strict minimum of the task component of the archived normalized ValidationScore: mean of per-asset primary validation loss divided by the corresponding frozen per-asset baseline denominator.",
+    "checkpoint_validation_denominators": "Frozen return_denominator and volatility_denominator values from selection_baseline_denominators_v4.json; no new fit or recalibration.",
+    "training_diagnostics": "For every epoch report scaled training objective, raw-scale train/validation primary task loss and normalized validation task score using model.eval.",
+    "independence_scope": "STL has separate optimizers, gradient clipping and task-specific checkpoint selection; compare this independent-training bundle with MTL. It is not a pure isolated intervention on sharing alone."
+  },
+  "new_period_data": {
+    "provider": "Yahoo Finance",
+    "tickers": {
+      "BIST100": "XU100.IS",
+      "USDTRY": "USDTRY=X",
+      "EURTRY": "EURTRY=X",
+      "GOLD": "GC=F"
+    },
+    "price_field": "Close",
+    "adjusted": false,
+    "download_parameters": {
+      "auto_adjust": false,
+      "back_adjust": false,
+      "repair": false,
+      "interval": "1d"
+    },
+    "download_start_inclusive": "2024-11-01",
+    "download_end_exclusive": "2026-10-29",
+    "gold_definition": "GC=F gold futures price in USD; do not substitute the older GOLD_TRY series or gram gold.",
+    "historical_policy": "Keep the original frozen history through 2024-12-31 byte-for-byte; acquired overlap is checked and differences reported, never used to overwrite the original history. Append only later dates.",
+    "calendar": "Union of observed dates, ascending and unique; forward fill only, no backward fill. Report missing and forward-filled rows per asset.",
+    "return": "log(P_t / P_previous_union_row)",
+    "volatility": "sample standard deviation of the last20 log returns, ddof1, multiplied by sqrt252",
+    "targets": "Return and Vol20 at the next union-calendar row; target order four returns then four volatilities.",
+    "scalers": "Original train-fitted x_scaler and y_scaler; transform only.",
+    "quality_gate": "Require finite positive observed prices, original ticker/column identities, at least150 actually observed price rows per asset within the new test period, chronological finite prepared targets, and at least150 new target dates. These are coverage gates, not a power guarantee. Report overlap revisions and missingness before any model metrics; do not silently replace instruments or dates."
+  },
+  "outcomes": {
+    "return_primary": "Raw-scale MAE, averaged over four assets per target date",
+    "volatility_primary": "Raw-scale pinball tau0.5, averaged over four assets per target date",
+    "seed_aggregation": "Mean of the three per-seed loss series; not the loss of mean forecasts.",
+    "reporting": "All planned arms and seeds, per-asset descriptive details, seed mean and sample SD. Do not treat dates times seeds as independent observations.",
+    "primary_comparisons": "FS_same_width vs STL_pair and FS_budget_control vs STL_pair, separately for return and volatility: four tests in one primary Holm family.",
+    "secondary_comparisons": "The two FS arms vs NS_base for the two tasks: four tests in one separate secondary Holm family, report all.",
+    "loss_difference_direction": "Control loss minus full-sharing loss; positive favors sharing.",
+    "statistics": {
+      "method": "DM with Bartlett-HAC long-run variance and HLN h1 small-sample factor",
+      "lag": 19,
+      "autocovariance_denominator": "T",
+      "two_sided": true,
+      "reference_distribution": "Student t, T-1 df",
+      "holm_alpha": 0.05,
+      "lag0_sensitivity": "Same four comparisons per family, explicitly separate sensitivity analyses; not used to replace primary decisions."
+    },
+    "overfitting_component": "Report raw-primary-loss train/validation/new-test gaps and epoch learning curves. Gap direction is descriptive with only three seeds; it does not establish a causal reduction in overfitting, and the loss-series DM test is not a test of the gap.",
+    "interpretation": "Assess accuracy for each task and each FS control separately after multiplicity correction. A gain in only one task does not support both-task improvement. Even concordant gains and smaller gaps must be qualified by capacity, optimization, checkpoint-selection, prior-exposure and distribution-shift limits. Never relabel H2 as fully causally confirmed by gap direction alone."
+  },
+  "gates": {
+    "this_stage": "Verify old identities, copy allowlisted inputs and code, record this plan, run no training or new-data access.",
+    "training_stage": "Train six STL models using old training and validation data only, then verify and freeze selected checkpoints.",
+    "before_new_data": "Finalize and lock acquisition/preparation/evaluation code hashes, this plan SHA and all existing and STL checkpoint identities in analysis_locked_v1.json before downloading new-period prices.",
+    "analysis_lock_status": "ANALYSIS_LOCKED_BEFORE_NEW_DATA",
+    "new_data_access_allowed_now": false,
+    "amendments": "Any necessary change is versioned with the reason and whether new data or outcomes had been accessed. Never overwrite an earlier plan or silently change decisions."
+  }
+}

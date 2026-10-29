@@ -1,0 +1,26 @@
+{
+  "files": {
+    "README.md": {
+      "sha256": "2751ac7f2005f92704d70c330ddb35483f92543007e66cf33203485f24609b96",
+      "size_bytes": 5827
+    },
+    "prepare_external_sequences_v1.py": {
+      "sha256": "8648220271dbed9d537e86f42f944b52ce69755a77a846d84a4fadecab501179",
+      "size_bytes": 42456
+    },
+    "protocol_plan_v1.json": {
+      "sha256": "0073b3bcc80a342d25f1034fef66d5eb353a9e4e5c14ae3719f57e98de81a659",
+      "size_bytes": 9370
+    },
+    "run_stl_controls_v1.py": {
+      "sha256": "a7c6e85302d0da1d280fa114575fc837109d5ed631104c7635df2bbb46380343",
+      "size_bytes": 46105
+    },
+    "stage_external_plan_v1.py": {
+      "sha256": "3f27ecb19b82a6d6f4aa223758baf8e98d215adfd28619bc1148ef2c1f8acec4",
+      "size_bytes": 16284
+    }
+  },
+  "purpose": "H2 external2026 preparation only; no fitting or new-data access",
+  "schema_version": 1
+}
