@@ -1,0 +1,61 @@
+TEZ v3 — CODE AUDIT MANIFEST
+================================================================================
+Oluşturulma zamanı: 2026-07-10T14:13:37.146524
+BASE_DIR: /content/drive/MyDrive/tez_transformer
+Bulunan dosya sayısı: 24
+Eksik dosya sayısı: 0
+
+BULUNAN DOSYALAR
+--------------------------------------------------------------------------------
+[OK] scripts/00_setup_v3.py
+     SHA256: d4715197351084b678071a66f1e3f95f4356bd6ba8039db1a30a8b946e1281b1
+[OK] scripts/01_veri_toplama_v3.py
+     SHA256: a7153aa51b8ad3b4c3ff4ecf67cfeb0ce1b27b3bbaf51322a8f153c9790e8c7e
+[OK] scripts/02_preprocessing_v3.py
+     SHA256: b464b5e3cc78c69fba6c5de59fc852194e101755e9c9e7b33dd19fc7178a0454
+[OK] scripts/03_baseline_sanity_v3.py
+     SHA256: fb63d09b68e7e8ee9fdcbbeb908c40e9a3cf7f5f6324dddeb341b980bfca5beb
+[OK] scripts/04_small_model_test_v3.py
+     SHA256: d00510fe6c7e426979654cd09db2817b398ba2ff585c6f7fbaa44be3c07edc70
+[OK] scripts/05_grid_search_v3.py
+     SHA256: f51b2c2f60f5024700c73709691a832b4657d3ffbaf3e8472997aef05ad20d3c
+[OK] scripts/05b_grid_search_v3_max50.py
+     SHA256: a6b5aee3f6f355e6343393bebedfe2dc6ec09b0f15ba10c88fe62b8520afd843
+[OK] config/schema_v3.json
+     SHA256: 3281c8c47942b065fe25cf4602d982595bb9108bb6e4d849f368152b4d4a8de4
+[OK] config/frozen_data_sha256_v3.csv
+     SHA256: e44ea9e4767310e453c11f2717f7d39dfb5218aa17d74ec7fee2db92322a54e2
+[OK] config/script_inventory_sha256_v3.csv
+     SHA256: a4d63233ac91f12abc0fe72085c98659702110094b8f05984704bfcad4602898
+[OK] data/processed/split_meta.json
+     SHA256: daa6e6a4b09ad182053e6a30310195e48c437086e9ff0ae3782b6eb307c4d02f
+[OK] data/processed/meta_v3.json
+     SHA256: 03dfcb068a7b3fdaa8049a03a14ec4207713e7461aa3567a0ed685c5e991cf7b
+[OK] data/sequences/preprocessing_meta_v3.json
+     SHA256: 159e08cf1d44d910752a9419d85b2a3fc9f35b0693359995e1ab13bb541ad5b8
+[OK] data/processed/selection_baseline_denominators_v3.json
+     SHA256: df58572a542b9501ac35796de6256ad28ceb6365842223c01bfcdc3f0b27b9d2
+[OK] results/grid_search/grid_results_v3.csv
+     SHA256: 55e93090e8f9cd6a311b40142ebba55d37e78007ee9c0c98720bf4e2ba39335f
+[OK] results/grid_search/grid_results_ranked_v3.csv
+     SHA256: d5daaaa12ed8dec89d7ee9d8921c5fe0d2d9fbb69b4e526200a03b508df6b918
+[OK] results/grid_search/grid_top10_v3.csv
+     SHA256: bc35af6237bc227c9e499aff1bc4a6a02eb7292a3ce5df3add74b10b8d8bed77
+[OK] results/grid_search_max50/grid_results_max50_v3.csv
+     SHA256: ff41b4a8503e001c0d3bb4bcfaa670a81c895cb9a49467cdfa0999edf9a8490c
+[OK] results/grid_search_max50/grid_results_ranked_max50_v3.csv
+     SHA256: 14efe4146dc74a83f121fff90d46eacbf37f78768bb8934d97e66518f10c66aa
+[OK] results/grid_search_max50/grid_top10_max50_v3.csv
+     SHA256: ad505fad9ff008ac0291a5eff1ba459d8f637468edeae9146c5a1010c19fca49
+[OK] results/grid_search_max50/grid_progress_max50_v3.json
+     SHA256: b1d22a73800bba169c95482db1a3a1772201096afa268b7e74da22d1a6933f7a
+[OK] results/baselines/validation_naive_baselines_v3.csv
+     SHA256: b0d3e0d92056cee177c7d588cf7e1cd8f3991b880cd67e4dfd4faa882ada7bbd
+[OK] results/baselines/sequence_sanity_checks_v3.csv
+     SHA256: 5b524071ee43419e6d387041118752523f5dde211abfe832755e710d4bc42374
+[OK] results/baselines/baseline_sanity_summary_v3.json
+     SHA256: 3090112d9a842cc824ab5ac06bb215d4ebf864878b7e92e07931c8befa092d89
+
+EKSİK DOSYALAR
+--------------------------------------------------------------------------------
+YOK

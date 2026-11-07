@@ -1,0 +1,107 @@
+{
+  "record_type": "historical_v3_acquisition_source_recovery",
+  "documentation_added_on": "2026-11-07",
+  "source_archive": {
+    "file_name": "tez_v3_code_audit_bundle.zip",
+    "size_bytes": 278028,
+    "sha256": "b2aa8674df37e45320288d84600324ed47488345a54ec9fc514823efe9614837",
+    "manifest_entries_checked": 24,
+    "manifest_mismatches": 0,
+    "scope": "24 listed files checked; selected originals preserved here, full archive retained separately"
+  },
+  "selected_original_files": [
+    {
+      "path": "scripts/01_veri_toplama_v3.py",
+      "size_bytes": 19081,
+      "sha256": "a7153aa51b8ad3b4c3ff4ecf67cfeb0ce1b27b3bbaf51322a8f153c9790e8c7e",
+      "preserved_unchanged": true
+    },
+    {
+      "path": "config/schema_v3.json",
+      "size_bytes": 5066,
+      "sha256": "3281c8c47942b065fe25cf4602d982595bb9108bb6e4d849f368152b4d4a8de4",
+      "preserved_unchanged": true
+    },
+    {
+      "path": "config/frozen_data_sha256_v3.csv",
+      "size_bytes": 683,
+      "sha256": "e44ea9e4767310e453c11f2717f7d39dfb5218aa17d74ec7fee2db92322a54e2",
+      "preserved_unchanged": true
+    },
+    {
+      "path": "data/processed/meta_v3.json",
+      "size_bytes": 2550,
+      "sha256": "03dfcb068a7b3fdaa8049a03a14ec4207713e7461aa3567a0ed685c5e991cf7b",
+      "preserved_unchanged": true
+    },
+    {
+      "path": "config/audit_manifest_v3.txt",
+      "size_bytes": 3409,
+      "sha256": "6b1a9192cf146049a02f0fbf766dca52544b573b3d4517efeca29508f2b89953",
+      "preserved_unchanged": true
+    }
+  ],
+  "historical_metadata": {
+    "created_at": "2026-06-20 14:45:25",
+    "timezone_recorded": null,
+    "source": "data/processed/meta_v3.json",
+    "is_first_ever_download_proof": false,
+    "establishes_cmes_use": false
+  },
+  "data_acquisition": {
+    "provider": "Yahoo Finance via yfinance",
+    "tickers": {
+      "BIST100": "XU100.IS",
+      "USDTRY": "USDTRY=X",
+      "EURTRY": "EURTRY=X",
+      "GOLD": "GC=F"
+    },
+    "schema_frequency": "daily",
+    "schema_start_date": "2010-01-01",
+    "schema_end_date": "2024-12-31",
+    "download_end_parameter": "2025-01-01",
+    "explicit_download_parameters": {
+      "auto_adjust": false,
+      "progress": false
+    },
+    "price_column_priority": [
+      "Adj Close",
+      "Close"
+    ],
+    "interval_explicitly_passed": false,
+    "ignore_tz_explicitly_passed": false,
+    "historical_yfinance_version_established_by_selected_files": false
+  },
+  "frozen_raw_identity": {
+    "repository_path": "data/raw/raw_prices.csv",
+    "size_bytes": 313321,
+    "rows": 3912,
+    "price_columns": [
+      "BIST100",
+      "USDTRY",
+      "EURTRY",
+      "GOLD"
+    ],
+    "first_date": "2010-01-04",
+    "last_date": "2024-12-31",
+    "sha256": "ab5f275d38dc98057b1cedcf58019adb26be7402c7ed5ae6ee3d6877b2444893",
+    "matches_v3_frozen_data_inventory": true,
+    "matches_v4_frozen_raw_record": true,
+    "drive_file_url": "https://drive.google.com/file/d/11Vva9B9fzsC4WNmqhB6yqVRvI8s_OkIq/view",
+    "v4_copy_record_url": "https://drive.google.com/file/d/1Df-8u9gUfE6tKzTHl9TPzDKKdh43MY3-/view"
+  },
+  "method_boundary": {
+    "historical_v3_fill": "ffill().bfill()",
+    "current_v4_fill": "ffill() only",
+    "additional_values_filled_by_bfill_after_ffill_on_exact_frozen_raw": 0,
+    "historical_v3_processed_shapes_are_not_v4_shapes": true,
+    "clock_time_availability_validated_by_this_record": false
+  },
+  "work_performed": {
+    "original_code_executed": false,
+    "market_data_redownloaded": false,
+    "models_retrained": false,
+    "frozen_raw_replaced": false,
+    "v4_protocols_or_locked_outputs_changed": false
+  }
+}

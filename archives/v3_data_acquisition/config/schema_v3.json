@@ -1,0 +1,199 @@
+{
+  "version": "v3",
+  "created_at": "2026-06-20 14:42:35",
+  "thesis": {
+    "student": "Ebru Altunbağ",
+    "university": "Muğla Sıtkı Koçman Üniversitesi",
+    "program": "Uygulamalı Matematik Yüksek Lisans",
+    "title_tr": "Çoklu Görevli Transformer ile Finansal Risk ve Getiri Tahmini",
+    "title_en": "Multi-Task Transformer-Based Financial Risk and Return Forecasting"
+  },
+  "data": {
+    "assets": {
+      "BIST100": "XU100.IS",
+      "USDTRY": "USDTRY=X",
+      "EURTRY": "EURTRY=X",
+      "GOLD": "GC=F"
+    },
+    "asset_order": [
+      "BIST100",
+      "USDTRY",
+      "EURTRY",
+      "GOLD"
+    ],
+    "start_date": "2010-01-01",
+    "end_date": "2024-12-31",
+    "source": "Yahoo Finance via yfinance",
+    "frequency": "daily",
+    "price_column_priority": [
+      "Adj Close",
+      "Close"
+    ],
+    "calendar_rule": "union_calendar_then_ffill_bfill"
+  },
+  "split": {
+    "method": "chronological",
+    "train_ratio": 0.7,
+    "validation_ratio": 0.15,
+    "test_ratio": 0.15,
+    "random_split": false,
+    "test_rule": "Test seti yalnızca 07_final_test_evaluation_v3.py içinde açılır."
+  },
+  "scaling": {
+    "scaler": "StandardScaler",
+    "fit_rule": "Scaler yalnızca train setine fit edilir.",
+    "transform_rule": "Validation ve test setlerine yalnızca transform uygulanır.",
+    "minmax_used": false
+  },
+  "features": {
+    "baseline": {
+      "features_per_asset": [
+        "LogRet",
+        "Vol20"
+      ],
+      "n_assets": 4,
+      "n_features": 8
+    },
+    "full": {
+      "features_per_asset": [
+        "LogRet",
+        "Vol20",
+        "MA5_Ratio",
+        "MA20_Ratio",
+        "RSI14",
+        "MACD",
+        "MACDSignal"
+      ],
+      "n_assets": 4,
+      "n_features": 28
+    }
+  },
+  "targets": {
+    "target_order": [
+      "BIST100_NextRet",
+      "USDTRY_NextRet",
+      "EURTRY_NextRet",
+      "GOLD_NextRet",
+      "BIST100_NextVol",
+      "USDTRY_NextVol",
+      "EURTRY_NextVol",
+      "GOLD_NextVol"
+    ],
+    "rule": "İlk 4 hedef NextRet, son 4 hedef NextVol.",
+    "code_rule": "y[:, :4] return targets, y[:, 4:] volatility targets",
+    "n_targets": 8
+  },
+  "sequence": {
+    "lookbacks": [
+      10,
+      20,
+      30,
+      60
+    ],
+    "overlap_aware": true,
+    "rule": "Geçmiş pencere taşınır, target taşınmaz."
+  },
+  "models": {
+    "architectures": [
+      "FullSharingMTL",
+      "PartialSharingMTL",
+      "HierarchicalMTL",
+      "NoSharing"
+    ],
+    "n_architectures": 4,
+    "nosharing_note": "NoSharing single-task değildir; encoder paylaşımı olmayan çok görevli ablasyon modelidir.",
+    "patchtst_used": false,
+    "patchtst_exclusion_reason": "Bu tez farklı Transformer ailelerini değil, MTL paylaşım stratejilerini karşılaştırır."
+  },
+  "losses": {
+    "strategies": [
+      "FixedLambda_0.3",
+      "FixedLambda_0.5",
+      "FixedLambda_0.7",
+      "UncertaintyWeighting",
+      "PCGrad"
+    ],
+    "return_loss": "MSE",
+    "volatility_loss": "PinballLoss_tau_0.5",
+    "pinball_note": "Tau=0.5 medyan-optimal ve MAE ile orantılı dayanıklı kayıptır."
+  },
+  "model_sizes": {
+    "small": {
+      "d_model": 32,
+      "n_head": 4,
+      "n_layers": 2,
+      "d_ff": 128
+    },
+    "medium": {
+      "d_model": 64,
+      "n_head": 4,
+      "n_layers": 2,
+      "d_ff": 256
+    },
+    "large": {
+      "d_model": 128,
+      "n_head": 8,
+      "n_layers": 4,
+      "d_ff": 512
+    }
+  },
+  "experiment": {
+    "feature_sets": [
+      "baseline",
+      "full"
+    ],
+    "grid_size": 480,
+    "grid_formula": "4 architectures × 5 losses × 4 lookbacks × 3 sizes × 2 feature sets",
+    "grid_seed": 42,
+    "multiseed_top_k": 10,
+    "multiseed_seeds": [
+      42,
+      123,
+      777
+    ],
+    "selection_rule": "Validation baseline-normalize skoruna göre seçim yapılır.",
+    "test_selection_forbidden": true
+  },
+  "selection_score": {
+    "return_ratio": "Model_Return_Error / ReturnZero_Error",
+    "vol_ratio": "Model_Vol_Error / VolPersistence_Error",
+    "avg_return_ratio": "mean(ReturnRatio across 4 assets)",
+    "avg_vol_ratio": "mean(VolRatio across 4 assets)",
+    "validation_score": "0.5 * AvgReturnRatio + 0.5 * AvgVolRatio",
+    "lower_is_better": true,
+    "catastrophic_warning": 1.3,
+    "catastrophic_severe": 1.5
+  },
+  "metrics": {
+    "return": [
+      "MAE",
+      "RMSE",
+      "R2"
+    ],
+    "volatility": [
+      "MAE",
+      "PinballLoss_tau_0.5"
+    ],
+    "mape_used": false,
+    "mape_reason": "Günlük getiriler sıfıra yakın olduğunda MAPE kararsız ve yanıltıcı olabilir."
+  },
+  "baselines": {
+    "models": [
+      "ReturnZero",
+      "ReturnPersistence",
+      "VolPersistence",
+      "SingleTaskLSTM",
+      "SingleTaskTransformer",
+      "XGBoost",
+      "GARCH_1_1",
+      "GJR_GARCH"
+    ],
+    "egarch_used": false,
+    "egarch_note": "EGARCH ana pipeline'a dahil edilmez; teorik referans olarak anılabilir."
+  },
+  "statistical_tests": {
+    "dm_test": true,
+    "dm_correction": "Harvey et al. 1997 small sample correction",
+    "multiple_testing": "Holm-Bonferroni"
+  }
+}

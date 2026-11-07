@@ -1,0 +1,113 @@
+{
+  "created_at": "2026-06-20 14:45:25",
+  "script": "01_veri_toplama_v3.py",
+  "base_dir": "/content/drive/MyDrive/tez_transformer",
+  "schema_path": "/content/drive/MyDrive/tez_transformer/config/schema_v3.json",
+  "data": {
+    "assets": [
+      "BIST100",
+      "USDTRY",
+      "EURTRY",
+      "GOLD"
+    ],
+    "tickers": {
+      "BIST100": "XU100.IS",
+      "USDTRY": "USDTRY=X",
+      "EURTRY": "EURTRY=X",
+      "GOLD": "GC=F"
+    },
+    "start_date": "2010-01-01",
+    "end_date": "2024-12-31",
+    "source": "Yahoo Finance via yfinance",
+    "price_column_priority": [
+      "Adj Close",
+      "Close"
+    ],
+    "calendar_rule": "union_calendar_then_ffill_bfill"
+  },
+  "features": {
+    "baseline_columns": [
+      "BIST100_LogRet",
+      "BIST100_Vol20",
+      "USDTRY_LogRet",
+      "USDTRY_Vol20",
+      "EURTRY_LogRet",
+      "EURTRY_Vol20",
+      "GOLD_LogRet",
+      "GOLD_Vol20"
+    ],
+    "full_columns": [
+      "BIST100_LogRet",
+      "BIST100_Vol20",
+      "BIST100_MA5_Ratio",
+      "BIST100_MA20_Ratio",
+      "BIST100_RSI14",
+      "BIST100_MACD",
+      "BIST100_MACDSignal",
+      "USDTRY_LogRet",
+      "USDTRY_Vol20",
+      "USDTRY_MA5_Ratio",
+      "USDTRY_MA20_Ratio",
+      "USDTRY_RSI14",
+      "USDTRY_MACD",
+      "USDTRY_MACDSignal",
+      "EURTRY_LogRet",
+      "EURTRY_Vol20",
+      "EURTRY_MA5_Ratio",
+      "EURTRY_MA20_Ratio",
+      "EURTRY_RSI14",
+      "EURTRY_MACD",
+      "EURTRY_MACDSignal",
+      "GOLD_LogRet",
+      "GOLD_Vol20",
+      "GOLD_MA5_Ratio",
+      "GOLD_MA20_Ratio",
+      "GOLD_RSI14",
+      "GOLD_MACD",
+      "GOLD_MACDSignal"
+    ]
+  },
+  "targets": {
+    "target_names": [
+      "BIST100_NextRet",
+      "USDTRY_NextRet",
+      "EURTRY_NextRet",
+      "GOLD_NextRet",
+      "BIST100_NextVol",
+      "USDTRY_NextVol",
+      "EURTRY_NextVol",
+      "GOLD_NextVol"
+    ],
+    "target_order_rule": "İlk 4 hedef NextRet, son 4 hedef NextVol."
+  },
+  "shapes": {
+    "raw_prices": [
+      3912,
+      4
+    ],
+    "prices_clean": [
+      3912,
+      4
+    ],
+    "features_baseline": [
+      3837,
+      8
+    ],
+    "features_full": [
+      3837,
+      28
+    ],
+    "targets_all": [
+      3837,
+      8
+    ]
+  },
+  "split_meta_file": "data/processed/split_meta.json",
+  "important_notes": [
+    "Bu dosyada scaler uygulanmamıştır.",
+    "Bu dosyada sequence üretilmemiştir.",
+    "Bu dosyada model eğitilmemiştir.",
+    "Scaler sadece 02_preprocessing_v3.py içinde train setine fit edilecektir.",
+    "Target sırası kilitlidir: ilk 4 kolon NextRet, son 4 kolon NextVol."
+  ]
+}

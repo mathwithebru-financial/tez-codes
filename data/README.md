@@ -20,6 +20,10 @@ This directory contains the exact raw price snapshot used by the locked v4 thesi
 
 The CSV is a frozen research snapshot. It is supplied so the archived pipeline can be reproduced without silently replacing the thesis data with a later vendor revision.
 
+## Acquisition provenance
+
+The [preserved v3 acquisition sources](../archives/v3_data_acquisition/README.md) document downloading these series from Yahoo Finance with `yfinance`, `auto_adjust=False`, and an `Adj Close` then `Close` price-column preference. The original v3 raw checksum matches this exact v4 snapshot. The archive distinguishes historical acquisition and preprocessing from the current v4 pipeline.
+
 ## Integrity check
 
 From the repository root:

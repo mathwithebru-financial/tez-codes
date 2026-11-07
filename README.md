@@ -98,6 +98,10 @@ Use the reproduction route appropriate to the available inputs:
 
 The frozen raw dataset is included. Derived datasets, scalers, checkpoints, and large arrays remain intentionally excluded from the public repository. Their hashes identify the required frozen inputs; they do not supply those bytes. Fresh training is a separate reproduction level and may not recreate the exact checkpoint hashes required by later locked analyses.
 
+## Data acquisition provenance
+
+The recovered [historical v3 acquisition sources](archives/v3_data_acquisition/README.md) preserve the Yahoo Finance download code, original schema and production metadata, and checksum evidence linking the v3 raw snapshot to the exact dataset used by v4. These sources are a historical archive; the current v4 workflow continues to use the frozen raw CSV.
+
 ## Verified environment records
 
 The archived artifacts record:

@@ -52,6 +52,10 @@ ab5f275d38dc98057b1cedcf58019adb26be7402c7ed5ae6ee3d6877b2444893
 
 The exact frozen raw dataset is included at `data/raw/raw_prices.csv` for reproducibility. Its SHA-256 matches the locked value above. Derived datasets are not included. Checksums, schemas, and protocol locks make the expected inputs auditable.
 
+### Recovered acquisition source
+
+The [historical v3 acquisition archive](../archives/v3_data_acquisition/README.md) provides selected unchanged source files, original production metadata and checksum inventories, and a separately dated verification record linking the v3 raw file to the frozen v4 snapshot. It does not replace the v4 preparation script or establish the first-ever download time, original chat identity, or market-closing-time availability.
+
 ## Leakage controls
 
 - Splits are chronological.
