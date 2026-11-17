@@ -1,0 +1,93 @@
+{
+  "date": "2026-11-13",
+  "protocol": "P1lag1_assumption_based_sensitivity",
+  "status": "RECORDED_BEFORE_NEW_MODEL_RUNS_STRICT_F_K_BOUNDARY_CORRECTED",
+  "primary_population": {
+    "train": 2712,
+    "validation": 583,
+    "test": 584,
+    "tasks": [
+      "return",
+      "Vol20"
+    ],
+    "assets": [
+      "BIST100",
+      "USDTRY",
+      "EURTRY",
+      "GOLD"
+    ],
+    "rule": "Strict-F_k eligible P1 dates, with upstream training and model-selection labels purged at split boundaries. Preserve584testtargets; all comparisons use the same eligible dates.",
+    "raw_quality_filter": false,
+    "metric_results_used_to_select_mask": false,
+    "training_loss_rows_changed_by_diagnostic_masks": false
+  },
+  "secondary_populations": {
+    "raw_return_target_support": "Both original raw prices P[t],P[t+1] present for that asset.",
+    "raw_Vol20_target_support": "All21 original raw prices P[t-19]..P[t+1] present for that asset.",
+    "strict_full_model_input_plus_target": "Task-specific secondary mask AND all120 raw price cells supporting the10x8 P1 input present:30price rows x4assets.",
+    "strict_asset_input_plus_target": "Diagnostic own-asset30price-row support; does not certify all8model inputs.",
+    "use_for_checkpoint_or_hyperparameter_selection": false,
+    "matching_rule": "For each asset/task/population, all compared models and naive denominators must use exactly the same target dates; report n.",
+    "P0_P1_protocol_comparison": "Target-only masks agree on shared target dates; input-support masks can differ. A strict cross-protocol comparison needs an explicitly common date subset.",
+    "interpretation": "Raw-present support is not proof of a fresh trade, true contemporaneous observation, or historical availability. No causal filling effect is estimated by masking fixed predictions."
+  },
+  "known_event_quality_flags": {
+    "BIST100_cancelled_session_2023_02_08": "Separate support-level context flag; no automatic primary/secondary exclusion.",
+    "source": "https://www.kap.org.tr/tr/Bildirim/1111497",
+    "other_event_validity_proved_by_raw_presence": false
+  },
+  "raw_metric_precision": {
+    "truth": "Canonical raw float64→ffill→log ratio→pandasrolling20sample_std(ddof1)*sqrt252; retain float64 raw scoring truth.",
+    "predictions": "Promote inverse-scaled values tofloat64 before subtraction and reduction; no silent float32truth rounding.",
+    "training_tensors": "May usefloat32 later; this does not redefine float64raw scoring truth.",
+    "old_published_results_overwritten": false,
+    "legacy_dtype_difference": "Original03CSVfloat64 denominators and06float32raw targets/reductions were separate boundaries; new precision policy is explicit and shared by both loss arms."
+  },
+  "validation_selection": {
+    "formula": "0.5*mean_asset(returnMAE/ReturnZeroMAE)+0.5*mean_asset(VolPinball_tau05/VolPersistencePinball_tau05)",
+    "population": "583fixedselectionvalidationdates2020-07-10..2022-10-04;no diagnosticmask or Oct5boundarylabel",
+    "P1_persistence_information": "Latest admitted state t-1, not t.",
+    "denominators_file": "benchmarks/validation/selection_denominators_P1_validation_v2.json",
+    "same_denominators_for_loss_arms": [
+      "MSEreturn",
+      "MAEreturn"
+    ],
+    "test_used_for_denominator_values": false,
+    "zero_empty_denominator": "Undefined with explicit status; do not epsilon-fill or silently average fewer assets.",
+    "nonfinite_neural_prediction": "Reject checkpoint/run for primary validation; do not mask inconvenient failures."
+  },
+  "incomplete_GARCH_rules": {
+    "parameter_fit_or_bridge_failure": "Preserve missing prediction and failure status; never substitute persistence.",
+    "full_series_primary_pair": "Requires complete predictions on the same584testtargets; otherwise mark asset/model pair incomplete. Selectionvalidation uses583dates.",
+    "optional_matched_available_date_diagnostic": "Allowed only as a separately labelled comparison with common dates and explicit n; not a replacement for the primary pair.",
+    "numerical_bridge_stability": "Must satisfy its predeclared convergence checks. Synthetic validation does not guarantee all real fitted states will pass."
+  },
+  "training_loss_weights_are_selection_weights": false,
+  "historical_wall_clock_certified": false,
+  "actions": {
+    "neural_training": false,
+    "GARCH_parameter_fit": false,
+    "learned_model_inference": false,
+    "scaler_fit": false,
+    "thesis_write": false
+  },
+  "version": 2,
+  "strict_information_boundary": {
+    "feature_window_eligible_counts": {
+      "train": 2713,
+      "val": 584,
+      "test": 584
+    },
+    "training_selection_primary_counts": {
+      "train": 2712,
+      "val": 583,
+      "test": 584
+    },
+    "first_lagged_training_target_invalid": "2010-02-15 insufficient initial feature history",
+    "training_label_purge": "2020-07-09 exceeds firstvalidation latestadmitted2020-07-08; remove from training AND X/Yfitdomain",
+    "selection_label_purge": "2022-10-05 exceeds firsttest latestadmitted2022-10-04; exclude from checkpoint/lambda/denominators",
+    "val_boundary_diagnostic": "Oct5features/window exist and may be scored after model selection, but it is not a selection observation",
+    "source": "protocol/strict_information_boundary_validation.json",
+    "old_thesis_P0_error_claimed": false
+  }
+}

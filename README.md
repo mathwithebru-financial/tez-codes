@@ -1,19 +1,21 @@
 # Multi-Asset Return and Volatility Forecasting
 
+**[Kodları Türkçe ve çalışma sırasıyla incele](docs/KOD_REHBERI_TR.md)** · [Tamamlayıcı deney ve sonuçları (P1)](experiments/p1_v2/)
+
 Reproducibility materials for the master's thesis:
 
 > **Multi-Task Transformer-Based Architecture for Multi-Asset Financial Risk and Return Forecasting**
 
-The study evaluates return and volatility forecasts for four financial assets under one chronological, leakage-aware experimental protocol.
+The study evaluates return and volatility forecasts for four financial assets on chronological target-date splits. Historical intraday availability of the provider's daily quotes could not be established. The post-review P1 experiment shifts inputs back one common observation.
 
 ## Research scope
 
 | Component | Design |
 |---|---|
-| Assets | BIST 100, USD/TRY, EUR/TRY, Gold |
+| Assets | BIST 100, USD/TRY, EUR/TRY, COMEX gold futures (GC=F) |
 | Raw period | 2010-01-04 to 2024-12-31 |
 | Return target | Next-period log return |
-| Volatility target | Next-period 20-day annualized historical volatility |
+| Volatility target | Annualized trailing 20-observation historical volatility at the next common observation |
 | Return training loss | Mean squared error (MSE) |
 | Primary return evaluation and statistical comparison loss | Mean absolute error (MAE) |
 | Volatility training, primary evaluation, and statistical comparison loss | Pinball loss, τ = 0.5 |
@@ -39,7 +41,7 @@ NoSharing + FixedLambda_0.7 + lookback 10 + small + baseline features
 
 `NoSharing` has separate task-specific parameter paths. It is retained as a multi-output experimental condition, but it does not provide evidence of shared representation learning or cross-task knowledge transfer.
 
-## What the results show
+## Locked Stage 09 results (L = 0)
 
 The final model was compared with naive, learned, and econometric baselines using loss differentials and Holm-adjusted DM-HLN tests.
 
@@ -49,7 +51,7 @@ The final model was compared with naive, learned, and econometric baselines usin
 | Volatility | 22 | 2 | 18 | 2 |
 | **Total** | **42** | **5** | **34** | **3** |
 
-“No significant difference” is not interpreted as model equivalence. These findings do not support a general superiority claim for the final Transformer model. The second thesis hypothesis was not directly tested because the selected `NoSharing` architecture contains no shared task representation.
+“No significant difference” is not interpreted as model equivalence. These findings do not support a general superiority claim for the final Transformer model. The main model selection does not isolate a sharing effect. The [separate controlled H2 comparison](https://github.com/mathwithebru-financial/tez-codes/tree/31f94d42ba2d95c82ac838a9df27dba4d0065b76/experiments/h2_original_period_v1) evaluates full sharing against independent single-task models on the same 584 target dates. Both full-sharing variants had larger losses on both tasks in the four primary Holm-adjusted comparisons.
 
 ### Post-hoc volatility robustness check
 
@@ -62,6 +64,8 @@ The 22 volatility comparisons were also evaluated in a separate, post-hoc robust
 
 Six decisions changed from “comparator better” to “no significant difference”; no superiority direction reversed. The two significant final-model wins were preserved. This sensitivity check does not replace the locked Stage 09 analysis. See [`results/robustness/bartlett_dm_hln_v1/`](results/robustness/bartlett_dm_hln_v1/) for the validated compact outputs.
 
+For returns, the [post-review HAC tables](results/robustness/return_hac/) report 3 model wins, 10 comparator wins and 7 inconclusive comparisons at L = 10 and L = 19. Each bandwidth uses a separate Holm adjustment across 20 tests.
+
 SHAP was used only as a post-hoc description of the locked ensemble. It was not used for feature selection, model reselection, or causal inference.
 
 The final SHAP closure record is `CLOSED` with independent audit status `PASS`. The earlier SHAP report is retained unchanged, including its then-pending audit status; the later closure record documents completion. See [`results/shap/`](results/shap/).
@@ -72,6 +76,7 @@ The final SHAP closure record is `CLOSED` with independent audit status `PASS`. 
 .
 ├── config/       # schema and checksum inventories
 ├── data/          # exact frozen raw dataset and data notes
+├── experiments/p1_v2/  # supplementary lagged-input and loss-sensitivity code
 ├── docs/         # result and reproducibility notes
 ├── notebooks/    # output-cleared research and robustness notebooks
 ├── protocols/    # locked protocols and the post-hoc robustness protocol

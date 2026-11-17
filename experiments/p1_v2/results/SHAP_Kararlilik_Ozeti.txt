@@ -1,0 +1,26 @@
+SHAP kararlılığı — kaydedilmiş dizilerin betimsel karşılaştırması
+
+128/584 sabit test penceresi; eğitimden alınan dört 64 satırlık arka plan; iki MC entegrasyon tohumu. Altı model ve aynı koşuldaki üç tohum ortalamasından türetilen iki ansambl kullanıldı.
+Eğitim tohumları, arka plan örnekleme tohumları ve MC tohumları farklı rollerdir. Arka plan değişimi referans sorusunu da değiştirir.
+Özellik önemi örnek ve gecikme boyunca |phi| ortalamasıdır. Görev özetleri dört çıktıyı eğitim ölçeğiyle standartlaştırdıktan sonra ortalar. Ansambl için önce işaretli phi ortalanmıştır.
+
+Her çıktı ve görev için min/medyan/maksimum ile geçerli/tanımsız çift sayıları CSV/JSON tablolarındadır. Çiftler ortak modelleri ve örnekleri paylaştığından bağımsız tekrar sayılmaz.
+1408 çıktı çifti: arka plan 768, model tohumu 384, MC 256. Ayrıca 352 standartlaştırılmış görev çifti vardır. Evrensel kararlı/kararsız eşiği veya yeni p-değeri kullanılmadı.
+
+Çıktılar birlikte özetlendiğinde (aynı faktör/kol/model türü içinde):
+background / mse / individual_seed: spearman_midrank: medyan 0.9524, aralık [0.5238, 1], n=288/288; top3_jaccard: medyan 1, aralık [0.5, 1], n=288/288; share_total_variation: medyan 0.04305, aralık [0.008651, 0.1099], n=288/288; normalized_L1: medyan 0.06356, aralık [0.01207, 0.1681], n=288/288
+background / mse / ensemble: spearman_midrank: medyan 0.9762, aralık [0.6905, 1], n=96/96; top3_jaccard: medyan 1, aralık [0.5, 1], n=96/96; share_total_variation: medyan 0.04637, aralık [0.007113, 0.09655], n=96/96; normalized_L1: medyan 0.06743, aralık [0.01081, 0.1467], n=96/96
+model_seed / mse / individual_seed: spearman_midrank: medyan 0.881, aralık [0.4524, 1], n=192/192; top3_jaccard: medyan 0.5, aralık [0.2, 1], n=192/192; share_total_variation: medyan 0.08796, aralık [0.02175, 0.2939], n=192/192; normalized_L1: medyan 0.1359, aralık [0.03052, 0.5216], n=192/192
+integration_MC / mse / individual_seed: spearman_midrank: medyan 1, aralık [0.8333, 1], n=96/96; top3_jaccard: medyan 1, aralık [0.5, 1], n=96/96; share_total_variation: medyan 0.004439, aralık [0.0003966, 0.01395], n=96/96; normalized_L1: medyan 0.005944, aralık [0.001019, 0.01583], n=96/96
+integration_MC / mse / ensemble: spearman_midrank: medyan 1, aralık [0.9286, 1], n=32/32; top3_jaccard: medyan 1, aralık [0.5, 1], n=32/32; share_total_variation: medyan 0.003404, aralık [0.0005696, 0.01265], n=32/32; normalized_L1: medyan 0.006057, aralık [0.001034, 0.01527], n=32/32
+background / mae / individual_seed: spearman_midrank: medyan 0.9524, aralık [0.5476, 1], n=288/288; top3_jaccard: medyan 1, aralık [0.2, 1], n=288/288; share_total_variation: medyan 0.03919, aralık [0.01154, 0.121], n=288/288; normalized_L1: medyan 0.05339, aralık [0.0128, 0.1797], n=288/288
+background / mae / ensemble: spearman_midrank: medyan 0.9762, aralık [0.6905, 1], n=96/96; top3_jaccard: medyan 1, aralık [0.5, 1], n=96/96; share_total_variation: medyan 0.03802, aralık [0.007925, 0.09146], n=96/96; normalized_L1: medyan 0.05123, aralık [0.01033, 0.1521], n=96/96
+model_seed / mae / individual_seed: spearman_midrank: medyan 0.9048, aralık [0.1429, 1], n=192/192; top3_jaccard: medyan 1, aralık [0.2, 1], n=192/192; share_total_variation: medyan 0.08006, aralık [0.02258, 0.212], n=192/192; normalized_L1: medyan 0.1031, aralık [0.02993, 0.3182], n=192/192
+integration_MC / mae / individual_seed: spearman_midrank: medyan 1, aralık [0.9524, 1], n=96/96; top3_jaccard: medyan 1, aralık [0.5, 1], n=96/96; share_total_variation: medyan 0.004152, aralık [0.0007303, 0.0137], n=96/96; normalized_L1: medyan 0.005204, aralık [0.0008526, 0.01524], n=96/96
+integration_MC / mae / ensemble: spearman_midrank: medyan 1, aralık [0.9762, 1], n=32/32; top3_jaccard: medyan 1, aralık [1, 1], n=32/32; share_total_variation: medyan 0.004044, aralık [0.0005242, 0.01223], n=32/32; normalized_L1: medyan 0.004556, aralık [0.001034, 0.01508], n=32/32
+
+Yerel toplamsallık 512 koşul-çıktıda incelendi. Standartlaştırılmış ortalama mutlak artık aralığı [0.008425133211946486, 0.09039844707755035]; en büyük mutlak artık 0.984345. Sonlu MC'de tam eşitlik beklenmez; artık düzeltmesi veya sonuç sonrası eleme yapılmadı.
+Tam sıralama eşitlikleri, üçüncü-dördüncü özellik pay farkları ve bağ çözümüne duyarlı top3 durumları tabloda açık tutuldu. Küçük farklar için sonradan ikili yakınlık eşiği seçilmedi.
+SHAP kütüphanesinin varyans çıktısı standart hata veya güven aralığı olarak yorumlanmadı.
+Bulgular seçilen 128 pencere ve dört ampirik eğitim arka planına koşulludur; tüm 584 tarih, nedensellik veya tahmin üstünlüğü kanıtı değildir. P1 tarihsel erişilebilirlik saatleri hâlâ doğrulanmamıştır.
+Bu aşama yalnız mevcut dizilerde CPU aritmetiğidir: yeni SHAP, model/tahmin, eğitim veya tez düzenlemesi yapılmadı.

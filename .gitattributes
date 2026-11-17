@@ -4,3 +4,13 @@
 *.md text eol=lf
 *.py text eol=lf
 *.txt text eol=lf
+
+# Preserve the original bytes covered by the supplementary archive hashes.
+/experiments/p1_v2/protocol/strict_information_boundary_validation.json -text
+/experiments/p1_v2/protocol/price_and_clock_contract.csv -text
+/experiments/p1_v2/scoring/scoring_policy_v2.json -text
+/experiments/p1_v2/analysis/shap_stability_20261113/shap_stability_protocol_v3.json -text
+/results/robustness/return_hac/decision_counts.csv -text
+/results/robustness/return_hac/pvalue_matrix.csv -text
+/experiments/p1_v2/results/SHAP_Kararlilik_Ozeti.txt -text
+/experiments/p1_v2/results/SHAP_Cekilis_Duyarliligi_Notu.txt -text
