@@ -1,0 +1,166 @@
+[
+  {
+    "repository_path": "experiments/p1_v2/pipeline/build_p1_datasets.py",
+    "sha256": "bdd15d6e7a15c88e866224ff53e4e08c8a56c7e87d3147b699e9320bd4f4cb33"
+  },
+  {
+    "repository_path": "experiments/p1_v2/pipeline/independent_data_checks.py",
+    "sha256": "06baa00e259aac0ef27bf9ffdca5c02c147922e56717b3da0ed480e065d11491"
+  },
+  {
+    "repository_path": "experiments/p1_v2/protocol/strict_information_boundary_validation.json",
+    "sha256": "92d257a9b2a1eabe29c58db9874fad6b6145b99f664e9876455054ca30739fc2"
+  },
+  {
+    "repository_path": "experiments/p1_v2/protocol/price_and_clock_contract.csv",
+    "sha256": "eafb2a0a8d6d75446dc06e8e5d815627f51f5bb141fa533962f422adb749b310"
+  },
+  {
+    "repository_path": "experiments/p1_v2/scoring/build_scoring_masks.py",
+    "sha256": "2e4125721a3f3e0a97ebaf169ef868c7f83572d6d2388b193306c9e665f3cd9b"
+  },
+  {
+    "repository_path": "experiments/p1_v2/scoring/scoring_policy_v2.json",
+    "sha256": "676521e82b77df7ad798fe059f7368ecd7bbd11d49e2606bcef4b8466bc46840"
+  },
+  {
+    "repository_path": "experiments/p1_v2/benchmarks/validation/build_validation_denominators.py",
+    "sha256": "9bfc380604193a55b29baab7fd9cff61eba51d510a9c3bd036b301e72aa8a2cb"
+  },
+  {
+    "repository_path": "experiments/p1_v2/benchmarks/validation/validation_score_contract.py",
+    "sha256": "65803cd2be8c47dbbbdea32d8dbf99da4e4ca0a5345524b1d3ac858a4dbabb3b"
+  },
+  {
+    "repository_path": "experiments/p1_v2/benchmarks/garch/p1_information_adapter.py",
+    "sha256": "832ab5de39409a0f61fc419f38943993e338128aa382dbd03d34476b454136b0"
+  },
+  {
+    "repository_path": "experiments/p1_v2/benchmarks/garch/two_increment_vol20_bridge.py",
+    "sha256": "5d66a4580e788a8360e3d418313c4a871fd1292cafdeeb53de77bc064c920d92"
+  },
+  {
+    "repository_path": "experiments/p1_v2/benchmarks/garch/validate_synthetic_bridge.py",
+    "sha256": "adcc36f54781ec314081750b2f507dbc80284fb3fb8e347b39d59505f2c73a9b"
+  },
+  {
+    "repository_path": "experiments/p1_v2/training/config.py",
+    "sha256": "5862904c9c1566f51d28321b8661046aaab3c1d4f591a497fda47631a285ee07"
+  },
+  {
+    "repository_path": "experiments/p1_v2/training/data_contract.py",
+    "sha256": "679b88d12e15cbc78d17ad08c26a38abdb9c45d74af0150fbd3b3aa4ae5d3136"
+  },
+  {
+    "repository_path": "experiments/p1_v2/training/losses.py",
+    "sha256": "86c435852ec56188d5f0f11d1bbd2c8d553d4f60c9eb8e0b132bf275a77e063f"
+  },
+  {
+    "repository_path": "experiments/p1_v2/training/models.py",
+    "sha256": "e76a78a9a2a3be0a34d2c284ac97cd0cde3d4c4a5d8d94e744e2c7a1b5374055"
+  },
+  {
+    "repository_path": "experiments/p1_v2/training/train_p1.py",
+    "sha256": "696cde06fcca1ea145d660d688cde8fc11631bd6fdcb92faaf859ff81d7a3853"
+  },
+  {
+    "repository_path": "experiments/p1_v2/training/comparison/evaluate_fixed_runs.py",
+    "sha256": "7139fa1997c00bff090b5273fbfcf98886c438398a874bd56624ec7e4327c4f7"
+  },
+  {
+    "repository_path": "experiments/p1_v2/training/comparison/numeric_metrics.py",
+    "sha256": "00d51c0a06ed5321ec1ab89abaa67d962653d7d492e79ee65b26a9e454b3ebbc"
+  },
+  {
+    "repository_path": "experiments/p1_v2/analysis/subperiods_20261113/subperiod_protocol.json",
+    "sha256": "0d91878484d21c6ba10f3b0c6c3a04fe5e6b9335a664b1ebbfc3a998fa6d30b3"
+  },
+  {
+    "repository_path": "experiments/p1_v2/analysis/subperiods_20261113/analyze_subperiods.py",
+    "sha256": "0141170b718daed7a6be6a7537018a4a28a635f534547e591c610d7b441d4c92"
+  },
+  {
+    "repository_path": "experiments/p1_v2/analysis/subperiods_20261113/numeric_metrics.py",
+    "sha256": "55814ab6eec7a2b1b675eebb59a74cd05953a0705a397e9417b807ce0391a80e"
+  },
+  {
+    "repository_path": "experiments/p1_v2/analysis/subperiods_20261113/independent_numeric_reference.py",
+    "sha256": "f9811cae7a0e0f9157e981ff712bebae87dc46f447c13489883be7b2c0894d4e"
+  },
+  {
+    "repository_path": "experiments/p1_v2/analysis/shap_stability_20261113/sample_selection.py",
+    "sha256": "41e9e6b84e035267eac1e42d11b58dd200c24d67f813261203b8d1d075d3e5a7"
+  },
+  {
+    "repository_path": "experiments/p1_v2/analysis/shap_stability_20261113/gradient_compatible_adapter.py",
+    "sha256": "70382426dc99f3125fe78acc2d9c5c605bbfcfe84439d7407f4c94dce9dec347"
+  },
+  {
+    "repository_path": "experiments/p1_v2/analysis/shap_stability_20261113/stability_metrics.py",
+    "sha256": "c3c31bd8f935b1505d573a47d67e21590fc93adb6bba443701ddcb36aa065588"
+  },
+  {
+    "repository_path": "experiments/p1_v2/analysis/shap_stability_20261113/run_shap_stability.py",
+    "sha256": "06be0d979c33968e55a04fd2ce73f9cefd69db2cafc44c58d8eaee9f62b4afe5"
+  },
+  {
+    "repository_path": "experiments/p1_v2/analysis/shap_stability_20261113/verify_v2_candidate_batch128.py",
+    "sha256": "76ef19df186aeaf99aa3a3a6904fbd1e6275619ccd0fb91e75ebedd533dbdb23"
+  },
+  {
+    "repository_path": "experiments/p1_v2/analysis/shap_stability_20261113/pilot_vectorized_expected_gradients.py",
+    "sha256": "f668b21fb780e629bcc9f87790a26304b1981bada32bd6e8bde9031e23dbd190"
+  },
+  {
+    "repository_path": "experiments/p1_v2/analysis/shap_stability_20261113/vectorized_expected_gradients.py",
+    "sha256": "e49105838091fdae4251c319b9a68c9d81f89e0f59d6de8b03100684feb31640"
+  },
+  {
+    "repository_path": "experiments/p1_v2/analysis/shap_stability_20261113/run_shap_stability_vectorized.py",
+    "sha256": "5b445c6be4b51557402cb57a23ef913cd75fee5e0e5d2bfec145bb2b1b882b71"
+  },
+  {
+    "repository_path": "experiments/p1_v2/analysis/shap_stability_20261113/analyze_saved_shap_stability.py",
+    "sha256": "7f3012951fc49ceca276a5b90f4654a71e0e1cdbc09128daca1db70c503778a8"
+  },
+  {
+    "repository_path": "experiments/p1_v2/analysis/shap_stability_20261113/shap_stability_protocol_v3.json",
+    "sha256": "b6e313e1c30ded84466858c31735e1a23169e10c1bc8ff18fd89c7121574ea0a"
+  },
+  {
+    "repository_path": "experiments/p1_v2/analysis/shap_convergence_20261113/run_convergence.py",
+    "sha256": "233db6248ca22ed234707a3c43bd0dd1721187005f537fe00d2101a4491001ed"
+  },
+  {
+    "repository_path": "experiments/p1_v2/analysis/shap_convergence_20261113/explicit_path_gradients.py",
+    "sha256": "1cb0e8f6dcafa9aaecd27e8e66f69fbd91c5cc6056e16a3f87a45a8b4c8a5224"
+  },
+  {
+    "repository_path": "experiments/p1_v2/analysis/shap_convergence_20261113/summarize_convergence.py",
+    "sha256": "f570a3f5d081bcdc2e23ea9c8645a23fc864b6d3f663a966b3b3d34910646d2b"
+  },
+  {
+    "repository_path": "scripts/post_review/replay_reporting_diagnostics.py",
+    "sha256": "52cf6fdfe9bff550c38cd121912dad3b79179322463096dc160ada7563d2dd0a"
+  },
+  {
+    "repository_path": "scripts/post_review/replay_return_hac.py",
+    "sha256": "4112e8aaf0acf06d31b48298a092b319b211f9e2cbbcbcdac40bbb5dc01c72c2"
+  },
+  {
+    "repository_path": "results/robustness/return_hac/decision_counts.csv",
+    "sha256": "7fa3bd808ce5b2f96eee98468066cf072942361b92280bff6bc74924c0f54977"
+  },
+  {
+    "repository_path": "results/robustness/return_hac/pvalue_matrix.csv",
+    "sha256": "2eeec0afed5577b2ad72e8ecd0df00784e17cda0679b604aecf696a830132a5f"
+  },
+  {
+    "repository_path": "experiments/p1_v2/results/SHAP_Kararlilik_Ozeti.txt",
+    "sha256": "c1df01a5172a691afe443b85ef368b11a10b5ef45afa56e2dbe959a1136cebc0"
+  },
+  {
+    "repository_path": "experiments/p1_v2/results/SHAP_Cekilis_Duyarliligi_Notu.txt",
+    "sha256": "ab978b22cc177d23e0047068a6c62ed44f65f5e42213ad0d6bb4a73acac80769"
+  }
+]

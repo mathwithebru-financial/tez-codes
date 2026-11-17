@@ -1,0 +1,6 @@
+bandwidth,n_comparisons,final_better,baseline_better,not_significant,changed_vs_L0
+0,20,3,16,1,0
+3,20,3,14,3,2
+6,20,3,12,5,4
+10,20,3,10,7,6
+19,20,3,10,7,6

@@ -47,7 +47,7 @@ This post-hoc check does not replace or retroactively modify the locked Stage 09
 ## Hypothesis boundary
 
 - **H1:** not supported by the aggregate comparison evidence.
-- **H2:** not directly tested. The selected `NoSharing` model does not share parameters or representations between return and volatility tasks, and the experiment did not separately measure overfitting reduction.
+- **H2:** the original selection stage did not isolate sharing. The [controlled original-period experiment](https://github.com/mathwithebru-financial/tez-codes/tree/31f94d42ba2d95c82ac838a9df27dba4d0065b76/experiments/h2_original_period_v1) compared two full-sharing variants with an independent single-task pair. The four primary comparisons favored the independent models after Holm adjustment. This result concerns the tested period and configurations. An overfitting mechanism was not identified.
 
 ## SHAP boundary
 

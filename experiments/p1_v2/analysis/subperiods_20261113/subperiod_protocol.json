@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-13",
+  "version": 1,
+  "scope": "Arithmetic-only subperiod evaluation of saved P1 V2 predictions",
+  "user_authorization": "Sonuçları yorumla ve hocanın istediği alt dönem değerlendirmesini yap. Yeni eğitim başlatma; tez dosyasını değiştirme.",
+  "source_run": "training/runs/p1_v2_mse_mae_20261113_full",
+  "source_comparison": "training/runs/p1_v2_mse_mae_20261113_full/comparison",
+  "new_output": "training/runs/p1_v2_mse_mae_20261113_full/subperiods_20261113",
+  "period_assignment_date": "Canonical target realization date, not input_end_date or anchor t",
+  "disjoint_periods": [
+    {"id": "2022_partial", "start": "2022-10-06", "end": "2022-12-31", "label_tr": "2022: test başlangıcından yıl sonuna"},
+    {"id": "2023", "start": "2023-01-01", "end": "2023-12-31", "label_tr": "2023 takvim yılı"},
+    {"id": "2024", "start": "2024-01-01", "end": "2024-12-31", "label_tr": "2024 takvim yılı"}
+  ],
+  "full_reference": {"id": "full", "start": "2022-10-06", "end": "2024-12-31", "n_primary_per_asset_task": 584},
+  "boundary_selection": {
+    "rule": "Calendar year boundaries; exhaustive partition; no optimization over errors or events",
+    "timing": "Specified for this post-review analysis before computing subperiod performance. Full-period results were already known.",
+    "original_study_preregistration_claim": false,
+    "exact_historical_subperiod_boundaries_found_in_existing_protocol": false,
+    "no_period_removed_or_refined_based_on_results": true,
+    "regime_or_event_causal_interpretation": false
+  },
+  "models": {
+    "primary_comparison": ["mse_ensemble", "mae_ensemble", "matched_naive"],
+    "seed_diagnostics": ["mse_seed123", "mse_seed777", "mse_seed2026", "mae_seed123", "mae_seed777", "mae_seed2026"],
+    "ensemble": "Reuse the existing arithmetic mean of three raw float64 predictions; verify exact identity without re-running models",
+    "naive": "Reuse verified ReturnZero and Vol20 at latest admitted input date t-1 predictions"
+  },
+  "populations": {
+    "canonical_masks": "scoring/scoring_masks_bool.csv",
+    "ensemble_and_naive": ["primary", "secondary_raw_target", "diagnostic_all_model_inputs", "diagnostic_asset_inputs"],
+    "individual_seeds": ["primary"],
+    "matching": "Same target date, asset, task and mask for every compared prediction; report n",
+    "training_rows_or_predictions_changed": false,
+    "raw_presence_certifies_availability": false
+  },
+  "numeric_rules": {
+    "precision": "float64 saved raw truth and predictions, subtraction and reductions",
+    "metrics": ["MAE", "MSE", "RMSE", "R2", "Pinball_tau05_for_volatility"],
+    "error_distribution": ["median_absolute_error", "p90_absolute_error", "median_primary_loss", "p90_primary_loss"],
+    "quantile_method": "numpy.quantile method=linear",
+    "primary_loss": {"return": "MAE", "volatility": "Pinball_tau05=0.5*MAE"},
+    "R2": "1-SSE/SST with the true mean within the same period and mask; undefined for n<2 or constant truth",
+    "paired_relative_change": "100*(MAE-arm primary loss minus MSE-arm primary loss)/MSE-arm primary loss; negative favors MAE",
+    "naive_ratio": "Model primary loss divided by matched naive primary loss within the SAME period and mask",
+    "zero_denominator_or_empty": "Explicit undefined/null status; no epsilon substitution",
+    "macro": "Equal weight across exactly four asset metrics; any undefined asset metric leaves that macro metric undefined; n per asset retained",
+    "cross_task_total": "Do not add raw return and volatility errors",
+    "validation_score_or_denominators_reoptimized": false
+  },
+  "reconstruction": {
+    "partition": "Exactly one of three disjoint periods for every one of 584 primary dates",
+    "additive_losses": "Use n-weighted period MAE, MSE and pinball to reproduce full-period losses separately for each asset/model/mask",
+    "RMSE": "sqrt of reconstructed MSE; not average of period RMSE",
+    "R2_and_quantiles": "Recompute from pooled saved observations; do not average period R2, medians or percentiles",
+    "full_reference": "Match existing metrics_by_asset.csv and metrics_equal_asset_macro.csv where those metrics were already recorded"
+  },
+  "interpretation_limits": [
+    "2022 is a shorter partial period; raw error magnitudes across years also reflect changing target variability.",
+    "Adjacent Vol20 targets share 19 returns, including across year boundaries; periods are not independent statistical samples.",
+    "Saved features and targets keep their original historical windows across calendar boundaries; do not restart rolling calculations in January.",
+    "This is a descriptive fixed-model evaluation, not rolling-origin retraining or a new unseen external test.",
+    "No new significance tests or seed-times-date pseudo-replication.",
+    "No choice of model, loss weight, seed or protocol based on these test results.",
+    "P1 still uses an assumption-based information cutoff; historical first availability and vintage times remain unverified."
+  ],
+  "prohibited_actions": ["Neural or GARCH training", "Checkpoint/model deserialization", "New learned forward predictions", "New price downloads", "Thesis edits", "Changing original comparison files", "SHAP analyses"]
+}

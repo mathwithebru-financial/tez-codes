@@ -1,0 +1,29 @@
+{
+  "status": "PASS_STRICT_F_K_BOUNDARY_PURGE",
+  "training_label_max": "2020-07-08",
+  "first_validation_info_cutoff": "2020-07-08",
+  "selection_label_max": "2022-10-04",
+  "first_test_info_cutoff": "2022-10-04",
+  "test_dates_preserved": true,
+  "excluded_rows": [
+    {
+      "split": "train",
+      "target_date": "2010-02-15",
+      "reason": "INSUFFICIENT_INITIAL_FEATURE_HISTORY",
+      "features_still_available": false
+    },
+    {
+      "split": "train",
+      "target_date": "2020-07-09",
+      "reason": "TRAIN_LABEL_AFTER_FIRST_VALIDATION_INFO_CUTOFF",
+      "features_still_available": true
+    },
+    {
+      "split": "val",
+      "target_date": "2022-10-05",
+      "reason": "SELECTION_LABEL_AFTER_FIRST_TEST_INFO_CUTOFF",
+      "features_still_available": true
+    }
+  ],
+  "old_P0_thesis_changed_or_declared_erroneous": false
+}

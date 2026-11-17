@@ -1,0 +1,228 @@
+{
+  "id": "P1_GARCH_TWO_INCREMENT_VOL20_BRIDGE_PROTOTYPE_V1",
+  "date": "2026-11-13",
+  "status": "SYNTHETIC_VALIDATED_NUMERICAL_PROTOTYPE_NOT_A_FITTED_P1_BENCHMARK",
+  "training_or_market_fit_authorized": false,
+  "target_and_admission": {
+    "original_P0_target_ret": "r[j]=r[t+1], a single endpoint-to-endpoint increment, not r[k+1]+r[k+2]",
+    "P1_latest_admitted_index": "k=t-1",
+    "target_index": "j=t+1=k+2",
+    "horizon": "2 common ordered observations, not2calendar/trading days",
+    "known_return_window": "r[j-19],...,r[k] = r[k-17],...,r[k], exactly18",
+    "not_admitted_increments": [
+      "R1=r[k+1]",
+      "R2=r[k+2]=r[j]"
+    ],
+    "target": "Vol20[j]=sqrt(252)*std(r[j-19],...,r[j],ddof=1)",
+    "calendar_and_provider_limit": "Existing union-calendar/ffill target remains a constructed retrospective target. Lag1 is not a historical clock-availability certificate."
+  },
+  "exact_distributional_derivation": {
+    "innovation": "Z1,Z2 iid standardizedStudentT(nu), E[Z]=0,Var[Z]=1; Z=sqrt((nu-2)/nu)*T_nu",
+    "parameters": "ZeroMean, GARCH/GJR(1,1),power2,StudentsT,rescaleFalse; parameter estimates treated as fixed conditional plug-in values, no parameter uncertainty integration",
+    "h1": "h[k+1|F_k] in percentage-return squared, passed from a valid fit/filter using ONLY returns through k",
+    "R1_percent": "sqrt(h1_percent2)*Z1",
+    "h2_percent2_given_R1": "omega_percent2+(alpha+gamma*I[R1_percent<0])*R1_percent^2+beta*h1_percent2; gamma=0 forGARCH",
+    "R2_percent": "sqrt(h2_percent2_given_R1)*Z2",
+    "dependence": "Z1,Z2 independent innovations; R1,R2 not independent because h2 depends onR1. Replacing h2 by its expected2step variance loses the joint predictive law.",
+    "unit_conversion": "R_decimal=R_percent/100; h_decimal=h_percent2/10000; omega_decimal=omega_percent2/10000. Alpha,beta,gamma,nu unchanged.",
+    "S18": "sum18known decimal returns",
+    "Q18": "sum18known squared decimal returns",
+    "sample_variance20": "V(R1,R2)=[Q18+R1_dec²+R2_dec²-(S18+R1_dec+R2_dec)²/20]/19",
+    "stable_implementation": "Equivalent centered/Welford update: SSE20=SSE18+(18/19)*(R1-c18)^2+(19/20)*(R2-c19)^2;V20=SSE20/19. Avoids cancellation nearconstant windows.",
+    "conditional_median_target": "m=Q0.5[ sqrt(252*V(R1,R2)) | F_k, fitted_parameters ]",
+    "population_monotone_property": "Population median of sqrt(252V) is sqrt(252*median(V)). Finite interpolated sample medians need not commute; the chosen inverted_cdf order statistic does.",
+    "one_dimensional_CDF_identity": {
+      "S19": "S18+R1_dec",
+      "Q19": "Q18+R1_dec²",
+      "c19": "S19/19",
+      "C19": "(Q19-S19²/19)/19",
+      "V_conditional_on_R1": "C19+(R2_dec-c19)²/20",
+      "F_V(v)": "Integral f_R1(x)*I[v>=C19(x)]*[F_R2|x(c19(x)+sqrt(20(v-C19(x))))-F_R2|x(c19(x)-sqrt(20(v-C19(x))))]dx",
+      "reference_solver": "Synthetic only: scipy.integrate.quad over the finite admissibleR1 interval, split at0; brentq root ofF_V(m²/252)=.5."
+    }
+  },
+  "shape_and_parameter_checks": {
+    "known_returns_shape": [
+      18
+    ],
+    "innovation_and_increment_path_shapes": [
+      "N",
+      2
+    ],
+    "GARCH_arch_parameter_names": [
+      "omega",
+      "alpha[1]",
+      "beta[1]",
+      "nu"
+    ],
+    "GJR_arch_parameter_names": [
+      "omega",
+      "alpha[1]",
+      "gamma[1]",
+      "beta[1]",
+      "nu"
+    ],
+    "linear_constraints": "omega>=0;alpha>=0;beta>=0;alpha+gamma>=0;alpha+.5gamma+beta<=1;gamma=0forGARCH",
+    "local_arch8_static_bounds": "alpha,beta in[0,1]; gamma in[-1,2] forp=o=1;nu in[2.05,500]",
+    "nu_math_vs_fit": "nu>2 mathematically defines finite unit variance; actual localarch8fitting bounds are stricter[2.05,500]",
+    "omega_fit_bounds": "[1e-8*v,10*v],v=mean(abs(fit_residuals)^power); requires full fitted history and is not verified by this bridge",
+    "h1_validity": "positive finite in production; h1=omega=0 permitted only in labelled synthetic boundary test",
+    "complete_arch_feasibility": "A future fitting adapter must retain exact data-dependent arch feasibility checks from original08C-R; this helper checks only stated scalar/static conditions.",
+    "negative_gamma": "Allowed when alpha+gamma>=0 and other constraints hold; validated withgamma=-0.10."
+  },
+  "numerical_policy": {
+    "primary_method": "deterministic_conditional_CDF_integration_and_root",
+    "primary_adapter": "median_cdf_or_missing",
+    "primary_predeclared_guard": {
+      "base_quad_epsabs": 1e-09,
+      "base_quad_epsrel": 1e-09,
+      "base_root_xtol": 1e-10,
+      "base_root_rtol": 1e-10,
+      "repeat_quad_epsabs": 1e-11,
+      "repeat_quad_epsrel": 1e-11,
+      "repeat_root_xtol": 1e-12,
+      "repeat_root_rtol": 1e-12,
+      "cdf_residual_max": 1e-07,
+      "quadrature_error_estimate_max": 2e-08,
+      "repeat_median_difference_max": "max(1e-7,1e-5*abs(stricter_median)), annualized decimalVol20",
+      "material_probability_violation": "mass<-1e-8 ormass>1+1e-8 =>reject, never silentlyclip",
+      "on_failure": "point=None, explicitinvalid/unresolved status, nofallback",
+      "interpretation": "Provisional numerical stability/error-estimate guard selected before any marketfits/testmetrics; not rigorous interval-arithmetic population-median certification."
+    },
+    "MC_role": "Independent synthetic diagnostic only; theCRNpoint is not the primary P1benchmark prediction",
+    "algorithm": "PCG64fixed-seed common uniforms(N,2), inverseStudentT CDF withunitvariance scale, pathwise2step recursion, exactVol20 formula, pooled empirical median",
+    "simulation_seeds": [
+      17011,
+      27011,
+      37011,
+      47011
+    ],
+    "training_seeds_are_different": "123/777/2026 belong to model training; not used as an implicit MC tolerance choice",
+    "N_levels_per_replication": [
+      4096,
+      16384,
+      65536
+    ],
+    "common_random_numbers": "Within each replication, allNlevels use prefixes of the same stream; same streams can be reused acrossGARCH/GJR specification at a given experiment. Explicit stream keys must be retained in any future adapter.",
+    "quantile_method": "numpy.quantile(q=.5,method=inverted_cdf): lower empirical median, a valid finite-sample MAE/pinball0.5 minimizer",
+    "acceptance_tolerance_units": "annualized decimalVol20",
+    "absolute_tolerance": 0.0002,
+    "relative_tolerance": 0.002,
+    "acceptance": "At the maximum grid: each of the last2successive pooled-quantile changes<=max(atol,rtol*abs(point)), and every replication median deviates from pooledpoint by<=that tolerance.",
+    "failure": "NUMERICAL_UNRESOLVED withpoint=None; diagnostics retained, no persistence fallback. No observed stable result means no eligible benchmark prediction.",
+    "hard_budget_limit": "A fixed finiteN and passing replication/prefix diagnostics DO NOT prove a uniform or exact population-quantile error bound. Synthetic reference agreement applies only to the tested parameters; future fit cases need the same guards and may remain unresolved.",
+    "pinball_error_propagation": "For tau=.5, |rho(y-mhat)-rho(y-m)|<=.5*|mhat-m|. If an actual quantile error boundepsilon were established, mean pinball error is bounded by.5*mean(epsilon); a ratio error is additionally divided by that asset baseline denominator. Observed replication stability alone is not such a bound.",
+    "before_market_freeze_gate": "PrimaryCDF/root tolerances and stricter-repeat guards are explicitly predeclared here, independently of markettestmetrics. MC tolerances remain SYNTHETIC diagnostic settings and do not select/replace the primaryCDFpoint. No exact universal quantileerror certificate is supplied; passing3cases does not certify allfits and any future failedguard remains unresolved.",
+    "reference_tolerances": "quad epsabs=epsrel=1e-9,reportederror<=2e-8; brentq xtol=rtol=1e-10; syntheticCDFresidual<1e-7",
+    "identity_tolerance": "Vol20 formula vsbrute-array std maxabs<2e-14; percent/decimal recursion maxabs<2e-18",
+    "negative_variance_handling": "Values below-1e-14 fail; tiny negative roundoff in[-1e-14,0) may be set tozero only; never repair substantive invalid paths."
+  },
+  "future_fit_pipeline_NOT_EXECUTED": [
+    "Take root-approved P1date/mask contract. Resolve latest admitted k=t-1 and targetj=k+2 by exact ordered indices; assert known18end==k and no later row is read.",
+    "Fit expanding univariate admitted returns throughk only;meanZero,p1,q1,o0or1,power2,StudentsT,rescaleFalse,percentage units. Preserve inherited validation-independent retry/start policy before execution; this file authorizes no fit.",
+    "Accept fitted parameters/h1only after convergence, finite outputs, exactarch constraints/data-dependent bounds andnu checks. Invalidfit=>explicit missing status; no parameter/model/persistence fallback.",
+    "For each validfit, integrate the joint two-increment conditionalCDF and solve itsVol20median through median_cdf_or_missing, including the stricter-repeat guard. CRNpath quantiles are independent diagnostics only. Reject unresolved bridges instead of publishing the last diagnostic quantile.",
+    "Scoring masks select metric rows but do not silently compress the fitted calendar or change return windows. Any such history deletion is a separate data/model protocol requiring a newly derived horizon.",
+    "Compare on identical targetdates and scoring masks, retain complete-pair coverage and numerical failures. Use the targetmedian forpinball0.5; directdailyconditional sigma remains a different diagnostic target.",
+    "Before any execution, root must pin numericalbudget/tolerance and exception policy without testperformance tuning; test observed errors must not determineMCbudget, models or retries."
+  ],
+  "old_provenance_preserved": {
+    "pipeline_status": "CLOSED_WITH_DOCUMENTED_SCOPE_LIMITATION",
+    "parent_unresolved": 574,
+    "successful_secondary_rescues": 268,
+    "remaining_unresolved": 306,
+    "rescue_merged_new_series": false,
+    "canonical_parent_retained": true,
+    "scope": "USDTRY remains in the multi-asset thesis analysis. Only incomplete USDTRY GARCH and GJR-GARCH full-series metrics and Diebold-Mariano comparisons are excluded.",
+    "not_claimed": "No newP1GARCH fit, no repair ofhistoricalUSDTRYfailures, no newmarket prediction."
+  },
+  "source_identities": {
+    "original08C": {
+      "path": "archive:main_project/scripts/08C_garch_baselines_test_v4.py",
+      "sha256": "c60c1a5174803275fa9f88d7bfeea1ea5116bf0160793b5534aa803f531b50da",
+      "bytes": 76851
+    },
+    "original08C_protocol": {
+      "path": "archive:main_project/config/08C_garch_protocol_lock_v4.json",
+      "sha256": "4238b4280021e8a265dcb6ba0aa6da379d1388db7d4396e29463d476283a6614",
+      "bytes": 15059
+    },
+    "original08C_summary": {
+      "path": "archive:main_project/results/baselines/garch/garch_baseline_summary_v4.json",
+      "sha256": "faf132425b00ca59550899736fd6807ae1529b79914eba4708611964d4491c59",
+      "bytes": 5784
+    },
+    "original08C_R": {
+      "path": "archive:main_project/scripts/08C_R_garch_rescue_run_v4.py",
+      "sha256": "72cfb87785c2186100ebc8b3ef7f6cdc65445d9ccda9c006205b65d589422a78",
+      "bytes": 56957
+    },
+    "original_closure": {
+      "path": "archive:main_project/results/baselines/garch/08C_closure/08C_08C_R_closure_record_v4.json",
+      "sha256": "b9c56deaaca4fccf65284572f3c35efa80fb96d034a1d387c18f1c7622ff5ea8",
+      "bytes": 7540
+    },
+    "arch_volatility": {
+      "path": "package:arch/univariate/volatility.py",
+      "sha256": "52c65813be04e79d8685a207733c511cb14bd5547a129e8781b775a35f61abb4",
+      "bytes": 129260
+    },
+    "arch_distribution": {
+      "path": "package:arch/univariate/distribution.py",
+      "sha256": "34f0bea1c1ed3d2f1a9b8d1f599f6eadd2caf83a3348546373f0934466bcee75",
+      "bytes": 40580
+    },
+    "arch_metadata": {
+      "path": "package:arch-8.0.0.dist-info/METADATA",
+      "sha256": "648ac149a8e156497b8def232e8d7bac9b51a379cda4017314b6c7f2d8ce0449",
+      "bytes": 13802
+    }
+  },
+  "local_reference_scope": "Original run recordsarch8.0.0; inspected installedarch8.0.0 source bytext only. Same version is not asserted as byte-identical to the historical installed wheel.",
+  "actions": {
+    "original_code_import_or_execution": false,
+    "arch_import": false,
+    "fit": false,
+    "training": false,
+    "market_prediction": false,
+    "raw_market_data_read": false,
+    "scaler_fit": false,
+    "checkpoint_read": false,
+    "new_numpy_tensor_datasets": false,
+    "thesis_edit": false,
+    "synthetic_numeric_checks": true
+  },
+  "information_set_adapter": {
+    "version": 2,
+    "path": "p1:benchmarks/garch/p1_information_adapter.py",
+    "sha256": "832ab5de39409a0f61fc419f38943993e338128aa382dbd03d34476b454136b0",
+    "mapping_path": "p1:protocol/proposed_lag1_date_map.csv",
+    "mapping_sha256": "b11aacffad4e5e2087c3cb68d0b9d136712ffe460f0d13aca57283d396747a91",
+    "primary_eligible_counts": {
+      "train": 2712,
+      "val": 583,
+      "test": 584
+    },
+    "prewindow_training_paired_rows": 2721,
+    "eligibility_policy": "feature_window_eligible andtraining_or_selection_eligible must both beTrue;proposed_eligible is strictalias. Boundary diagnostics are never silently admitted toprimaryprepare/callback.",
+    "upstream_label_purge": "Exclude train target2020-07-09 and selection-validation target2022-10-05; preserve584testdates. This masks upstream learning/selection labels, NOT the admitted univariate GARCHreturn history.",
+    "strict_primary_cuts": {
+      "training_label_max": "2020-07-08",
+      "first_validation_k": "2020-07-08",
+      "selection_label_max": "2022-10-04",
+      "first_test_k": "2022-10-04",
+      "all584_test_dates_preserved": true
+    },
+    "prepare_function": "prepare_case(raw_csv,map_row,asset)",
+    "history_start": "2010-02-01, inherited original08C first-feature-date convention; throughk=t-1inclusive",
+    "known18": "rawprefixreturns atj-19..k, j=k+2",
+    "price_parsing": "Onlydate<=kpricevalues become floats; fullsourcebyteshash and futureDatecalendarlabels are used only for identity/index validation",
+    "fit_state_gate": "asset,raw/context/historyhash,date_last_fit,k,nobs,history_start,h1informationdate+horizon1,convergence,feasibility,modelparams andpositiveh1",
+    "primary_callback": "median_cdf_or_missing only after validation; rejectedstate=>None/no fallback",
+    "validation_receipt": "p1:benchmarks/garch/information_adapter_validation_receipt.json",
+    "real_context_tests": 3,
+    "real_context_bridge_calls": 0,
+    "limit": "No operationalfirstavailability proof; fitstate suppliedexternally, nofitperformedorverifiedhere."
+  },
+  "publication_note": "Original protocol with workstation file references and excerpts omitted."
+}

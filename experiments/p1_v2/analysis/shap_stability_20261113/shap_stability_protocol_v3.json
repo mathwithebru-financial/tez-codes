@@ -1,0 +1,230 @@
+{
+  "date": "2026-11-13",
+  "version": 3,
+  "expected_engine_file": "vectorized_expected_gradients.py",
+  "allowed_vectorized_batch_sizes": [256, 1024],
+  "phi_agreement_max_abs_scaled": 0.00001,
+  "base_v2_protocol_sha256": "2842b7eaf117a0332a4039a8171a752cf987c0a503fbe3646f3f8bb626b2c4ee",
+  "scope": "Post-review Expected Gradients explanation stability of six existing P1 V2 checkpoints",
+  "sample_plan_file": "locked_sample_plan.json",
+  "sample_plan_sha256": "184be7c13835fa7c48d8aea0be5d97652ee65395e4518daeba05524013d6ff12",
+  "source_run": "training/runs/p1_v2_mse_mae_20261113_full",
+  "output_directory": "training/runs/p1_v2_mse_mae_20261113_full/shap_stability_20261113",
+  "loss_arms": [
+    "mse",
+    "mae"
+  ],
+  "model_seeds": [
+    123,
+    777,
+    2026
+  ],
+  "explained_test_rows": 128,
+  "available_test_rows": 584,
+  "explained_selection": "Fixed chronological linspace indices, including first and last test row; no target, error, prediction or attribution used in selection",
+  "background_rows_each": 64,
+  "backgrounds": [
+    "linspace_reference",
+    "random_bg_1",
+    "random_bg_2",
+    "random_bg_3"
+  ],
+  "background_source": "Training X only, from the 2712 P1 V2 training windows",
+  "background_sampling_seeds": [
+    2026111301,
+    2026111302,
+    2026111303
+  ],
+  "integration_seeds": [
+    2026111321,
+    2026111322
+  ],
+  "expected_shap_version": "0.52.0",
+  "method": "Expected Gradients finite-Monte-Carlo estimator, vectorized implementation numerically crosschecked against SHAP0.52.0 GradientExplainer",
+  "nsamples": 256,
+  "local_smoothing": 0.0,
+  "ranked_outputs": null,
+  "output_count": 8,
+  "allowed_batch_sizes": [
+    256,
+    1024
+  ],
+  "main_batch_policy": "Prefer vectorized1024 if the frozen reference-pilot equivalence, finite input-gradient, input-independent batch and memory checks pass within1e-5 scaled attribution tolerance; otherwise256 if equivalent, otherwise stop.",
+  "prediction_match_max_abs_standardized": 1e-05,
+  "pilot_batch_phi_max_abs_scaled_difference": 1e-05,
+  "pilot": {
+    "model": "mse_seed123",
+    "background": "linspace_reference",
+    "explained_rows": 4,
+    "selection": "Same first4 fixed examples as the saved successful V2 reference pilot",
+    "integration_seed": 2026111321,
+    "nsamples": 256,
+    "batch_sizes": [
+      256,
+      1024
+    ],
+    "purpose": "Same-estimator computational equivalence and timing, not scientific model or explanation selection"
+  },
+  "execution": {
+    "individual_jobs": 48,
+    "device": "cuda",
+    "model_eval_mode": true,
+    "all_model_parameter_requires_grad": false,
+    "autograd_scope": "Input gradients needed by Expected Gradients only; no optimizer, parameter update or retraining",
+    "gradient_backend": "Reuse the frozen, forward-validated V2 numerical adapter and saved-prediction1e-5 gates.",
+    "common_random_numbers": "Within an integration seed, keep background slot order, explained sample order and rseed identical across all models and loss arms",
+    "per_job_sampling": "Use the unchanged full128-by256 common path arrays. Vectorizing batches must not restart or reorder the random generator.",
+    "library_variance_output": "Reproduce the reference diagnostic var(samples)/sqrt(nsamples); it is not SE/CI or a new uncertainty estimator.",
+    "model_checkpoint_policy": "Only six newly trained own best_checkpoint.pt files, SHA256 verified, weights_only=True; no archived pickle or old pretrained load",
+    "resume_policy": "Only completed cells whose receipts and hashes match the same protocol, inputs, checkpoints, environment and code; never combine incompatible runs"
+  },
+  "attribution_contract": {
+    "axis_order": [
+      "sample",
+      "lag",
+      "feature",
+      "output"
+    ],
+    "shape_each_job": [
+      128,
+      10,
+      8,
+      8
+    ],
+    "input_feature_order": "Locked P1 V2 interleaved asset LogRet,Vol20 order",
+    "output_order": "Four NextRet outputs followed by four NextVol outputs, as dataset_metadata.json",
+    "lag_labels_oldest_to_newest": [
+      "t-10",
+      "t-9",
+      "t-8",
+      "t-7",
+      "t-6",
+      "t-5",
+      "t-4",
+      "t-3",
+      "t-2",
+      "t-1"
+    ],
+    "explained_function": "Standardized model outputs; exact affine conversion of predictions, expectations and attributions to raw target units",
+    "phi_raw": "float64(phi_scaled) * float64(y_scale), with scale broadcast only on the output axis",
+    "expected_raw": "mean_model_prediction_on_same_background_scaled * y_scale + y_mean",
+    "intercept_in_phi": false,
+    "ensemble": "For the same background, integration seed and test sample, average the three model phi tensors first; then compute absolute importance. Average expected values and predictions similarly. Do not average absolute seed importances to describe the ensemble."
+  },
+  "importance": {
+    "output_feature": "mean(abs(phi), axes=(sample,lag)); preserves original thesis aggregation",
+    "output_lag": "mean(abs(phi), axes=(sample,feature))",
+    "lag_feature_heatmap": "mean(abs(phi), axis=sample)",
+    "relative_feature_share": "Normalize eight nonnegative feature importances within each output to sum to one; undefined if total is zero",
+    "task_summary": "First divide each output phi_raw by its training y_scale; average absolute importances over the four outputs within a task, then normalize eight feature scores",
+    "raw_outputs_pooled_before_scale_adjustment": false
+  },
+  "stability_factors": {
+    "background": "Compare four backgrounds pairwise holding model and integration seed fixed; include derived ensembles separately",
+    "model_seed": "Compare the three fixed model seeds pairwise within each loss arm holding background and integration seed fixed",
+    "integration_MC": "Compare the two integration seeds holding model and background fixed; include derived ensembles separately",
+    "loss_arm": "Optional matched descriptive comparison only; never merge it into background or model-seed stability"
+  },
+  "stability_metrics": {
+    "rank": [
+      "Spearman with midranks",
+      "Kendall tau-b"
+    ],
+    "constant_rank_vector": "Explicit undefined/null status",
+    "top_k": 3,
+    "top_k_agreement": "Jaccard of top-three sets; exact ties broken by locked feature order with tie count and continuous third-versus-fourth share gap reported",
+    "share_distance": "0.5 * sum(abs(share_a-share_b)), total variation on eight feature shares",
+    "share_L1": "sum(abs(share_a-share_b)); equals twice total variation",
+    "magnitude_normalized_L1": "sum(abs(importance_a-importance_b))/(sum(importance_a)+sum(importance_b)); undefined when the combined magnitude is zero",
+    "binary_stability_threshold": null,
+    "near_tie_threshold": null,
+    "pair_summary": "Descriptive count, min, median, max; pairs share models/samples and are not independent replicates"
+  },
+  "diagnostics": {
+    "additivity_residual": "prediction_raw - expected_raw - sum(phi_raw over lag and feature)",
+    "report_by_output": [
+      "mean absolute",
+      "median absolute",
+      "p95 absolute",
+      "maximum absolute",
+      "RMSE"
+    ],
+    "normalize_residual": "Divide raw residual by the corresponding training y_scale; retain raw and standardized diagnostics",
+    "post_result_additivity_filter_or_residual_correction": false,
+    "finite_MC_additivity_expected_exact": false,
+    "parameter_state_before_after_sha256": true
+  },
+  "source_hashes": {
+    "training/config.py": "5862904c9c1566f51d28321b8661046aaab3c1d4f591a497fda47631a285ee07",
+    "training/models.py": "e76a78a9a2a3be0a34d2c284ac97cd0cde3d4c4a5d8d94e744e2c7a1b5374055",
+    "training/losses.py": "86c435852ec56188d5f0f11d1bbd2c8d553d4f60c9eb8e0b132bf275a77e063f",
+    "training/data_contract.py": "679b88d12e15cbc78d17ad08c26a38abdb9c45d74af0150fbd3b3aa4ae5d3136",
+    "training/train_p1.py": "696cde06fcca1ea145d660d688cde8fc11631bd6fdcb92faaf859ff81d7a3853"
+  },
+  "interpretation_limits": [
+    "The fixed 128-of-584 sample is not the original all584 SHAP analysis; conclusions are conditional on these explained windows and empirical training backgrounds.",
+    "Four backgrounds and two integration repeats are finite diagnostics; no universal stability or calibrated uncertainty claim.",
+    "Different backgrounds change the reference question; correlated features and off-manifold interpolations complicate causal interpretation.",
+    "Stable explanations do not establish predictive superiority, causality, positive/negative transfer or the correctness of feature timing.",
+    "P1 historical first availability and vintage clocks remain unverified.",
+    "No test/SHAP-based feature, seed, architecture, loss-weight or checkpoint selection.",
+    "Existing full-period and subperiod test performance was known before this post-review explanation analysis.",
+    "Finite forward checks support a numerically compatible differentiable adapter on the tested inputs. They do not prove global function equality or bit-exact derivatives of fused CUDA kernels.",
+    "The main computation is a separately implemented vectorized Expected Gradients estimator crosschecked against the pinned SHAP library on the fixed pilot; it is not claimed to be a direct GradientExplainer library call for all128 samples."
+  ],
+  "official_method_sources": [
+    "https://shap.readthedocs.io/en/stable/generated/shap.GradientExplainer.html",
+    "https://github.com/shap/shap/blob/v0.52.0/shap/explainers/_gradient.py",
+    "https://docs.pytorch.org/docs/2.11/backends.html"
+  ],
+  "prohibited_actions": [
+    "New model training or optimizer updates",
+    "Thesis edits",
+    "Changing prior experiment results",
+    "New price downloads",
+    "GARCH fits",
+    "Drive uploads"
+  ],
+  "supersedes_for_execution": {
+    "file": "shap_stability_protocol_v2.json",
+    "sha256": "2842b7eaf117a0332a4039a8171a752cf987c0a503fbe3646f3f8bb626b2c4ee",
+    "retained_unchanged": true
+  },
+  "gradient_adapter": {
+    "module_file": "gradient_compatible_adapter.py",
+    "method": "Temporary encoder FFN GELU(tanh) under unfused MHA / SDPA MATH, preserving explicit head GELU and all state tensors",
+    "reason": "Gradient-enabled original GELU(none) path differs numerically from the CUDA fused inference GELU epilogue used for the saved predictions.",
+    "validation_file": "fused_equivalence_all_models_tanh.json",
+    "validation_sha256": "3b5358359cbac61fff0b4d3cf144a6956d82e24082857bbf7a69a4f947e9a054",
+    "forward_tolerance_unchanged": 1e-05,
+    "additional_check": "All six fixed models at the actual main prediction batch shape N128 must pass the same predeclared saved-prediction agreement gate.",
+    "weight_or_checkpoint_change": false,
+    "original_activation_objects_restored": true,
+    "limits": "Finite forward checks support a numerically compatible differentiable adapter on the tested inputs. They do not prove global function equality or bit-exact derivatives of fused CUDA kernels."
+  },
+  "estimator_engine": {
+    "module_file": "vectorized_expected_gradients.py",
+    "runner_file": "run_shap_stability_vectorized.py",
+    "reference": "Unchanged SHAP0.52.0 GradientExplainer V2 pilot, model mse_seed123/background reference/MC1/first4 fixed explained samples",
+    "draws": "Exactly the same MT19937 choice-then-uniform background slots and interpolation alphas, shared across all outputs/models",
+    "interpolation": "Compute alpha32=cast(alpha64) and beta32=cast(1-alpha64) separately, then alpha32*X32+beta32*background32; preserve original float32 operation order",
+    "delta": "Original float32 X32-background32 promoted to float64 before multiplication with the gradients",
+    "input_gradients": "One forward per interpolation batch, then eight input vector-Jacobian products of summed same-output predictions; valid because all model operations are independent across batch rows",
+    "contributions": "Mean over the same256 samples of float64(gradient32)*float64(delta32)",
+    "variance_diagnostic": "Population variance of sampled contributions divided by sqrt256, matching the reference implementation diagnostic only",
+    "estimator_or_samples_changed": false,
+    "direct_library_GradientExplainer_called_in_main": false,
+    "scope": "Implementation optimization only; no importance-based model, sample or feature selection"
+  },
+  "reference_protocol_v2": {
+    "file": "shap_stability_protocol_v2.json",
+    "sha256": "2842b7eaf117a0332a4039a8171a752cf987c0a503fbe3646f3f8bb626b2c4ee"
+  },
+  "reference_pilot": {
+    "file": "pilot_runs\\pilot_mse123_first4_batch64_256_v2\\pilot_result.json",
+    "sha256": "2bb4f17c38583b64868c4c480e41ca127de4e8f87a61836a2eea186458ef5ca7",
+    "batch256_phi_file": "pilot_runs/pilot_mse123_first4_batch64_256_v2/pilot_batch256.npz",
+    "batch256_phi_sha256": "b0668fd07b77ff323fedc9b967b7e66d465f426684daf233aff78a20f722b933"
+  },
+  "vectorized_reference_phi_max_abs_scaled_difference": 1e-05
+}
