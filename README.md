@@ -2,6 +2,8 @@
 
 **[Kodları Türkçe ve çalışma sırasıyla incele](docs/KOD_REHBERI_TR.md)** · [Tez arşivleri ve doğrulama komutları](docs/TEZ_ARSIVLERI.md) · [Tamamlayıcı deney ve sonuçları (P1)](experiments/p1_v2/)
 
+**Türkçe uygulamalı dersler.** Bir fiyat gözleminden başlayarak hedef tarihini, geçmiş penceresini, Transformer tahminini ve kayıp hesabını adım adım izleyebilirsiniz. [Ders defterini ve grafikleri oku](notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb) · [Colab’da çalıştır](https://colab.research.google.com/github/mathwithebru-financial/tez-codes/blob/main/notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb)
+
 Reproducibility materials for the master's thesis:
 
 > **Multi-Task Transformer-Based Architecture for Multi-Asset Financial Risk and Return Forecasting**
@@ -80,7 +82,7 @@ The final SHAP closure record is `CLOSED` with independent audit status `PASS`. 
 ├── data/          # exact frozen raw dataset and data notes
 ├── experiments/p1_v2/  # supplementary lagged-input and loss-sensitivity code
 ├── docs/         # result and reproducibility notes
-├── notebooks/    # output-cleared research and robustness notebooks
+├── notebooks/    # applied lessons with outputs and archived research notebooks
 ├── protocols/    # locked protocols and the post-hoc robustness protocol
 ├── results/      # compact SHAP and robustness summaries
 └── scripts/      # archived pipeline sources and isolated rerun adapters

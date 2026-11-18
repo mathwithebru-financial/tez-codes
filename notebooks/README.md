@@ -1,5 +1,11 @@
 # Notebooks
 
+## Applied lessons in Turkish
+
+The [applied time-series notebook](Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb) follows one price observation through target construction, model selection, evaluation and interpretation. Its worked examples include saved tables and plots. Choose **Runtime → Run all** to recalculate them on CPU using files from a fixed repository revision. [Open in Colab](https://colab.research.google.com/github/mathwithebru-financial/tez-codes/blob/main/notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb)
+
+## Historical research notebooks
+
 `tez_transformer_v4_repro.ipynb` is the recovered publication copy of the historical research notebook, including main Stage 09 DM-HLN/Holm and Stage 10 SHAP computation source.
 
 - Code-cell outputs were removed.
