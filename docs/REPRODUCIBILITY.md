@@ -87,18 +87,19 @@ The original `config/code_manifest_v4.csv` is retained unchanged. Its historical
 
 ### Main Stage 09
 
-Install the statistical dependencies and run the adapter from the repository root:
+The [12 November P0/H2 archive](TEZ_ARSIVLERI.md) supplies all 17 inputs and the matching source tree. Extract it and run the following commands **from the archive root**, the directory containing `PACKAGE_MANIFEST.json`:
 
 ```bash
-python -m pip install -r requirements-statistics.txt
-python scripts/reproduce_archived_analysis_v4.py stage09 \
-  --project-root /path/to/frozen-project \
-  --output-dir /path/to/new-stage09-run
+python tools/verify_archive.py --archive-root .
+python -m pip install -r sources/main/requirements-bartlett.txt
+python sources/main/scripts/reproduce_archived_analysis_v4.py stage09 --project-root main_project --output-dir ../new-stage09-run
 ```
 
-Provide the private frozen project containing the loss arrays, GARCH diagnostics, and other files identified by the Stage 09 protocol's 17-entry locked-input inventory. The adapter checks all 17 inputs before copying them into a new directory outside that project; it then changes only the archived source's `ROOT` assignment in memory. The frozen protocol is read from the private project's `config/` directory, or from this repository's `protocols/` directory. The public compact CSV is a reference output, not a replacement for the per-observation losses. The archived execution source verifies the copied input identities again and retains its no-overwrite guards.
+The adapter checks the input hashes, including the loss arrays, GARCH diagnostics and test dates, and verifies them again after copying the inputs to the new output directory. It rebinds the historical `ROOT` assignment in memory for this run. The expected protocols and diagnostic records are included in the archive.
 
-The September source ZIP contains 16 of the 17 required inputs. It does not include `data/sequences/baseline/lb10/anchor_dates_test.npy`. The original file was recovered separately from Drive; its required SHA-256 is `40194047c9b7fe62adc0966f2c144e1be1e9c85f832d96ffe0a12624d34aab63`. Restore that exact file in the private input project before using the ZIP as the basis for a Stage 09 rerun. No replacement file was fabricated.
+This combined replay route was checked with Python 3.13.3, NumPy 2.1.3, pandas 2.2.3, SciPy 1.16.3 and statsmodels 0.14.5. The recorded training environment is listed separately above.
+
+For provenance, the September source ZIP held 16 of the 17 inputs. The recovered `data/sequences/baseline/lb10/anchor_dates_test.npy` (SHA-256 `40194047c9b7fe62adc0966f2c144e1be1e9c85f832d96ffe0a12624d34aab63`) is supplied inside `main_project/` in the November archive.
 
 This route recomputes 42 statistical comparisons from existing predictions and losses. It does not retrain the forecasting models. Compare numerical results and decisions with `results/statistical_comparison/09_dm_harvey_holm_results_v4.csv`. Timestamps and execution paths in newly created metadata can differ even when the numerical results agree.
 
