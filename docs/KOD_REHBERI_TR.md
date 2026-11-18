@@ -1,10 +1,10 @@
-# Tez kodlarını hangi sırayla okumalı?
+# Tez kodları ve deneylerin akışı
 
-Konuları ilk kez çalışıyorsanız, [uygulamalı ders defterinde](../notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb) tek bir fiyat hareketinden başlayın. Örnek hesapları elle deneyebilir, ardından kodu çalıştırıp tablolar ve grafiklerle karşılaştırabilirsiniz. [Colab’da aç](https://colab.research.google.com/github/mathwithebru-financial/tez-codes/blob/main/notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb)
+[Uygulamalı ders defterinde](../notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb) tek bir fiyat hareketinden başlayarak getirinin nasıl hesaplandığını anlatıyorum. Sayısal örneklerin ardından aynı hesabın kodu, sonuç tabloları ve grafikler geliyor. [Colab’da aç](https://colab.research.google.com/github/mathwithebru-financial/tez-codes/blob/main/notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb)
 
-Bir örnek üzerinden başlayalım. Ana deneyin ilk test girdisi 22 Eylül–5 Ekim 2022 arasındaki **10 ortak takvim gözleminden** oluşur. Son satırdaki dört getiri ve dört tarihsel volatilite, geçmişin modele verilen özetidir. Bu pencerenin hedefi 6 Ekim’de biten tek gözlemlik getiri ile 6 Ekim’deki 20 gözlemlik tarihsel volatilitedir. Tamamlayıcı deney aynı hedefi korur ve son girdi tarihini 4 Ekim’e çeker.
+Ana deneyin ilk test girdisi 22 Eylül–5 Ekim 2022 arasındaki **10 ortak takvim gözleminden** oluşur. Son satırdaki dört getiri ve dört tarihsel volatilite, geçmişin modele verilen özetidir. Bu pencerenin hedefi 6 Ekim’de biten tek gözlemlik getiri ile 6 Ekim’deki 20 gözlemlik tarihsel volatilitedir. Tamamlayıcı deney aynı hedefi korur ve son girdi tarihini 4 Ekim’e çeker.
 
-Tablodaki sıra, her aşamanın önceki hangi ürüne ihtiyaç duyduğunu gösterir. Betiklerin bulunması, her tarihsel çalıştırmanın kaydı anlamına gelmez. `123`, `777`, `2026` model başlangıçlarını belirleyen üç rastgelelik tohumudur.
+Tabloda aşamaları veri akışına göre sıraladım. Bu sırayı, her betiğin kullandığı ve ürettiği dosyalardan çıkarmak mümkün. Geçmişte hangi betiğin ne zaman çalıştırıldığı ise ancak çalıştırma kayıtlarından saptanabilir. `123`, `777`, `2026` model başlangıçlarını belirleyen üç rastgelelik tohumudur.
 
 ## Ana deney (P0)
 
@@ -35,6 +35,6 @@ Bir ortak gözlem geciktirilmiş girişlerle seçilmiş NoSharing mimarisi üçe
 
 ## Çalıştırmak için
 
-[Tez arşivleri ve doğrulama komutları](TEZ_ARSIVLERI.md) rehberinden ilgili paketi seçin. Ana deney ile özgün dönem H2 için 12 Kasım paketini, bir gözlem gecikmeli deney için 19 Kasım’da tamamlanan P1 paketini kullanın. Her paketin SHA-256 değeri ve ilk kontrol komutu rehberde yer alıyor.
+Ana deney ile özgün dönem H2 sonuçları 12 Kasım paketinde, bir gözlem gecikmeli deneyin sonuçları ise 19 Kasım’da tamamlanan P1 paketinde bulunuyor. İki paketin SHA-256 değerleri ve ilk kontrol komutları [arşiv rehberinde](TEZ_ARSIVLERI.md) yer alıyor.
 
-P0'ın özgün Colab ortamı ve kilitli arşiv girdileri için [yeniden üretim rehberini](REPRODUCIBILITY.md) kullanın. Getiri HAC ve raporlama betikleri, 12 Kasım arşivinin açıldığı klasörü `--archive-root` ve yeni bir çalışma klasörünü `--output-dir` ile alır. P1'in aşağıdaki rehberinde, açık depodaki ham dosyadan model eğitmeden pencere ve doğrulama paydası üretme yolu vardır. [P1 çalıştırma sırası](../experiments/p1_v2/README.md)
+P0’ın özgün Colab ortamı ve arşivde saklanan sabit girdiler [yeniden üretim rehberinde](REPRODUCIBILITY.md) açıklanıyor. Getiri HAC ve raporlama betikleri, 12 Kasım arşivinin açıldığı klasörü `--archive-root` ve yeni bir çalışma klasörünü `--output-dir` ile alır. P1’de pencere dizileri ve doğrulama paydaları, depodaki ham veriden model eğitmeden yeniden hesaplanabiliyor. [P1 çalıştırma sırası](../experiments/p1_v2/README.md)

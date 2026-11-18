@@ -1,8 +1,8 @@
 # Multi-Asset Return and Volatility Forecasting
 
-**[Kodları Türkçe ve çalışma sırasıyla incele](docs/KOD_REHBERI_TR.md)** · [Tez arşivleri ve doğrulama komutları](docs/TEZ_ARSIVLERI.md) · [Tamamlayıcı deney ve sonuçları (P1)](experiments/p1_v2/)
+**[Türkçe kod rehberi](docs/KOD_REHBERI_TR.md)** · [Tez arşivleri ve doğrulama komutları](docs/TEZ_ARSIVLERI.md) · [Tamamlayıcı deney ve sonuçları (P1)](experiments/p1_v2/)
 
-**Türkçe uygulamalı dersler.** Bir fiyat gözleminden başlayarak hedef tarihini, geçmiş penceresini, Transformer tahminini ve kayıp hesabını adım adım izleyebilirsiniz. [Ders defterini ve grafikleri oku](notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb) · [Colab’da çalıştır](https://colab.research.google.com/github/mathwithebru-financial/tez-codes/blob/main/notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb)
+**Türkçe uygulamalı dersler.** Ders defterinde, bir fiyat hareketi üzerinden log getiriyi hesaplıyor, ardından modelin o getiriyi tahmin ederken hangi tarihleri görebildiğini gösteriyorum. Örnek hesaplar, kod ve grafikler aynı defterde yer alıyor. [Uygulamalı ders defteri](notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb) · [Colab sürümü](https://colab.research.google.com/github/mathwithebru-financial/tez-codes/blob/main/notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb)
 
 Reproducibility materials for the master's thesis:
 
@@ -10,7 +10,7 @@ Reproducibility materials for the master's thesis:
 
 The study evaluates return and volatility forecasts for four financial assets on chronological target-date splits. Historical intraday availability of the provider's daily quotes could not be established. The post-review P1 experiment shifts inputs back one common observation.
 
-To reproduce a thesis table, choose the [P0/H2 or P1 archive](docs/TEZ_ARSIVLERI.md). The guide identifies the exact ZIP by SHA-256, gives its access route, and shows the first command to run from the extracted directory. Appendix C cites commit `40da5a1b8887` for the P1 research code. The portable replay utility and archive instructions were added after that snapshot.
+The [archive guide](docs/TEZ_ARSIVLERI.md) links each set of thesis tables to its P0/H2 or P1 archive. Each entry includes the ZIP checksum and the command for verifying the extracted files. Appendix C cites commit `40da5a1b8887` for the P1 research code. The portable replay utility and archive instructions were added after that snapshot.
 
 ## Research scope
 
@@ -66,13 +66,13 @@ The 22 volatility comparisons were also evaluated in a separate, post-hoc robust
 | Main Stage 09 | 2 | 18 | 2 |
 | Bartlett-HAC robustness | 2 | 12 | 8 |
 
-Six decisions changed from “comparator better” to “no significant difference”; no superiority direction reversed. The two significant final-model wins were preserved. This sensitivity check does not replace the locked Stage 09 analysis. See [`results/robustness/bartlett_dm_hln_v1/`](results/robustness/bartlett_dm_hln_v1/) for the validated compact outputs.
+Six comparisons that previously favoured the comparator became inconclusive. The two significant final-model wins remained significant, and no comparison switched from favouring one model to favouring the other. The original Stage 09 results and the [Bartlett-HAC results](results/robustness/bartlett_dm_hln_v1/) are reported separately.
 
 For returns, the [post-review HAC tables](results/robustness/return_hac/) report 3 model wins, 10 comparator wins and 7 inconclusive comparisons at L = 10 and L = 19. Each bandwidth uses a separate Holm adjustment across 20 tests.
 
 SHAP was used only as a post-hoc description of the locked ensemble. It was not used for feature selection, model reselection, or causal inference.
 
-The final SHAP closure record is `CLOSED` with independent audit status `PASS`. The earlier SHAP report is retained unchanged, including its then-pending audit status; the later closure record documents completion. See [`results/shap/`](results/shap/).
+The earlier SHAP report predates the independent audit. The [final SHAP record](results/shap/) gives the closure status as `CLOSED` and the audit result as `PASS`.
 
 ## Repository structure
 
@@ -96,14 +96,14 @@ The original pipeline scripts and the recovered main Stage 09 source retain the 
 /content/drive/MyDrive/tez_transformer_v4_repro
 ```
 
-Their original calculation code has not been silently refactored. The recovered main notebook now includes the actual Stage 09 DM-HLN/Holm and Stage 10 SHAP computation cells. Its outputs and account-specific execution metadata are cleared for publication.
+The recovered main notebook contains the original Stage 09 DM-HLN/Holm and Stage 10 SHAP calculation cells. The publication copy retains their source and omits saved outputs and account-specific execution metadata.
 
-Use the reproduction route appropriate to the available inputs:
+The materials support four uses:
 
-- **Inspect the archive:** read the scripts, notebook, protocols, compact results, and checksum inventories. Do not use **Run all** on the historical main notebook: it includes protocol creation, prior diagnostics, and guards against overwriting locked outputs.
-- **Recompute main Stage 09:** use `scripts/reproduce_archived_analysis_v4.py` with an isolated copy of the exact frozen Stage 09 inputs. It adapts execution paths around the recovered source; it does not refit models. See [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
-- **Recompute Bartlett-HAC robustness:** use the standalone Stage 09D script or the corrected Bartlett notebook, with `requirements-bartlett.txt` and the required archived inputs.
-- **Repeat training or SHAP:** provide the required processed data, scalers, checkpoints, and other locked inputs in a separate working copy, following the recorded stage order and environment. The main notebook preserves the SHAP preparation, smoke-test, full computation, assembly, audit, and closure source.
+- **Archive review.** The scripts, protocols, compact results and checksums document the original analysis. The historical notebook also contains one-time protocol creation and earlier diagnostics. **Run all** is unsuitable for an existing archive because some cells create files and others stop when those files already exist.
+- **Main Stage 09.** With an isolated copy of the frozen Stage 09 inputs, `scripts/reproduce_archived_analysis_v4.py` recalculates the statistical comparisons from saved losses. The [reproduction notes](docs/REPRODUCIBILITY.md) list the inputs and commands.
+- **Bartlett-HAC robustness.** The standalone Stage 09D script and the corrected Bartlett notebook use `requirements-bartlett.txt` and archived inputs.
+- **Training and SHAP.** Separate working copies follow the recorded stage order and environment. Training requires the processed data and scalers. The archived SHAP computation also requires the selected checkpoints. Its notebook cells cover model preparation, the smoke test, full computation, assembly, audit and closure.
 
 The frozen raw dataset is included. Derived datasets, scalers, checkpoints, and large arrays remain intentionally excluded from the public repository. Their hashes identify the required frozen inputs; they do not supply those bytes. Fresh training is a separate reproduction level and may not recreate the exact checkpoint hashes required by later locked analyses.
 
@@ -125,7 +125,7 @@ The archived artifacts record:
 - `arch` 8.0.0
 - SHAP 0.52.0
 
-See [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md) for the boundary between exact recorded versions and dependencies whose exact runtime version was not preserved.
+The [environment notes](docs/REPRODUCIBILITY.md) distinguish versions recorded during the experiments from compatible dependencies used for reproduction.
 
 ## Integrity
 
@@ -137,8 +137,4 @@ ab5f275d38dc98057b1cedcf58019adb26be7402c7ed5ae6ee3d6877b2444893
 
 Protocol files and companion checksum files are included under `protocols/`. The code and protocol records are research artifacts; inclusion in this repository does not by itself guarantee bitwise reproduction on different hardware or library builds.
 
-The recovered analysis sources are inventoried separately in [`config/recovered_analysis_manifest_v4.json`](config/recovered_analysis_manifest_v4.json). The [28 October 2026 verification record](docs/validation/archive_recovery_checks_20261028.json) records isolated reruns of all 42 main Stage 09 tests and all 22 Bartlett tests, plus source and SHAP-output identity checks. It does not claim a new training or GPU SHAP run.
-
-## Status
-
-The thesis and repository are under final documentation review. Scientific claims may be clarified as the thesis text is finalized, but locked experimental outputs are not retroactively changed.
+[`config/recovered_analysis_manifest_v4.json`](config/recovered_analysis_manifest_v4.json) lists the recovered analysis sources. The [28 October 2026 verification record](docs/validation/archive_recovery_checks_20261028.json) covers isolated reruns of all 42 main Stage 09 tests and all 22 Bartlett tests, together with checks on source files and saved SHAP outputs.

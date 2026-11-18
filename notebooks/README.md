@@ -2,7 +2,7 @@
 
 ## Applied lessons in Turkish
 
-The [applied time-series notebook](Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb) follows one price observation through target construction, model selection, evaluation and interpretation. Its worked examples include saved tables and plots. Choose **Runtime → Run all** to recalculate them on CPU using files from a fixed repository revision. [Open in Colab](https://colab.research.google.com/github/mathwithebru-financial/tez-codes/blob/main/notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb)
+In the [applied time-series notebook](Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb), I follow one price observation from target construction to forecast evaluation. The worked examples include saved tables and plots. In Colab, **Runtime → Run all** recalculates the examples on CPU using files from a fixed repository revision. [Colab version](https://colab.research.google.com/github/mathwithebru-financial/tez-codes/blob/main/notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb)
 
 ## Historical research notebooks
 
@@ -13,12 +13,12 @@ The [applied time-series notebook](Finansal_Zaman_Serileri_Uygulamali_Dersler.ip
 - Source cells were retained.
 - The notebook still assumes the original Google Colab and Google Drive directory layout.
 
-Do not use **Run all** on a completed project archive. The notebook includes earlier diagnostics and controlled one-time protocol and output creation. Its no-overwrite guards are part of the recorded workflow; removing them to rerun on top of locked results is not the documented reproduction route.
+The historical notebook includes earlier diagnostics and cells that create protocols and outputs once. Running **Run all** against a completed archive can stop at the first protected file. The documented reruns use separate working directories.
 
 The `.py` files in `scripts/` are the preferred source artifacts for Stages 00 through 08C-R. The recovered main Stage 09 calculation cell is also published verbatim as `scripts/09_dm_harvey_holm_v4.py`, with a separate isolated-run adapter.
 
-For SHAP, follow the titled source cells in order: standalone model preparation; locked protocol and method-addendum verification; execution readiness; two-sample smoke test; resumable full computation; assembly and report generation; independent final audit; closure. The full computation and assembly depend on variables created by the preparation and smoke-test cells. They require the exact frozen scalers, arrays, and three checkpoints, which are not supplied by the public notebook.
+The SHAP calculation starts with model preparation, protocol and method-addendum checks, and a readiness check. A two-sample smoke test sets up variables needed by the resumable computation and assembly cells. The independent audit and closure follow the final report. The computation requires the exact archived scalers, arrays and three checkpoints, which are distributed separately from the public notebook.
 
-`09D_Bartlett_DM_HLN_Saglamlik_v1.ipynb` is the corrected operational wrapper for the independent Bartlett-HAC robustness rerun. Its wrapper paths use the current project layout, rather than the removed historical folder name. This is a documented wrapper correction, not a change to the Bartlett calculation method. The original standalone calculation source remains `scripts/09D_bartlett_dm_hln_robustness_v1.py`.
+`09D_Bartlett_DM_HLN_Saglamlik_v1.ipynb` runs the independent Bartlett-HAC robustness check. Its paths reflect the current project layout. The underlying calculation is preserved in `scripts/09D_bartlett_dm_hln_robustness_v1.py`.
 
-Both publication notebooks have outputs, execution counters, and account-specific Colab metadata cleared. The corrected Bartlett wrapper is a derivative; its notebook hash is not represented as the historical executed notebook hash. See [`docs/REPRODUCIBILITY.md`](../docs/REPRODUCIBILITY.md) for inputs and execution boundaries.
+Both historical notebooks are published with cleared outputs, execution counters and account-specific Colab metadata. The path corrections changed the Bartlett notebook’s file hash. The [reproduction notes](../docs/REPRODUCIBILITY.md) document its inputs and the steps that can be rerun.

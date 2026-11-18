@@ -4,7 +4,7 @@ Bu klasör, ana model seçildikten sonra yapılan 2010–2024 sağlamlık incele
 
 ## Ham veriden eğitime hazır dizilere
 
-Bu komutları depo kökünden ve Python 3.13 ortamından başlayarak sırasıyla çalıştırın. Veri hazırlığında doğrulanan sürümler NumPy 2.3.3, pandas 3.0.1 ve scikit-learn 1.7.2'dir. Aşağıdaki akış CPU'da çalışır. `../p1_replay` henüz bulunmayan, depo dışında bir dizin olmalıdır.
+Veri hazırlığı depo kökünde, Python 3.13 ortamında başlar. Aşağıdaki komutlar CPU’da, verilen sırayla çalışır. Veri hazırlığında doğrulanan sürümler NumPy 2.3.3, pandas 3.0.1 ve scikit-learn 1.7.2’dir. İlk betik çalışma dizinini depo dışında oluşturur. Bu yüzden `../p1_replay` çalıştırmadan önce mevcut olmamalıdır.
 
 ```shell
 python experiments/p1_v2/prepare_workspace.py ../p1_replay
@@ -16,9 +16,9 @@ python pipeline/build_p1_datasets.py
 python training/train_p1.py
 ```
 
-Son komut varsayılan olarak ön kontrol yapar. Eğitim ayrı bir `--execute-train` seçeneği gerektirir. `prepare_workspace.py` ilk üç dosyayı ana depodan kopyalar (ham CSV ve iki P0 kaynağı), P1 çalışma yapısını kurar ve yeniden hesapladığı tarih eşlemesinin SHA-256 değerini özgün kayıtla karşılaştırır. Çalıştırma sırasındaki denetimlerde 3.912 fiyat tarihi, eğitimde 2.721 ölçekleme satırı ve eğitim/doğrulama/testte 2.712/583/584 örnek bulunmalıdır. Son dosyalar `datasets/p1_v2/` içindedir. Yayıma hazırlıkta temiz bir dizinde üretilen **67 NPY dizisinin** şekli, veri türü ve tüm değerleri saklanmış P1 dizileriyle birebir karşılaştırıldı.
+Son komut veri kontrollerini yapar ve deney planını kaydeder. Model eğitimi yalnızca `--execute-train` seçeneği verildiğinde başlar. `prepare_workspace.py` ilk üç dosyayı ana depodan kopyalar (ham CSV ve iki P0 kaynağı), P1 çalışma yapısını kurar ve yeniden hesapladığı tarih eşlemesinin SHA-256 değerini özgün kayıtla karşılaştırır. Çalıştırma sırasındaki denetimlerde 3.912 fiyat tarihi, eğitimde 2.721 ölçekleme satırı ve eğitim/doğrulama/testte 2.712/583/584 örnek bulunmalıdır. Son dosyalar `datasets/p1_v2/` içindedir. Yayıma hazırlıkta temiz bir dizinde üretilen **67 NPY dizisinin** şekli, veri türü ve tüm değerleri saklanmış P1 dizileriyle birebir karşılaştırıldı.
 
-## Hangi kod hangi soruyu yanıtlıyor?
+## Deney soruları ve ilgili kodlar
 
 | Soru | Ana kaynak | Beklenen ürün |
 |---|---|---|
@@ -41,6 +41,6 @@ SHAP kararlılık karşılaştırmaları ve sekiz örnek üzerindeki çekiliş d
 
 ## Yeniden üretimin kapsamı
 
-[Gecikmeli deney arşivi ve taşınabilir çalıştırma komutları](../../docs/TEZ_ARSIVLERI.md) bölümünde Ek C'de adı geçen ZIP'in güncel dosya kimliği ve temiz bir klasörde izlenecek adımlar yer alır. Buradaki tarihsel betikler ve çalıştırma kayıtları yapılan deneyin kaynaklarıdır.
+Ek C’de adı geçen ZIP’in güncel dosya kimliği ve temiz bir klasörde doğrulama adımları [arşiv rehberinde](../../docs/TEZ_ARSIVLERI.md) yer alır. Bu dizin, deneyde kullanılan betikleri ve çalıştırma kayıtlarını içerir.
 
-Klonlanan depoyla yukarıdaki veri ve ön kontrol zinciri çalışır. Saklanmış **aynı** modelden yeniden çıkarım yapmak için altı özgün `best_checkpoint.pt` dosyası, çalışma kayıtları ve eşleşen girdiler gerekir. SHAP çalıştırıcısı ayrıca örneklem, ortam, pilot eşdeğerliği ve giriş kimliği kayıtlarını doğrular. Güvenlik denetimleri eksik kayıtla devam etmez. Tüm ağırlıklar ve büyük diziler bu açık kod deposunda yer almıyor. 12 Kasım ana deney arşivi ayrı kapsamdadır. Kaydedilmiş P1 özetleri bu dizindeki küçük dosyalardan okunabilir. [Kaynak ve seçilmiş çıktı kimlikleri](archived_source_hashes.json)
+Depodaki dosyalar veri hazırlığı ve eğitim öncesi kontrol için yeterlidir. Arşivlenen modellerle tahminleri yeniden üretmek için altı özgün `best_checkpoint.pt` dosyası, çalışma kayıtları ve eşleşen girdiler gerekir. SHAP çalıştırıcısı ayrıca örneklem, ortam, pilot eşdeğerliği ve giriş kimliği kayıtlarını doğrular. Gerekli kayıtlardan biri eksikse çalıştırıcı durur. Tüm ağırlıklar ve büyük diziler bu açık kod deposunda yer almıyor. 12 Kasım ana deney arşivi ayrı kapsamdadır. Kaydedilmiş P1 özetleri bu dizindeki küçük dosyalardan okunabilir. [Kaynak ve seçilmiş çıktı kimlikleri](archived_source_hashes.json)

@@ -18,7 +18,7 @@ The following versions are explicitly recorded in locked protocol or diagnostic 
 | SHAP | 0.52.0 | Stage 10 diagnostics |
 | statsmodels | 0.14.6 | Stage 8C installation record |
 
-The exact scikit-learn runtime version was not preserved in the verified artifacts. `requirements.txt` therefore records a compatible major-version range instead of inventing an exact pin.
+`requirements.txt` specifies a compatible major-version range for scikit-learn. The exact version used in the original run is unknown.
 
 Matplotlib is required by the archived plotting and SHAP report source. Its exact historical runtime version was not preserved, so the dependency is not presented as an exact recorded pin.
 
@@ -34,7 +34,7 @@ The independent Colab reproduction record for the Bartlett-HAC robustness check 
 | SciPy | 1.16.3 |
 | statsmodels | 0.14.5 |
 
-These versions describe only the later Stage 09D robustness rerun; they do not revise the locked main-pipeline environment above. Use `requirements-bartlett.txt` for this route. In particular, the recorded Stage 09D statsmodels version is `0.14.5`, whereas the main-pipeline installation record contains `0.14.6`.
+`requirements-bartlett.txt` records the environment for the later Stage 09D rerun. That environment used statsmodels `0.14.5`. The main-pipeline installation record lists `0.14.6`.
 
 ## Data integrity
 
@@ -54,7 +54,7 @@ The exact frozen raw dataset is included at `data/raw/raw_prices.csv` for reprod
 
 ### Recovered acquisition source
 
-The [historical v3 acquisition archive](../archives/v3_data_acquisition/README.md) provides selected unchanged source files, original production metadata and checksum inventories, and a separately dated verification record linking the v3 raw file to the frozen v4 snapshot. It does not replace the v4 preparation script or establish the first-ever download time, original chat identity, or market-closing-time availability.
+The [historical v3 acquisition archive](../archives/v3_data_acquisition/README.md) contains the download code, production metadata and checksums. A later verification record links the v3 raw file to the v4 snapshot used for preparation. The time of the first download and the time each daily price first became available from the provider remain unknown.
 
 ## Leakage controls
 
@@ -73,13 +73,13 @@ The archived scripts contain the Google Colab Drive root used during execution:
 /content/drive/MyDrive/tez_transformer_v4_repro
 ```
 
-Changing these paths would alter the source hashes recorded during the experiment. The public copy therefore preserves the executed source and documents the path requirement rather than presenting a modified file as the audited original.
+The archived scripts retain this path because it forms part of the file content covered by the recorded checksums.
 
 The recovered main notebook contains the previously unpublished main Stage 09 and Stage 10 computation cells. Its cell source is retained; outputs, execution counters, and account-specific execution metadata are removed. This cleaning changes the notebook file hash, not the source code in its original code cells.
 
 The main Stage 09 calculation cell is additionally extracted verbatim to `scripts/09_dm_harvey_holm_v4.py`. Its separate adapter, `scripts/reproduce_archived_analysis_v4.py`, changes execution paths for an isolated rerun while leaving the archived calculation file unchanged. The adapter is new utility code, not an original executed artifact.
 
-The Stage 09D publication notebook is a corrected operational wrapper. It replaces references to a removed historical folder with the current layout and calls the unchanged standalone Bartlett implementation. Its cleared outputs and corrected wrapper are not represented as byte-identical to the historical executed notebook.
+The Stage 09D publication notebook calls the archived Bartlett implementation. Its wrapper uses the current directory layout. The path correction and removal of saved outputs changed the notebook’s file hash.
 
 The original `config/code_manifest_v4.csv` is retained unchanged. Its historical scope is the scripts recorded when it was created, not every subsequently recovered artifact. A separate recovery inventory records the added sources and wrapper changes.
 
@@ -87,7 +87,7 @@ The original `config/code_manifest_v4.csv` is retained unchanged. Its historical
 
 ### Main Stage 09
 
-The [12 November P0/H2 archive](TEZ_ARSIVLERI.md) supplies all 17 inputs and the matching source tree. Extract it and run the following commands **from the archive root**, the directory containing `PACKAGE_MANIFEST.json`:
+The [12 November P0/H2 archive](TEZ_ARSIVLERI.md) contains all 17 inputs and the matching source tree. The following commands run **from the archive root**, the extracted directory containing `PACKAGE_MANIFEST.json`:
 
 ```bash
 python tools/verify_archive.py --archive-root .
@@ -101,24 +101,24 @@ This combined replay route was checked with Python 3.13.3, NumPy 2.1.3, pandas 2
 
 For provenance, the September source ZIP held 16 of the 17 inputs. The recovered `data/sequences/baseline/lb10/anchor_dates_test.npy` (SHA-256 `40194047c9b7fe62adc0966f2c144e1be1e9c85f832d96ffe0a12624d34aab63`) is supplied inside `main_project/` in the November archive.
 
-This route recomputes 42 statistical comparisons from existing predictions and losses. It does not retrain the forecasting models. Compare numerical results and decisions with `results/statistical_comparison/09_dm_harvey_holm_results_v4.csv`. Timestamps and execution paths in newly created metadata can differ even when the numerical results agree.
+This replay uses existing predictions and losses to recompute 42 statistical comparisons. The reference values and decisions are in `results/statistical_comparison/09_dm_harvey_holm_results_v4.csv`. Timestamps and paths can differ between runs with the same numerical results.
 
 ### Bartlett-HAC robustness
 
-Use the separate dependencies and inspect the unchanged standalone implementation's interface:
+The following commands install the Bartlett dependencies and show the arguments accepted by the archived calculation script:
 
 ```bash
 python -m pip install -r requirements-bartlett.txt
 python scripts/09D_bartlett_dm_hln_robustness_v1.py --help
 ```
 
-The corrected Bartlett notebook provides the Colab wrapper around this implementation. It requires the frozen input project and the additional files named by the wrapper. Large input arrays and ZIP packages remain excluded from the public repository. Use a fresh output directory and compare all 22 results against the frozen compact outputs. The recorded independent reproduction used a numerical tolerance of `1e-10`.
+The corrected Bartlett notebook runs this implementation in Colab. It requires the archived project inputs and the additional files listed in the notebook. The large arrays and ZIP packages are distributed separately from the public repository. The reproduction uses a fresh output directory. The independent check compared all 22 results with the archived values at a numerical tolerance of `1e-10`.
 
 ### Stage 10 SHAP
 
 The recovered main notebook is the source for model preparation, protocol and addendum checks, readiness checks, smoke test, full chunk computation, assembly, independent final audit, and closure. Preparation and smoke-test cells establish globals needed by later cells. Running only the full-computation cell in an empty session is insufficient.
 
-Use an isolated copy with the exact frozen processed arrays, fitted scalers, and three selected checkpoints. Protocol and output creation cells deliberately stop when locked files already exist. Audit-only cells can inspect completed artifacts; full recomputation requires a separate working copy with its required inputs and appropriately empty output locations. The source-preserving archive update does not itself constitute a new training or GPU SHAP run.
+A full SHAP rerun starts in a separate working directory with the archived processed arrays, fitted scalers and three selected checkpoints. Protocol and output creation cells stop when they encounter an existing locked file. The audit cells can read completed artifacts in place. The archive recovery record covers source verification. It does not record a new training or GPU SHAP run.
 
 The original SHAP report records the audit as pending at the time of report creation. The later closure JSON and report record `CLOSED` and audit `PASS`; both stages of that record are preserved without rewriting the original report.
 
