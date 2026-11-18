@@ -1,12 +1,14 @@
 # Multi-Asset Return and Volatility Forecasting
 
-**[Kodları Türkçe ve çalışma sırasıyla incele](docs/KOD_REHBERI_TR.md)** · [Tamamlayıcı deney ve sonuçları (P1)](experiments/p1_v2/)
+**[Kodları Türkçe ve çalışma sırasıyla incele](docs/KOD_REHBERI_TR.md)** · [Tez arşivleri ve doğrulama komutları](docs/TEZ_ARSIVLERI.md) · [Tamamlayıcı deney ve sonuçları (P1)](experiments/p1_v2/)
 
 Reproducibility materials for the master's thesis:
 
 > **Multi-Task Transformer-Based Architecture for Multi-Asset Financial Risk and Return Forecasting**
 
 The study evaluates return and volatility forecasts for four financial assets on chronological target-date splits. Historical intraday availability of the provider's daily quotes could not be established. The post-review P1 experiment shifts inputs back one common observation.
+
+To reproduce a thesis table, choose the [P0/H2 or P1 archive](docs/TEZ_ARSIVLERI.md). The guide identifies the exact ZIP by SHA-256, gives its access route, and shows the first command to run from the extracted directory. Appendix C cites commit `40da5a1b8887` for the P1 research code. The portable replay utility and archive instructions were added after that snapshot.
 
 ## Research scope
 

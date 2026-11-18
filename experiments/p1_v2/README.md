@@ -41,4 +41,6 @@ SHAP kararlılık karşılaştırmaları ve sekiz örnek üzerindeki çekiliş d
 
 ## Yeniden üretimin kapsamı
 
+[Gecikmeli deney arşivi ve taşınabilir çalıştırma komutları](../../docs/TEZ_ARSIVLERI.md) bölümünde Ek C'de adı geçen ZIP'in güncel dosya kimliği ve temiz bir klasörde izlenecek adımlar yer alır. Buradaki tarihsel betikler ve çalıştırma kayıtları yapılan deneyin kaynaklarıdır.
+
 Klonlanan depoyla yukarıdaki veri ve ön kontrol zinciri çalışır. Saklanmış **aynı** modelden yeniden çıkarım yapmak için altı özgün `best_checkpoint.pt` dosyası, çalışma kayıtları ve eşleşen girdiler gerekir. SHAP çalıştırıcısı ayrıca örneklem, ortam, pilot eşdeğerliği ve giriş kimliği kayıtlarını doğrular. Güvenlik denetimleri eksik kayıtla devam etmez. Tüm ağırlıklar ve büyük diziler bu açık kod deposunda yer almıyor. 12 Kasım ana deney arşivi ayrı kapsamdadır. Kaydedilmiş P1 özetleri bu dizindeki küçük dosyalardan okunabilir. [Kaynak ve seçilmiş çıktı kimlikleri](archived_source_hashes.json)

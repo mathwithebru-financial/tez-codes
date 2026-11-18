@@ -33,4 +33,6 @@ Bir ortak gözlem geciktirilmiş girişlerle seçilmiş NoSharing mimarisi üçe
 
 ## Çalıştırmak için
 
+[Tez arşivleri ve doğrulama komutları](TEZ_ARSIVLERI.md) rehberinden ilgili paketi seçin. Ana deney ile özgün dönem H2 için 12 Kasım paketini, bir gözlem gecikmeli deney için 19 Kasım’da tamamlanan P1 paketini kullanın. Her paketin SHA-256 değeri ve ilk kontrol komutu rehberde yer alıyor.
+
 P0'ın özgün Colab ortamı ve kilitli arşiv girdileri için [yeniden üretim rehberini](REPRODUCIBILITY.md) kullanın. Getiri HAC ve raporlama betikleri, 12 Kasım arşivinin açıldığı klasörü `--archive-root` ve yeni bir çalışma klasörünü `--output-dir` ile alır. P1'in aşağıdaki rehberinde, açık depodaki ham dosyadan model eğitmeden pencere ve doğrulama paydası üretme yolu vardır. [P1 çalıştırma sırası](../experiments/p1_v2/README.md)
