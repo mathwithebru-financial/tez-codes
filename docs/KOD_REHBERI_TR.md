@@ -1,5 +1,7 @@
 # Tez kodlarını hangi sırayla okumalı?
 
+Konuları ilk kez çalışıyorsanız, [uygulamalı ders defterinde](../notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb) tek bir fiyat hareketinden başlayın. Örnek hesapları elle deneyebilir, ardından kodu çalıştırıp tablolar ve grafiklerle karşılaştırabilirsiniz. [Colab’da aç](https://colab.research.google.com/github/mathwithebru-financial/tez-codes/blob/main/notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb)
+
 Bir örnek üzerinden başlayalım. Ana deneyin ilk test girdisi 22 Eylül–5 Ekim 2022 arasındaki **10 ortak takvim gözleminden** oluşur. Son satırdaki dört getiri ve dört tarihsel volatilite, geçmişin modele verilen özetidir. Bu pencerenin hedefi 6 Ekim’de biten tek gözlemlik getiri ile 6 Ekim’deki 20 gözlemlik tarihsel volatilitedir. Tamamlayıcı deney aynı hedefi korur ve son girdi tarihini 4 Ekim’e çeker.
 
 Tablodaki sıra, her aşamanın önceki hangi ürüne ihtiyaç duyduğunu gösterir. Betiklerin bulunması, her tarihsel çalıştırmanın kaydı anlamına gelmez. `123`, `777`, `2026` model başlangıçlarını belirleyen üç rastgelelik tohumudur.
