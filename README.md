@@ -1,6 +1,6 @@
 # Multi-Asset Return and Volatility Forecasting
 
-**[Türkçe kod rehberi](docs/KOD_REHBERI_TR.md)** · [Tez arşivleri ve doğrulama komutları](docs/TEZ_ARSIVLERI.md) · [Tamamlayıcı deney ve sonuçları (P1)](experiments/p1_v2/)
+**[Türkçe kod rehberi](docs/KOD_REHBERI_TR.md)** · [Tez şekillerini yeniden çizme](figures/README.md) · [Tez arşivleri ve doğrulama komutları](docs/TEZ_ARSIVLERI.md) · [Tamamlayıcı deney ve sonuçları (P1)](experiments/p1_v2/)
 
 **Türkçe uygulamalı dersler.** Ders defterinde, bir fiyat hareketi üzerinden log getiriyi hesaplıyor, ardından modelin o getiriyi tahmin ederken hangi tarihleri görebildiğini gösteriyorum. Örnek hesaplar, kod ve grafikler aynı defterde yer alıyor. [Uygulamalı ders defteri](notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb) · [Colab sürümü](https://colab.research.google.com/github/mathwithebru-financial/tez-codes/blob/main/notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb)
 
@@ -82,11 +82,25 @@ The earlier SHAP report predates the independent audit. The [final SHAP record](
 ├── data/          # exact frozen raw dataset and data notes
 ├── experiments/p1_v2/  # supplementary lagged-input and loss-sensitivity code
 ├── docs/         # result and reproducibility notes
+├── figures/      # print figures and plotting requirements
 ├── notebooks/    # applied lessons with outputs and archived research notebooks
 ├── protocols/    # locked protocols and the post-hoc robustness protocol
 ├── results/      # compact SHAP and robustness summaries
 └── scripts/      # archived pipeline sources and isolated rerun adapters
 ```
+
+## Reproducing the thesis figures
+
+The [figure scripts and Turkish instructions](figures/README.md) reproduce Figures 2.3, 2.4, 3.2, 4.3 and 5.1 as 600 dpi PNGs. They use the archived prices, statistical results and test predictions. Extract the **P0/H2** archive (`Tez_Yeniden_Uretim_Arsivi_20261112.zip`) linked in the [archive guide](docs/TEZ_ARSIVLERI.md).
+
+From the repository root, use a Python 3.12 environment with Times New Roman installed. Replace `../tez_arsivi` with the extracted directory containing `main_project/`, or with `main_project/` itself.
+
+```shell
+python -m pip install -r figures/requirements.txt
+python figures/sekilleri_ciz.py --archive "../tez_arsivi" --output "../tez_sekilleri"
+```
+
+For Figure 5.1 alone, use `figures/sekil_5_1.py` with the same arguments. The output directory is created automatically.
 
 ## Reproducibility boundary
 
