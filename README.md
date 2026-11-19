@@ -1,6 +1,6 @@
 # Multi-Asset Return and Volatility Forecasting
 
-**[Türkçe kod rehberi](docs/KOD_REHBERI_TR.md)** · [Tez şekillerini yeniden çizme](figures/README.md) · [Tez arşivleri ve doğrulama komutları](docs/TEZ_ARSIVLERI.md) · [Tamamlayıcı deney ve sonuçları (P1)](experiments/p1_v2/)
+**[Türkçe kod rehberi](docs/KOD_REHBERI_TR.md)** · [Tez şekilleri](figures/README.md) · [48 çizelgenin betik ve kaynak dizini](tables/README.md) · [Tez arşivleri ve doğrulama komutları](docs/TEZ_ARSIVLERI.md) · [Tamamlayıcı deney ve sonuçları (P1)](experiments/p1_v2/)
 
 **Türkçe uygulamalı dersler.** Ders defterinde, bir fiyat hareketi üzerinden log getiriyi hesaplıyor, ardından modelin o getiriyi tahmin ederken hangi tarihleri görebildiğini gösteriyorum. Örnek hesaplar, kod ve grafikler aynı defterde yer alıyor. [Uygulamalı ders defteri](notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb) · [Colab sürümü](https://colab.research.google.com/github/mathwithebru-financial/tez-codes/blob/main/notebooks/Finansal_Zaman_Serileri_Uygulamali_Dersler.ipynb)
 
@@ -86,7 +86,8 @@ The earlier SHAP report predates the independent audit. The [final SHAP record](
 ├── notebooks/    # applied lessons with outputs and archived research notebooks
 ├── protocols/    # locked protocols and the post-hoc robustness protocol
 ├── results/      # compact SHAP and robustness summaries
-└── scripts/      # archived pipeline sources and isolated rerun adapters
+├── scripts/      # archived pipeline sources and isolated rerun adapters
+└── tables/       # print-table exporters and table-by-table source index
 ```
 
 ## Reproducing the thesis figures
@@ -101,6 +102,22 @@ python figures/sekilleri_ciz.py --archive "../tez_arsivi" --output "../tez_sekil
 ```
 
 To draw one figure, replace `sekilleri_ciz.py` with its script name, such as `sekil_5_1.py`. For the SHAP heatmaps (4.1 and 4.2), you can use `--archive .` from the repository root. Their input CSVs are included in [results/shap/](results/shap/). The output directory is created automatically.
+
+## Reproducing the thesis tables
+
+The [table-by-table index](tables/README.md) identifies the original calculation, archive inputs and export method for all 48 numbered tables. The following modules assemble 44 tables from the frozen experiment records. Tables 2.2, 3.3, 3.8 and C.1 are author-compiled literature, architecture or source inventories. Their evidence is linked in the index.
+
+| Printed tables | Export module |
+|---|---|
+| 2.1, 3.1–3.2, 3.4–3.7, A.1, B.1–B.3 | [Methods and statistical appendices](tables/early.py) |
+| 4.1–4.12, 5.1 | [Main results](tables/results.py) |
+| D.1–D.3, E.1–E.17 | [Supplementary results](tables/appendix.py) |
+
+To export one table, run this from the repository root after extracting the [P0/H2 archive](docs/TEZ_ARSIVLERI.md). The [Turkish guide](tables/README.md) also shows how to export the complete set with both archives.
+
+```shell
+python tables/export_tables.py --table 4.2 --p0 "../p0" --output "../tez_cizelgeleri"
+```
 
 ## Reproducibility boundary
 
