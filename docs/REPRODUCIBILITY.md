@@ -18,7 +18,7 @@ The following versions are explicitly recorded in locked protocol or diagnostic 
 | SHAP | 0.52.0 | Stage 10 diagnostics |
 | statsmodels | 0.14.6 | Stage 8C installation record |
 
-`requirements.txt` specifies a compatible major-version range for scikit-learn. The exact version used in the original run is unknown.
+`requirements.txt` specifies a compatible range for scikit-learn. The fitted preprocessing scalers record version `1.6.1` in `_sklearn_version`. The [SHAP protocol addendum of 22 July 2026](../protocols/10_shap_protocol_addendum_v4a.json) independently records `1.6.1` in `runtime_at_addendum_lock.sklearn`. Individual training sessions have no separate scikit-learn version record.
 
 Matplotlib is required by the archived plotting and SHAP report source. Its exact historical runtime version was not preserved, so the dependency is not presented as an exact recorded pin.
 
