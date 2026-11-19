@@ -91,7 +91,7 @@ The earlier SHAP report predates the independent audit. The [final SHAP record](
 
 ## Reproducing the thesis figures
 
-The [figure scripts and Turkish instructions](figures/README.md) reproduce Figures 2.3, 2.4, 3.2, 4.3 and 5.1 as 600 dpi PNGs. They use the archived prices, statistical results and test predictions. Extract the **P0/H2** archive (`Tez_Yeniden_Uretim_Arsivi_20261112.zip`) linked in the [archive guide](docs/TEZ_ARSIVLERI.md).
+The [figure scripts and Turkish instructions](figures/README.md) reproduce all 11 print figures (2.1–2.4, 3.1–3.3, 4.1–4.3 and 5.1) as PNGs. To draw the complete set, extract the **P0/H2** archive (`Tez_Yeniden_Uretim_Arsivi_20261112.zip`) linked in the [archive guide](docs/TEZ_ARSIVLERI.md). It supplies the split records, prices, statistical results and saved predictions.
 
 From the repository root, use a Python 3.12 environment with Times New Roman installed. Replace `../tez_arsivi` with the extracted directory containing `main_project/`, or with `main_project/` itself.
 
@@ -100,7 +100,7 @@ python -m pip install -r figures/requirements.txt
 python figures/sekilleri_ciz.py --archive "../tez_arsivi" --output "../tez_sekilleri"
 ```
 
-For Figure 5.1 alone, use `figures/sekil_5_1.py` with the same arguments. The output directory is created automatically.
+To draw one figure, replace `sekilleri_ciz.py` with its script name, such as `sekil_5_1.py`. For the SHAP heatmaps (4.1 and 4.2), you can use `--archive .` from the repository root. Their input CSVs are included in [results/shap/](results/shap/). The output directory is created automatically.
 
 ## Reproducibility boundary
 
